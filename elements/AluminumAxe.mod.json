@@ -1,0 +1,26 @@
+{
+  "_fv": 10,
+  "_type": "tool",
+  "definition": {
+    "renderType": 0,
+    "texture": "aluminum_axe",
+    "customModelName": "Normal",
+    "name": "Aluminum Axe",
+    "specialInfo": [],
+    "creativeTab": {
+      "value": "CUSTOM:SlothCraftArmourAndWeaponsCreativeTab"
+    },
+    "toolType": "Axe",
+    "harvestLevel": 1,
+    "efficiency": 6.0,
+    "attackSpeed": 1.0,
+    "enchantability": 15,
+    "damageVsEntity": 7.0,
+    "usageCount": 286,
+    "blocksAffected": [],
+    "hasGlow": false,
+    "repairItems": [],
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false
+  }
+}

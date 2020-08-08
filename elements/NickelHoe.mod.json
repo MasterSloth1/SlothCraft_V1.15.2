@@ -1,0 +1,26 @@
+{
+  "_fv": 10,
+  "_type": "tool",
+  "definition": {
+    "renderType": 0,
+    "texture": "nickel_hoe",
+    "customModelName": "Normal",
+    "name": "Nickel Hoe",
+    "specialInfo": [],
+    "creativeTab": {
+      "value": "CUSTOM:SlothCraftArmourAndWeaponsCreativeTab"
+    },
+    "toolType": "Hoe",
+    "harvestLevel": 2,
+    "efficiency": 8.0,
+    "attackSpeed": 1.0,
+    "enchantability": 21,
+    "damageVsEntity": 3.0,
+    "usageCount": 441,
+    "blocksAffected": [],
+    "hasGlow": false,
+    "repairItems": [],
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false
+  }
+}

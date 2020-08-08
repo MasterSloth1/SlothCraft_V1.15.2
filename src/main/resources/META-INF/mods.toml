@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[31,)"
+
+[[mods]]
+modId="slothcraft"
+version="1.9"
+displayName="SlothCraft"
+credits="MasterSloth - Developer"
+displayURL="https://discord.gg/wFtUTgZ"
+logoFile="logo.png"
+authors="MasterSloth, MCreator"
+description='''
+A small mod I made to add plates, gears and more to the game
+'''
+
+[[dependencies.slothcraft]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.15.2]"
+    ordering="NONE"
+    side="BOTH"
+
+
+
+

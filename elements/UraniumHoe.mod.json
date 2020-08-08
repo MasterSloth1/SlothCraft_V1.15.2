@@ -1,0 +1,26 @@
+{
+  "_fv": 10,
+  "_type": "tool",
+  "definition": {
+    "renderType": 0,
+    "texture": "uranium_hoe",
+    "customModelName": "Normal",
+    "name": "Uranium Hoe",
+    "specialInfo": [],
+    "creativeTab": {
+      "value": "CUSTOM:SlothCraftArmourAndWeaponsCreativeTab"
+    },
+    "toolType": "Hoe",
+    "harvestLevel": 4,
+    "efficiency": 8.0,
+    "attackSpeed": 1.0,
+    "enchantability": 24,
+    "damageVsEntity": 3.0,
+    "usageCount": 525,
+    "blocksAffected": [],
+    "hasGlow": false,
+    "repairItems": [],
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false
+  }
+}
