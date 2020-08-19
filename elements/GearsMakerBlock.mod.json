@@ -12,6 +12,7 @@
     "customModelName": "platemaker_animation:default",
     "rotationMode": 1,
     "emissiveRendering": false,
+    "itemTexture": "",
     "hasTransparency": true,
     "connectedSides": false,
     "transparencyType": "TRANSLUCENT",
@@ -88,6 +89,7 @@
     "energyMaxExtract": 200,
     "isFluidTank": false,
     "fluidCapacity": 8000,
+    "fluidRestrictions": [],
     "onTickUpdate": {
       "name": "GearsMakerBlockUpdateTick"
     },
