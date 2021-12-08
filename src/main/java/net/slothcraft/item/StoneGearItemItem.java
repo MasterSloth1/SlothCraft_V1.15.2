@@ -6,13 +6,14 @@ import net.slothcraft.SlothcraftModElements;
 
 import net.minecraftforge.registries.ObjectHolder;
 
+import net.minecraft.item.Rarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item;
 import net.minecraft.block.BlockState;
 
 @SlothcraftModElements.ModElement.Tag
 public class StoneGearItemItem extends SlothcraftModElements.ModElement {
-	@ObjectHolder("slothcraft:stonegearitem")
+	@ObjectHolder("slothcraft:stone_gear_item")
 	public static final Item block = null;
 	public StoneGearItemItem(SlothcraftModElements instance) {
 		super(instance, 27);
@@ -24,8 +25,8 @@ public class StoneGearItemItem extends SlothcraftModElements.ModElement {
 	}
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
-			super(new Item.Properties().group(SlothCraftGearsCreativeTabItemGroup.tab).maxStackSize(64));
-			setRegistryName("stonegearitem");
+			super(new Item.Properties().group(SlothCraftGearsCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON));
+			setRegistryName("stone_gear_item");
 		}
 
 		@Override

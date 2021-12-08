@@ -1,7 +1,7 @@
 package net.slothcraft.procedures;
 
 import net.slothcraft.item.GlassReceptacleItemItem;
-import net.slothcraft.SlothcraftModElements;
+import net.slothcraft.SlothcraftMod;
 
 import net.minecraftforge.items.ItemHandlerHelper;
 
@@ -14,15 +14,11 @@ import net.minecraft.entity.Entity;
 
 import java.util.Map;
 
-@SlothcraftModElements.ModElement.Tag
-public class PackedGlassReceptacleFoodFoodEatenProcedure extends SlothcraftModElements.ModElement {
-	public PackedGlassReceptacleFoodFoodEatenProcedure(SlothcraftModElements instance) {
-		super(instance, 183);
-	}
-
+public class PackedGlassReceptacleFoodFoodEatenProcedure {
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
-			System.err.println("Failed to load dependency entity for procedure PackedGlassReceptacleFoodFoodEaten!");
+			if (!dependencies.containsKey("entity"))
+				SlothcraftMod.LOGGER.warn("Failed to load dependency entity for procedure PackedGlassReceptacleFoodFoodEaten!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");
@@ -43,7 +39,7 @@ public class PackedGlassReceptacleFoodFoodEatenProcedure extends SlothcraftModEl
 		if (entity instanceof LivingEntity)
 			((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.HEALTH_BOOST, (int) 600, (int) 3, (false), (false)));
 		if (entity instanceof PlayerEntity) {
-			ItemStack _setstack = new ItemStack(GlassReceptacleItemItem.block, (int) (1));
+			ItemStack _setstack = new ItemStack(GlassReceptacleItemItem.block);
 			_setstack.setCount((int) 1);
 			ItemHandlerHelper.giveItemToPlayer(((PlayerEntity) entity), _setstack);
 		}

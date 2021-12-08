@@ -9,6 +9,7 @@ import net.minecraftforge.registries.ObjectHolder;
 import net.minecraft.world.World;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.item.Rarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item;
 import net.minecraft.client.util.ITooltipFlag;
@@ -18,7 +19,7 @@ import java.util.List;
 
 @SlothcraftModElements.ModElement.Tag
 public class AluminumPlateItemItem extends SlothcraftModElements.ModElement {
-	@ObjectHolder("slothcraft:aluminumplateitem")
+	@ObjectHolder("slothcraft:aluminum_plate_item")
 	public static final Item block = null;
 	public AluminumPlateItemItem(SlothcraftModElements instance) {
 		super(instance, 35);
@@ -30,8 +31,8 @@ public class AluminumPlateItemItem extends SlothcraftModElements.ModElement {
 	}
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
-			super(new Item.Properties().group(SlothCraftPlatesCreativeTabItemGroup.tab).maxStackSize(64));
-			setRegistryName("aluminumplateitem");
+			super(new Item.Properties().group(SlothCraftPlatesCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON));
+			setRegistryName("aluminum_plate_item");
 		}
 
 		@Override

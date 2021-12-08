@@ -45,7 +45,7 @@ public class AmethystHoeItem extends SlothcraftModElements.ModElement {
 			public Ingredient getRepairMaterial() {
 				return Ingredient.EMPTY;
 			}
-		}, -3f, new Item.Properties().group(SlothCraftArmourAndWeaponsCreativeTabItemGroup.tab)) {
+		}, 0, -3f, new Item.Properties().group(SlothCraftArmourAndWeaponsCreativeTabItemGroup.tab)) {
 		}.setRegistryName("amethyst_hoe"));
 	}
 }

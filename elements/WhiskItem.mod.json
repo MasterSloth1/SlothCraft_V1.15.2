@@ -1,11 +1,12 @@
 {
-  "_fv": 10,
+  "_fv": 24,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "whisk",
     "customModelName": "Normal",
     "name": "Whisk",
+    "rarity": "COMMON",
     "creativeTab": {
       "value": "CUSTOM:SlothCraftFoodCreativeTab"
     },
@@ -15,6 +16,7 @@
     "toolType": 1.0,
     "damageCount": 0,
     "destroyAnyBlock": false,
+    "immuneToFire": false,
     "stayInGridWhenCrafting": true,
     "damageOnCrafting": false,
     "enableMeleeDamage": false,
@@ -23,6 +25,7 @@
     "hasGlow": false,
     "guiBoundTo": "<NONE>",
     "inventorySize": 9,
-    "inventoryStackSize": 64
+    "inventoryStackSize": 64,
+    "hasDispenseBehavior": false
   }
 }

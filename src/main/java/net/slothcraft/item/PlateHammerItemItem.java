@@ -6,13 +6,14 @@ import net.slothcraft.SlothcraftModElements;
 
 import net.minecraftforge.registries.ObjectHolder;
 
+import net.minecraft.item.Rarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item;
 import net.minecraft.block.BlockState;
 
 @SlothcraftModElements.ModElement.Tag
 public class PlateHammerItemItem extends SlothcraftModElements.ModElement {
-	@ObjectHolder("slothcraft:platehammeritem")
+	@ObjectHolder("slothcraft:plate_hammer_item")
 	public static final Item block = null;
 	public PlateHammerItemItem(SlothcraftModElements instance) {
 		super(instance, 67);
@@ -24,8 +25,8 @@ public class PlateHammerItemItem extends SlothcraftModElements.ModElement {
 	}
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
-			super(new Item.Properties().group(SlothCraftPlatesCreativeTabItemGroup.tab).maxDamage(64));
-			setRegistryName("platehammeritem");
+			super(new Item.Properties().group(SlothCraftPlatesCreativeTabItemGroup.tab).maxDamage(64).rarity(Rarity.COMMON));
+			setRegistryName("plate_hammer_item");
 		}
 
 		@Override
@@ -36,6 +37,11 @@ public class PlateHammerItemItem extends SlothcraftModElements.ModElement {
 		@Override
 		public ItemStack getContainerItem(ItemStack itemstack) {
 			return new ItemStack(this);
+		}
+
+		@Override
+		public boolean isRepairable(ItemStack itemstack) {
+			return false;
 		}
 
 		@Override

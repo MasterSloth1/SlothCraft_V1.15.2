@@ -22,7 +22,7 @@ public class SlothCraftOtherCreativeTabItemGroup extends SlothcraftModElements.M
 			@OnlyIn(Dist.CLIENT)
 			@Override
 			public ItemStack createIcon() {
-				return new ItemStack(ShinyDiamondItem.block, (int) (1));
+				return new ItemStack(ShinyDiamondItem.block);
 			}
 
 			@OnlyIn(Dist.CLIENT)

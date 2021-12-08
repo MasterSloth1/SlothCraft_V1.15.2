@@ -1,10 +1,12 @@
 {
-  "_fv": 10,
+  "_fv": 24,
   "_type": "gui",
   "definition": {
     "type": 1,
-    "width": 352,
-    "height": 332,
+    "width": 176,
+    "height": 166,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
     "renderBgLayer": true,
     "doesPauseGame": false,
     "components": [
@@ -25,8 +27,8 @@
             "name": "ItemMoverPlatesMakerProcedure"
           },
           "name": "Slot #0",
-          "x": 300,
-          "y": 132
+          "x": 150,
+          "y": 66
         }
       },
       {
@@ -43,8 +45,8 @@
           "disableStackInteraction": false,
           "dropItemsWhenNotBound": true,
           "name": "Slot #1",
-          "x": 408,
-          "y": 132
+          "x": 204,
+          "y": 66
         }
       },
       {
@@ -58,19 +60,27 @@
           "disableStackInteraction": false,
           "dropItemsWhenNotBound": true,
           "name": "Slot #2",
-          "x": 516,
-          "y": 132
+          "x": 258,
+          "y": 66
         }
       },
       {
         "type": "image",
         "data": {
           "image": "plateshammer.png",
+          "use1Xscale": false,
           "name": "plateshammer.png",
-          "x": 411,
-          "y": 134
+          "x": 206,
+          "y": 67
         }
       }
-    ]
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
   }
 }

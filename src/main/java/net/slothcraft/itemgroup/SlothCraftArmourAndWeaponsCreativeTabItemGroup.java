@@ -22,7 +22,7 @@ public class SlothCraftArmourAndWeaponsCreativeTabItemGroup extends SlothcraftMo
 			@OnlyIn(Dist.CLIENT)
 			@Override
 			public ItemStack createIcon() {
-				return new ItemStack(KnifeItemItem.block, (int) (1));
+				return new ItemStack(KnifeItemItem.block);
 			}
 
 			@OnlyIn(Dist.CLIENT)

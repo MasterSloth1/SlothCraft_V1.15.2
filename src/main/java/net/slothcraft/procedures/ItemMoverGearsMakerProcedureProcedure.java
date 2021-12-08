@@ -2,7 +2,7 @@ package net.slothcraft.procedures;
 
 import net.slothcraft.item.StoneGearItemItem;
 import net.slothcraft.item.GearMoldItemItem;
-import net.slothcraft.SlothcraftModElements;
+import net.slothcraft.SlothcraftMod;
 
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -16,27 +16,26 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.Map;
 
-@SlothcraftModElements.ModElement.Tag
-public class ItemMoverGearsMakerProcedureProcedure extends SlothcraftModElements.ModElement {
-	public ItemMoverGearsMakerProcedureProcedure(SlothcraftModElements instance) {
-		super(instance, 157);
-	}
-
+public class ItemMoverGearsMakerProcedureProcedure {
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("x") == null) {
-			System.err.println("Failed to load dependency x for procedure ItemMoverGearsMakerProcedure!");
+			if (!dependencies.containsKey("x"))
+				SlothcraftMod.LOGGER.warn("Failed to load dependency x for procedure ItemMoverGearsMakerProcedure!");
 			return;
 		}
 		if (dependencies.get("y") == null) {
-			System.err.println("Failed to load dependency y for procedure ItemMoverGearsMakerProcedure!");
+			if (!dependencies.containsKey("y"))
+				SlothcraftMod.LOGGER.warn("Failed to load dependency y for procedure ItemMoverGearsMakerProcedure!");
 			return;
 		}
 		if (dependencies.get("z") == null) {
-			System.err.println("Failed to load dependency z for procedure ItemMoverGearsMakerProcedure!");
+			if (!dependencies.containsKey("z"))
+				SlothcraftMod.LOGGER.warn("Failed to load dependency z for procedure ItemMoverGearsMakerProcedure!");
 			return;
 		}
 		if (dependencies.get("world") == null) {
-			System.err.println("Failed to load dependency world for procedure ItemMoverGearsMakerProcedure!");
+			if (!dependencies.containsKey("world"))
+				SlothcraftMod.LOGGER.warn("Failed to load dependency world for procedure ItemMoverGearsMakerProcedure!");
 			return;
 		}
 		double x = dependencies.get("x") instanceof Integer ? (int) dependencies.get("x") : (double) dependencies.get("x");
@@ -55,19 +54,18 @@ public class ItemMoverGearsMakerProcedureProcedure extends SlothcraftModElements
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem() == new ItemStack(StoneGearItemItem.block, (int) (1)).getItem())
-				&& ((new Object() {
-					public int getAmount(BlockPos pos, int sltid) {
-						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
-						if (_ent != null) {
-							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
-								_retval.set(capability.getStackInSlot(sltid).getCount());
-							});
-						}
-						return _retval.get();
-					}
-				}.getAmount(new BlockPos((int) x, (int) y, (int) z), (int) (1))) < 64))) {
+		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem() == StoneGearItemItem.block) && ((new Object() {
+			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				AtomicInteger _retval = new AtomicInteger(0);
+				TileEntity _ent = world.getTileEntity(pos);
+				if (_ent != null) {
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
+						_retval.set(capability.getStackInSlot(sltid).getCount());
+					});
+				}
+				return _retval.get();
+			}
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (1))) < 64))) {
 			{
 				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
@@ -86,9 +84,9 @@ public class ItemMoverGearsMakerProcedureProcedure extends SlothcraftModElements
 				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
 					final int _sltid = (int) (1);
-					final ItemStack _setstack = new ItemStack(StoneGearItemItem.block, (int) (1));
+					final ItemStack _setstack = new ItemStack(StoneGearItemItem.block);
 					_setstack.setCount((int) ((new Object() {
-						public int getAmount(BlockPos pos, int sltid) {
+						public int getAmount(IWorld world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
 							TileEntity _ent = world.getTileEntity(pos);
 							if (_ent != null) {
@@ -98,7 +96,7 @@ public class ItemMoverGearsMakerProcedureProcedure extends SlothcraftModElements
 							}
 							return _retval.get();
 						}
-					}.getAmount(new BlockPos((int) x, (int) y, (int) z), (int) (1))) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (1))) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -117,19 +115,18 @@ public class ItemMoverGearsMakerProcedureProcedure extends SlothcraftModElements
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem() == new ItemStack(GearMoldItemItem.block, (int) (1)).getItem())
-				&& ((new Object() {
-					public int getAmount(BlockPos pos, int sltid) {
-						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
-						if (_ent != null) {
-							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
-								_retval.set(capability.getStackInSlot(sltid).getCount());
-							});
-						}
-						return _retval.get();
-					}
-				}.getAmount(new BlockPos((int) x, (int) y, (int) z), (int) (2))) == 0))) {
+		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem() == GearMoldItemItem.block) && ((new Object() {
+			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				AtomicInteger _retval = new AtomicInteger(0);
+				TileEntity _ent = world.getTileEntity(pos);
+				if (_ent != null) {
+					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
+						_retval.set(capability.getStackInSlot(sltid).getCount());
+					});
+				}
+				return _retval.get();
+			}
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2))) == 0))) {
 			itemDamageCount = (double) ((new Object() {
 				public ItemStack getItemStack(BlockPos pos, int sltid) {
 					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -160,7 +157,7 @@ public class ItemMoverGearsMakerProcedureProcedure extends SlothcraftModElements
 				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
 					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(GearMoldItemItem.block, (int) (1));
+					final ItemStack _setstack = new ItemStack(GearMoldItemItem.block);
 					_setstack.setCount((int) 1);
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
@@ -180,7 +177,7 @@ public class ItemMoverGearsMakerProcedureProcedure extends SlothcraftModElements
 					}
 					return _retval.get();
 				}
-			}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getOrCreateTag().putDouble("Damage", (0 + (itemDamageCount)));
+			}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getOrCreateTag().putDouble("Damage", (0 + itemDamageCount));
 			itemDamageCount = (double) 0;
 		}
 	}

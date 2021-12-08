@@ -22,7 +22,7 @@ public class SlothCraftFoodCreativeTabItemGroup extends SlothcraftModElements.Mo
 			@OnlyIn(Dist.CLIENT)
 			@Override
 			public ItemStack createIcon() {
-				return new ItemStack(BaconFoodItem.block, (int) (1));
+				return new ItemStack(BaconFoodItem.block);
 			}
 
 			@OnlyIn(Dist.CLIENT)

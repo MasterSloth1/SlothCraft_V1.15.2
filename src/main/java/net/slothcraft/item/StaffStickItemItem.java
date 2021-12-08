@@ -6,6 +6,7 @@ import net.slothcraft.SlothcraftModElements;
 
 import net.minecraftforge.registries.ObjectHolder;
 
+import net.minecraft.item.Rarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item;
 import net.minecraft.block.BlockState;
@@ -24,7 +25,7 @@ public class StaffStickItemItem extends SlothcraftModElements.ModElement {
 	}
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
-			super(new Item.Properties().group(SlothCraftArmourAndWeaponsCreativeTabItemGroup.tab).maxStackSize(64));
+			super(new Item.Properties().group(SlothCraftArmourAndWeaponsCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON));
 			setRegistryName("staff_stick_item");
 		}
 

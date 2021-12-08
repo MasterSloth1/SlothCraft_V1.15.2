@@ -9,6 +9,7 @@ import net.minecraftforge.registries.ObjectHolder;
 import net.minecraft.world.World;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.item.Rarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item;
 import net.minecraft.client.util.ITooltipFlag;
@@ -18,7 +19,7 @@ import java.util.List;
 
 @SlothcraftModElements.ModElement.Tag
 public class RedstoneGearItemItem extends SlothcraftModElements.ModElement {
-	@ObjectHolder("slothcraft:redstonegearitem")
+	@ObjectHolder("slothcraft:redstone_gear_item")
 	public static final Item block = null;
 	public RedstoneGearItemItem(SlothcraftModElements instance) {
 		super(instance, 23);
@@ -30,8 +31,8 @@ public class RedstoneGearItemItem extends SlothcraftModElements.ModElement {
 	}
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
-			super(new Item.Properties().group(SlothCraftGearsCreativeTabItemGroup.tab).maxStackSize(64));
-			setRegistryName("redstonegearitem");
+			super(new Item.Properties().group(SlothCraftGearsCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON));
+			setRegistryName("redstone_gear_item");
 		}
 
 		@Override

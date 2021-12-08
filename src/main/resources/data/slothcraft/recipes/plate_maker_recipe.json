@@ -20,7 +20,7 @@
       "item": "minecraft:iron_bars"
     },
     "4": {
-      "item": "slothcraft:platehammeritem"
+      "item": "slothcraft:plate_hammer_item"
     },
     "5": {
       "item": "minecraft:iron_bars"
@@ -36,7 +36,7 @@
     }
   },
   "result": {
-    "item": "slothcraft:platesmakerblock",
+    "item": "slothcraft:plates_maker_block",
     "count": 1
   }
 }

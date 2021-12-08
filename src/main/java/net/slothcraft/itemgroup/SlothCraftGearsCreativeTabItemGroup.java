@@ -18,11 +18,11 @@ public class SlothCraftGearsCreativeTabItemGroup extends SlothcraftModElements.M
 
 	@Override
 	public void initElements() {
-		tab = new ItemGroup("tabslothcraftgearscreativetab") {
+		tab = new ItemGroup("tabsloth_craft_gears_creative_tab") {
 			@OnlyIn(Dist.CLIENT)
 			@Override
 			public ItemStack createIcon() {
-				return new ItemStack(AmethystGearItemItem.block, (int) (1));
+				return new ItemStack(AmethystGearItemItem.block);
 			}
 
 			@OnlyIn(Dist.CLIENT)

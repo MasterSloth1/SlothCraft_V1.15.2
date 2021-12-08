@@ -20,7 +20,7 @@
       "item": "minecraft:iron_bars"
     },
     "4": {
-      "item": "slothcraft:gearmolditem"
+      "item": "slothcraft:gear_mold_item"
     },
     "5": {
       "item": "minecraft:iron_bars"
@@ -36,7 +36,7 @@
     }
   },
   "result": {
-    "item": "slothcraft:gearsmakerblock",
+    "item": "slothcraft:gears_maker_block",
     "count": 1
   }
 }

@@ -6,13 +6,14 @@ import net.slothcraft.SlothcraftModElements;
 
 import net.minecraftforge.registries.ObjectHolder;
 
+import net.minecraft.item.Rarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item;
 import net.minecraft.block.BlockState;
 
 @SlothcraftModElements.ModElement.Tag
 public class WoodenGearItemItem extends SlothcraftModElements.ModElement {
-	@ObjectHolder("slothcraft:woodengearitem")
+	@ObjectHolder("slothcraft:wooden_gear_item")
 	public static final Item block = null;
 	public WoodenGearItemItem(SlothcraftModElements instance) {
 		super(instance, 31);
@@ -24,8 +25,8 @@ public class WoodenGearItemItem extends SlothcraftModElements.ModElement {
 	}
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
-			super(new Item.Properties().group(SlothCraftGearsCreativeTabItemGroup.tab).maxStackSize(64));
-			setRegistryName("woodengearitem");
+			super(new Item.Properties().group(SlothCraftGearsCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON));
+			setRegistryName("wooden_gear_item");
 		}
 
 		@Override

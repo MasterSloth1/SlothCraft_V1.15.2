@@ -1,6 +1,6 @@
 package net.slothcraft.procedures;
 
-import net.slothcraft.SlothcraftModElements;
+import net.slothcraft.SlothcraftMod;
 
 import net.minecraft.potion.Effects;
 import net.minecraft.potion.EffectInstance;
@@ -9,15 +9,11 @@ import net.minecraft.entity.Entity;
 
 import java.util.Map;
 
-@SlothcraftModElements.ModElement.Tag
-public class WitherStaffRangedWeaponBulletHitsLivingEntityProcedure extends SlothcraftModElements.ModElement {
-	public WitherStaffRangedWeaponBulletHitsLivingEntityProcedure(SlothcraftModElements instance) {
-		super(instance, 199);
-	}
-
+public class WitherStaffRangedWeaponBulletHitsLivingEntityProcedure {
 	public static void executeProcedure(Map<String, Object> dependencies) {
 		if (dependencies.get("entity") == null) {
-			System.err.println("Failed to load dependency entity for procedure WitherStaffRangedWeaponBulletHitsLivingEntity!");
+			if (!dependencies.containsKey("entity"))
+				SlothcraftMod.LOGGER.warn("Failed to load dependency entity for procedure WitherStaffRangedWeaponBulletHitsLivingEntity!");
 			return;
 		}
 		Entity entity = (Entity) dependencies.get("entity");

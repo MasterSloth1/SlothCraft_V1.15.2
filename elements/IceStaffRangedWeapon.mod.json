@@ -1,6 +1,6 @@
 {
-  "_fv": 10,
-  "_type": "gun",
+  "_fv": 24,
+  "_type": "rangeditem",
   "definition": {
     "renderType": 0,
     "texture": "wip",
@@ -20,6 +20,7 @@
       "value": "entity.snowman.shoot"
     },
     "hasGlow": true,
+    "animation": "bow",
     "enableMeleeDamage": true,
     "damageVsEntity": 6.0,
     "bulletPower": 1.5,
