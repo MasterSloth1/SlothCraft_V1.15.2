@@ -1,57 +1,25 @@
 
 package net.slothcraft.item;
 
-import net.slothcraft.itemgroup.SlothCraftOtherCreativeTabItemGroup;
-import net.slothcraft.SlothcraftModElements;
+import net.slothcraft.init.SlothcraftModTabs;
 
-import net.minecraftforge.registries.ObjectHolder;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.api.distmarker.Dist;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Item;
 
-import net.minecraft.item.Rarity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Item;
-import net.minecraft.block.BlockState;
-
-@SlothcraftModElements.ModElement.Tag
-public class VioletHazeNugItemItem extends SlothcraftModElements.ModElement {
-	@ObjectHolder("slothcraft:violet_haze_nug_item")
-	public static final Item block = null;
-
-	public VioletHazeNugItemItem(SlothcraftModElements instance) {
-		super(instance, 179);
+public class VioletHazeNugItemItem extends Item {
+	public VioletHazeNugItemItem() {
+		super(new Item.Properties().tab(SlothcraftModTabs.TAB_SLOTH_CRAFT_OTHER_CREATIVE_TAB).stacksTo(64).rarity(Rarity.COMMON));
+		setRegistryName("violet_haze_nug_item");
 	}
 
 	@Override
-	public void initElements() {
-		elements.items.add(() -> new ItemCustom());
+	public int getUseDuration(ItemStack itemstack) {
+		return 0;
 	}
 
-	public static class ItemCustom extends Item {
-		public ItemCustom() {
-			super(new Item.Properties().group(SlothCraftOtherCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON));
-			setRegistryName("violet_haze_nug_item");
-		}
-
-		@Override
-		public int getItemEnchantability() {
-			return 0;
-		}
-
-		@Override
-		public int getUseDuration(ItemStack itemstack) {
-			return 0;
-		}
-
-		@Override
-		public float getDestroySpeed(ItemStack par1ItemStack, BlockState par2Block) {
-			return 1F;
-		}
-
-		@Override
-		@OnlyIn(Dist.CLIENT)
-		public boolean hasEffect(ItemStack itemstack) {
-			return true;
-		}
+	@Override
+	public boolean isFoil(ItemStack itemstack) {
+		return true;
 	}
 }

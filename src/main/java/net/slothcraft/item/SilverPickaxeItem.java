@@ -1,52 +1,40 @@
 
 package net.slothcraft.item;
 
-import net.slothcraft.itemgroup.SlothCraftArmourAndWeaponsCreativeTabItemGroup;
-import net.slothcraft.SlothcraftModElements;
+import net.slothcraft.init.SlothcraftModTabs;
 
-import net.minecraftforge.registries.ObjectHolder;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.Item;
 
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.item.PickaxeItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.IItemTier;
-
-@SlothcraftModElements.ModElement.Tag
-public class SilverPickaxeItem extends SlothcraftModElements.ModElement {
-	@ObjectHolder("slothcraft:silver_pickaxe")
-	public static final Item block = null;
-
-	public SilverPickaxeItem(SlothcraftModElements instance) {
-		super(instance, 504);
-	}
-
-	@Override
-	public void initElements() {
-		elements.items.add(() -> new PickaxeItem(new IItemTier() {
-			public int getMaxUses() {
+public class SilverPickaxeItem extends PickaxeItem {
+	public SilverPickaxeItem() {
+		super(new Tier() {
+			public int getUses() {
 				return 569;
 			}
 
-			public float getEfficiency() {
+			public float getSpeed() {
 				return 9f;
 			}
 
-			public float getAttackDamage() {
+			public float getAttackDamageBonus() {
 				return 2f;
 			}
 
-			public int getHarvestLevel() {
+			public int getLevel() {
 				return 3;
 			}
 
-			public int getEnchantability() {
+			public int getEnchantmentValue() {
 				return 25;
 			}
 
-			public Ingredient getRepairMaterial() {
+			public Ingredient getRepairIngredient() {
 				return Ingredient.EMPTY;
 			}
-		}, 1, -3f, new Item.Properties().group(SlothCraftArmourAndWeaponsCreativeTabItemGroup.tab)) {
-		}.setRegistryName("silver_pickaxe"));
+		}, 1, -3f, new Item.Properties().tab(SlothcraftModTabs.TAB_SLOTH_CRAFT_ARMOUR_AND_TOOLS_CREATIVE_TAB));
+		setRegistryName("silver_pickaxe");
 	}
 }

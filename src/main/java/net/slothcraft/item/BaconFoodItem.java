@@ -1,54 +1,31 @@
 
 package net.slothcraft.item;
 
-import net.slothcraft.itemgroup.SlothCraftFoodCreativeTabItemGroup;
-import net.slothcraft.SlothcraftModElements;
+import net.slothcraft.init.SlothcraftModTabs;
 
-import net.minecraftforge.registries.ObjectHolder;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
 
-import net.minecraft.item.UseAction;
-import net.minecraft.item.Rarity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Item;
-import net.minecraft.item.Food;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.food.FoodProperties;
 
-@SlothcraftModElements.ModElement.Tag
-public class BaconFoodItem extends SlothcraftModElements.ModElement {
-	@ObjectHolder("slothcraft:bacon_food")
-	public static final Item block = null;
-
-	public BaconFoodItem(SlothcraftModElements instance) {
-		super(instance, 69);
+public class BaconFoodItem extends Item {
+	public BaconFoodItem() {
+		super(new Item.Properties().tab(SlothcraftModTabs.TAB_SLOTH_CRAFT_FOOD_CREATIVE_TAB).stacksTo(64).rarity(Rarity.COMMON)
+				.food((new FoodProperties.Builder()).nutrition(10).saturationMod(42f).alwaysEat().meat().build()));
+		setRegistryName("bacon_food");
 	}
 
 	@Override
-	public void initElements() {
-		elements.items.add(() -> new FoodItemCustom());
+	public int getUseDuration(ItemStack stack) {
+		return 30;
 	}
 
-	public static class FoodItemCustom extends Item {
-		public FoodItemCustom() {
-			super(new Item.Properties().group(SlothCraftFoodCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON)
-					.food((new Food.Builder()).hunger(10).saturation(42f).setAlwaysEdible().meat().build()));
-			setRegistryName("bacon_food");
-		}
-
-		@Override
-		public int getUseDuration(ItemStack stack) {
-			return 30;
-		}
-
-		@Override
-		@OnlyIn(Dist.CLIENT)
-		public boolean hasEffect(ItemStack itemstack) {
-			return true;
-		}
-
-		@Override
-		public UseAction getUseAction(ItemStack itemstack) {
-			return UseAction.EAT;
-		}
+	@Override
+	@OnlyIn(Dist.CLIENT)
+	public boolean isFoil(ItemStack itemstack) {
+		return true;
 	}
 }

@@ -1,52 +1,40 @@
 
 package net.slothcraft.item;
 
-import net.slothcraft.itemgroup.SlothCraftArmourAndWeaponsCreativeTabItemGroup;
-import net.slothcraft.SlothcraftModElements;
+import net.slothcraft.init.SlothcraftModTabs;
 
-import net.minecraftforge.registries.ObjectHolder;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.AxeItem;
 
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.item.Item;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.AxeItem;
-
-@SlothcraftModElements.ModElement.Tag
-public class SteelAxeItem extends SlothcraftModElements.ModElement {
-	@ObjectHolder("slothcraft:steel_axe")
-	public static final Item block = null;
-
-	public SteelAxeItem(SlothcraftModElements instance) {
-		super(instance, 529);
-	}
-
-	@Override
-	public void initElements() {
-		elements.items.add(() -> new AxeItem(new IItemTier() {
-			public int getMaxUses() {
+public class SteelAxeItem extends AxeItem {
+	public SteelAxeItem() {
+		super(new Tier() {
+			public int getUses() {
 				return 660;
 			}
 
-			public float getEfficiency() {
+			public float getSpeed() {
 				return 9f;
 			}
 
-			public float getAttackDamage() {
+			public float getAttackDamageBonus() {
 				return 10f;
 			}
 
-			public int getHarvestLevel() {
+			public int getLevel() {
 				return 4;
 			}
 
-			public int getEnchantability() {
+			public int getEnchantmentValue() {
 				return 28;
 			}
 
-			public Ingredient getRepairMaterial() {
+			public Ingredient getRepairIngredient() {
 				return Ingredient.EMPTY;
 			}
-		}, 1, -3f, new Item.Properties().group(SlothCraftArmourAndWeaponsCreativeTabItemGroup.tab)) {
-		}.setRegistryName("steel_axe"));
+		}, 1, -3f, new Item.Properties().tab(SlothcraftModTabs.TAB_SLOTH_CRAFT_ARMOUR_AND_TOOLS_CREATIVE_TAB));
+		setRegistryName("steel_axe");
 	}
 }

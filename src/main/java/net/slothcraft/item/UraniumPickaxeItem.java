@@ -1,52 +1,40 @@
 
 package net.slothcraft.item;
 
-import net.slothcraft.itemgroup.SlothCraftArmourAndWeaponsCreativeTabItemGroup;
-import net.slothcraft.SlothcraftModElements;
+import net.slothcraft.init.SlothcraftModTabs;
 
-import net.minecraftforge.registries.ObjectHolder;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.Item;
 
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.item.PickaxeItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.IItemTier;
-
-@SlothcraftModElements.ModElement.Tag
-public class UraniumPickaxeItem extends SlothcraftModElements.ModElement {
-	@ObjectHolder("slothcraft:uranium_pickaxe")
-	public static final Item block = null;
-
-	public UraniumPickaxeItem(SlothcraftModElements instance) {
-		super(instance, 599);
-	}
-
-	@Override
-	public void initElements() {
-		elements.items.add(() -> new PickaxeItem(new IItemTier() {
-			public int getMaxUses() {
+public class UraniumPickaxeItem extends PickaxeItem {
+	public UraniumPickaxeItem() {
+		super(new Tier() {
+			public int getUses() {
 				return 525;
 			}
 
-			public float getEfficiency() {
+			public float getSpeed() {
 				return 8f;
 			}
 
-			public float getAttackDamage() {
+			public float getAttackDamageBonus() {
 				return 1f;
 			}
 
-			public int getHarvestLevel() {
+			public int getLevel() {
 				return 5;
 			}
 
-			public int getEnchantability() {
+			public int getEnchantmentValue() {
 				return 24;
 			}
 
-			public Ingredient getRepairMaterial() {
+			public Ingredient getRepairIngredient() {
 				return Ingredient.EMPTY;
 			}
-		}, 1, -3f, new Item.Properties().group(SlothCraftArmourAndWeaponsCreativeTabItemGroup.tab)) {
-		}.setRegistryName("uranium_pickaxe"));
+		}, 1, -3f, new Item.Properties().tab(SlothcraftModTabs.TAB_SLOTH_CRAFT_ARMOUR_AND_TOOLS_CREATIVE_TAB));
+		setRegistryName("uranium_pickaxe");
 	}
 }

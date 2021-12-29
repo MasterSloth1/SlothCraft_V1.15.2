@@ -1,87 +1,28 @@
 package net.slothcraft.procedures;
 
-import net.slothcraft.item.ZincPlateItemItem;
-import net.slothcraft.item.WoodPlateItemItem;
-import net.slothcraft.item.UraniumPlateItemItem;
-import net.slothcraft.item.TitaniumPlateItemItem;
-import net.slothcraft.item.TinPlateItemItem;
-import net.slothcraft.item.StonePlateItemItem;
-import net.slothcraft.item.SteelPlateItemItem;
-import net.slothcraft.item.SilverPlateItemItem;
-import net.slothcraft.item.RubyPlateItemItem;
-import net.slothcraft.item.RedstonePlateItemItem;
-import net.slothcraft.item.QuartzPlateItemItem;
-import net.slothcraft.item.PlatinumPlateItemItem;
-import net.slothcraft.item.PlateHammerItemItem;
-import net.slothcraft.item.OsmiumPlateItemItem;
-import net.slothcraft.item.ObsidianPlateItemItem;
-import net.slothcraft.item.NickelPlateItemItem;
-import net.slothcraft.item.MithrilPlateItemItem;
-import net.slothcraft.item.LeadPlateItemItem;
-import net.slothcraft.item.LapisPlateItemItem;
-import net.slothcraft.item.JadePlateItemItem;
-import net.slothcraft.item.IronPlateItemItem;
-import net.slothcraft.item.IridiumPlateItemItem;
-import net.slothcraft.item.GoldPlateItemItem;
-import net.slothcraft.item.GobberPlateItemItem;
-import net.slothcraft.item.GobberNetherPlateItemItem;
-import net.slothcraft.item.GobberEndPlateItemItem;
-import net.slothcraft.item.FlintPlateItemItem;
-import net.slothcraft.item.EmeraldPlateItemItem;
-import net.slothcraft.item.DiamondPlateItemItem;
-import net.slothcraft.item.CopperPlateItemItem;
-import net.slothcraft.item.ChromiumPlateItemItem;
-import net.slothcraft.item.AmethystPlateItemItem;
-import net.slothcraft.item.AluminumPlateItemItem;
-import net.slothcraft.SlothcraftMod;
+import net.slothcraft.init.SlothcraftModItems;
 
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-import net.minecraft.world.IWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.item.Items;
-import net.minecraft.item.ItemStack;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.BlockPos;
 
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.Random;
-import java.util.Map;
 
 public class PlatesMakerBlockUpdateTickProcedure {
-
-	public static void executeProcedure(Map<String, Object> dependencies) {
-		if (dependencies.get("world") == null) {
-			if (!dependencies.containsKey("world"))
-				SlothcraftMod.LOGGER.warn("Failed to load dependency world for procedure PlatesMakerBlockUpdateTick!");
-			return;
-		}
-		if (dependencies.get("x") == null) {
-			if (!dependencies.containsKey("x"))
-				SlothcraftMod.LOGGER.warn("Failed to load dependency x for procedure PlatesMakerBlockUpdateTick!");
-			return;
-		}
-		if (dependencies.get("y") == null) {
-			if (!dependencies.containsKey("y"))
-				SlothcraftMod.LOGGER.warn("Failed to load dependency y for procedure PlatesMakerBlockUpdateTick!");
-			return;
-		}
-		if (dependencies.get("z") == null) {
-			if (!dependencies.containsKey("z"))
-				SlothcraftMod.LOGGER.warn("Failed to load dependency z for procedure PlatesMakerBlockUpdateTick!");
-			return;
-		}
-		IWorld world = (IWorld) dependencies.get("world");
-		double x = dependencies.get("x") instanceof Integer ? (int) dependencies.get("x") : (double) dependencies.get("x");
-		double y = dependencies.get("y") instanceof Integer ? (int) dependencies.get("y") : (double) dependencies.get("y");
-		double z = dependencies.get("z") instanceof Integer ? (int) dependencies.get("z") : (double) dependencies.get("z");
-		if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/aluminum")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+	public static void execute(LevelAccessor world, double x, double y, double z) {
+		if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/aluminum")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -89,10 +30,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -100,10 +41,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -111,10 +52,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -122,12 +63,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == AluminumPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.ALUMINUM_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -138,16 +79,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -155,14 +96,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(AluminumPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.ALUMINUM_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -170,7 +111,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -178,10 +119,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:gems/amethyst")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:gems/amethyst")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -189,10 +130,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -200,10 +141,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -211,10 +152,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -222,12 +163,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == AmethystPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.AMETHYST_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -238,16 +179,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -255,14 +196,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(AmethystPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.AMETHYST_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -270,7 +211,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -278,10 +219,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/chromium")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/chromium")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -289,10 +230,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -300,10 +241,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -311,10 +252,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -322,12 +263,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == ChromiumPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.CHROMIUM_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -338,16 +279,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -355,14 +296,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(ChromiumPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.CHROMIUM_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -370,7 +311,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -378,10 +319,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/copper")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/copper")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -389,10 +330,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -400,10 +341,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -411,10 +352,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -422,12 +363,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == CopperPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.COPPER_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -438,16 +379,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -455,14 +396,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(CopperPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.COPPER_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -470,7 +411,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -478,10 +419,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:gems/diamond")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:gems/diamond")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -489,10 +430,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -500,10 +441,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -511,10 +452,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -522,12 +463,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == DiamondPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.DIAMOND_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -538,16 +479,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -555,14 +496,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(DiamondPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.DIAMOND_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -570,7 +511,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -578,10 +519,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:gems/emerald")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:gems/emerald")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -589,10 +530,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -600,10 +541,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -611,10 +552,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -622,12 +563,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == EmeraldPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.EMERALD_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -638,16 +579,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -655,14 +596,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(EmeraldPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.EMERALD_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -670,7 +611,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -679,9 +620,9 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if ((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -689,10 +630,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem() == Items.FLINT && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem() == Items.FLINT && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -700,10 +641,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -711,10 +652,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -722,12 +663,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == FlintPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.FLINT_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -738,16 +679,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -755,14 +696,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(FlintPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.FLINT_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -770,7 +711,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -778,10 +719,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/end_gobber")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/end_gobber")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -789,10 +730,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -800,10 +741,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -811,10 +752,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -822,12 +763,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GobberEndPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GOBBER_END_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -838,16 +779,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -855,14 +796,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(GobberEndPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.GOBBER_END_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -870,7 +811,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -878,10 +819,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/nether_gobber")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/nether_gobber")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -889,10 +830,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -900,10 +841,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -911,10 +852,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -922,12 +863,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GobberNetherPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GOBBER_NETHER_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -938,16 +879,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -955,14 +896,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(GobberNetherPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.GOBBER_NETHER_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -970,7 +911,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -978,10 +919,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/gobber")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/gobber")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -989,10 +930,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1000,10 +941,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1011,10 +952,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1022,12 +963,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GobberPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GOBBER_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1038,16 +979,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -1055,14 +996,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(GobberPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.GOBBER_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1070,7 +1011,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -1078,10 +1019,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/gold")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/gold")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1089,10 +1030,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1100,10 +1041,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1111,10 +1052,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1122,12 +1063,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GoldPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GOLD_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1138,16 +1079,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -1155,14 +1096,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(GoldPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.GOLD_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1170,7 +1111,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -1178,10 +1119,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/iridium")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/iridium")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1189,10 +1130,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1200,10 +1141,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1211,10 +1152,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1222,12 +1163,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == IridiumPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.IRIDIUM_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1238,16 +1179,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -1255,14 +1196,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(IridiumPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.IRIDIUM_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1270,7 +1211,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -1278,10 +1219,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/iron")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/iron")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1289,10 +1230,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1300,10 +1241,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1311,10 +1252,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1322,12 +1263,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == IronPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.IRON_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1338,16 +1279,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -1355,14 +1296,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(IronPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.IRON_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1370,7 +1311,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -1378,10 +1319,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:gems/jade")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:gems/jade")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1389,10 +1330,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1400,10 +1341,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1411,10 +1352,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1422,12 +1363,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == JadePlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.JADE_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1438,16 +1379,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -1455,14 +1396,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(JadePlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.JADE_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1470,7 +1411,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -1478,10 +1419,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:gems/lapis")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:gems/lapis")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1489,10 +1430,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1500,10 +1441,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1511,10 +1452,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1522,12 +1463,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == LapisPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.LAPIS_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1538,16 +1479,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -1555,14 +1496,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(LapisPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.LAPIS_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1570,7 +1511,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -1578,10 +1519,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/lead")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/lead")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1589,10 +1530,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1600,10 +1541,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1611,10 +1552,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1622,12 +1563,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == LeadPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.LEAD_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1638,16 +1579,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -1655,14 +1596,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(LeadPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.LEAD_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1670,7 +1611,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -1678,10 +1619,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/mithril")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/mithril")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1689,10 +1630,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1700,10 +1641,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1711,10 +1652,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1722,12 +1663,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == MithrilPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.MITHRIL_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1738,16 +1679,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -1755,14 +1696,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(MithrilPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.MITHRIL_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1770,7 +1711,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -1778,10 +1719,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/nickel")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/nickel")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1789,10 +1730,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1800,10 +1741,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1811,10 +1752,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1822,12 +1763,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == NickelPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.NICKEL_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1838,16 +1779,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -1855,14 +1796,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(NickelPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.NICKEL_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1870,7 +1811,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -1878,10 +1819,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:obsidian")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:obsidian")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1889,10 +1830,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1900,10 +1841,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1911,10 +1852,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1922,12 +1863,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == ObsidianPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.OBSIDIAN_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1938,16 +1879,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -1955,14 +1896,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(ObsidianPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.OBSIDIAN_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1970,7 +1911,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -1978,10 +1919,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/osmium")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/osmium")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1989,10 +1930,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2000,10 +1941,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2011,10 +1952,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2022,12 +1963,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == OsmiumPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.OSMIUM_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2038,16 +1979,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -2055,14 +1996,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(OsmiumPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.OSMIUM_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2070,7 +2011,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -2078,10 +2019,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/platinum")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/platinum")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2089,10 +2030,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2100,10 +2041,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2111,10 +2052,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2122,12 +2063,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == PlatinumPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.PLATINUM_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2138,16 +2079,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -2155,14 +2096,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(PlatinumPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.PLATINUM_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2170,7 +2111,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -2178,10 +2119,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:gems/quartz")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:gems/quartz")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2189,10 +2130,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2200,10 +2141,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2211,10 +2152,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2222,12 +2163,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == QuartzPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.QUARTZ_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2238,16 +2179,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -2255,14 +2196,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(QuartzPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.QUARTZ_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2270,7 +2211,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -2278,10 +2219,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:dusts/redstone")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:dusts/redstone")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2289,10 +2230,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2300,10 +2241,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2311,10 +2252,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2322,12 +2263,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == RedstonePlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.REDSTONE_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2338,16 +2279,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -2355,14 +2296,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(RedstonePlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.REDSTONE_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2370,7 +2311,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -2378,10 +2319,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:gems/ruby")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:gems/ruby")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2389,10 +2330,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2400,10 +2341,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2411,10 +2352,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2422,12 +2363,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == RubyPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.RUBY_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2438,16 +2379,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -2455,14 +2396,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(RubyPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.RUBY_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2470,7 +2411,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -2478,10 +2419,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/silver")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/silver")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2489,10 +2430,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2500,10 +2441,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2511,10 +2452,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2522,12 +2463,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == SilverPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.SILVER_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2538,16 +2479,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -2555,14 +2496,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(SilverPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.SILVER_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2570,7 +2511,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -2578,10 +2519,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/steel")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/steel")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2589,10 +2530,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2600,10 +2541,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2611,10 +2552,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2622,12 +2563,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == SteelPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.STEEL_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2638,16 +2579,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -2655,14 +2596,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(SteelPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.STEEL_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2670,7 +2611,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -2678,10 +2619,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:stone")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:stone")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2689,10 +2630,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2700,10 +2641,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2711,10 +2652,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2722,12 +2663,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == StonePlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.STONE_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2738,16 +2679,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -2755,14 +2696,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(StonePlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.STONE_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2770,7 +2711,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -2778,10 +2719,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/tin")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/tin")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2789,10 +2730,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2800,10 +2741,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2811,10 +2752,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2822,12 +2763,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == TinPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.TIN_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2838,16 +2779,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -2855,14 +2796,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(TinPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.TIN_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2870,7 +2811,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -2878,10 +2819,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/titanium")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/titanium")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2889,10 +2830,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2900,10 +2841,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2911,10 +2852,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2922,12 +2863,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == TitaniumPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.TITANIUM_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2938,16 +2879,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -2955,14 +2896,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(TitaniumPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.TITANIUM_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2970,7 +2911,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -2978,10 +2919,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/uranium")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/uranium")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2989,10 +2930,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3000,10 +2941,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3011,10 +2952,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3022,12 +2963,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == UraniumPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.URANIUM_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -3038,16 +2979,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -3055,14 +2996,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(UraniumPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.URANIUM_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3070,7 +3011,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -3078,10 +3019,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("minecraft:logs")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("minecraft:logs")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3089,10 +3030,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3100,10 +3041,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3111,10 +3052,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3122,12 +3063,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == WoodPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.WOOD_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -3138,16 +3079,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -3155,14 +3096,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(WoodPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.WOOD_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3170,7 +3111,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -3178,10 +3119,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 					});
 				}
 			}
-		} else if (ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/zinc")).contains((new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		} else if (ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/zinc")).contains((new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3189,10 +3130,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3200,10 +3141,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == PlateHammerItemItem.block && (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.PLATE_HAMMER_ITEM && (new Object() {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3211,10 +3152,10 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) == 0 || (new Object() {
-			public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) == 0 || (new Object() {
+			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3222,12 +3163,12 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == ZincPlateItemItem.block)) {
+		}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.ZINC_PLATE_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 1;
+					final int _sltid = 0;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -3238,16 +3179,16 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -3255,14 +3196,14 @@ public class PlatesMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final ItemStack _setstack = new ItemStack(ZincPlateItemItem.block);
+					final int _sltid = 2;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.ZINC_PLATE_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3270,7 +3211,7 @@ public class PlatesMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (2)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 2) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);

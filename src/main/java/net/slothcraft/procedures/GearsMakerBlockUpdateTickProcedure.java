@@ -1,84 +1,27 @@
 package net.slothcraft.procedures;
 
-import net.slothcraft.item.ZincGearItemItem;
-import net.slothcraft.item.UraniumGearItemItem;
-import net.slothcraft.item.TitaniumGearItemItem;
-import net.slothcraft.item.TinGearItemItem;
-import net.slothcraft.item.StoneGearItemItem;
-import net.slothcraft.item.SteelGearItemItem;
-import net.slothcraft.item.SilverGearItemItem;
-import net.slothcraft.item.RubyGearItemItem;
-import net.slothcraft.item.RedstoneGearItemItem;
-import net.slothcraft.item.QuartzGearItemItem;
-import net.slothcraft.item.PlatinumGearItemItem;
-import net.slothcraft.item.OsmiumGearItemItem;
-import net.slothcraft.item.ObsidianGearItemItem;
-import net.slothcraft.item.NickelGearItemItem;
-import net.slothcraft.item.MithrilGearItemItem;
-import net.slothcraft.item.LeadGearItemItem;
-import net.slothcraft.item.LapisGearItemItem;
-import net.slothcraft.item.JadeGearItemItem;
-import net.slothcraft.item.IronGearItemItem;
-import net.slothcraft.item.IridiumGearItemItem;
-import net.slothcraft.item.GoldGearItemItem;
-import net.slothcraft.item.GobberNetherGearItemItem;
-import net.slothcraft.item.GobberGearItemItem;
-import net.slothcraft.item.GobberEndGearItemItem;
-import net.slothcraft.item.GearMoldItemItem;
-import net.slothcraft.item.EmeraldGearItemItem;
-import net.slothcraft.item.DiamondGearItemItem;
-import net.slothcraft.item.CopperGearItemItem;
-import net.slothcraft.item.ChromiumGearItemItem;
-import net.slothcraft.item.AmethystGearItemItem;
-import net.slothcraft.item.AluminumGearItemItem;
-import net.slothcraft.SlothcraftMod;
+import net.slothcraft.init.SlothcraftModItems;
 
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.CapabilityItemHandler;
 
-import net.minecraft.world.IWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.item.ItemStack;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.BlockPos;
 
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.Random;
-import java.util.Map;
 
 public class GearsMakerBlockUpdateTickProcedure {
-
-	public static void executeProcedure(Map<String, Object> dependencies) {
-		if (dependencies.get("world") == null) {
-			if (!dependencies.containsKey("world"))
-				SlothcraftMod.LOGGER.warn("Failed to load dependency world for procedure GearsMakerBlockUpdateTick!");
-			return;
-		}
-		if (dependencies.get("x") == null) {
-			if (!dependencies.containsKey("x"))
-				SlothcraftMod.LOGGER.warn("Failed to load dependency x for procedure GearsMakerBlockUpdateTick!");
-			return;
-		}
-		if (dependencies.get("y") == null) {
-			if (!dependencies.containsKey("y"))
-				SlothcraftMod.LOGGER.warn("Failed to load dependency y for procedure GearsMakerBlockUpdateTick!");
-			return;
-		}
-		if (dependencies.get("z") == null) {
-			if (!dependencies.containsKey("z"))
-				SlothcraftMod.LOGGER.warn("Failed to load dependency z for procedure GearsMakerBlockUpdateTick!");
-			return;
-		}
-		IWorld world = (IWorld) dependencies.get("world");
-		double x = dependencies.get("x") instanceof Integer ? (int) dependencies.get("x") : (double) dependencies.get("x");
-		double y = dependencies.get("y") instanceof Integer ? (int) dependencies.get("y") : (double) dependencies.get("y");
-		double z = dependencies.get("z") instanceof Integer ? (int) dependencies.get("z") : (double) dependencies.get("z");
+	public static void execute(LevelAccessor world, double x, double y, double z) {
 		if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -86,11 +29,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/aluminum")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/aluminum")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -98,10 +41,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -109,10 +52,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -120,10 +63,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -131,10 +74,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -142,12 +85,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == AluminumGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.ALUMINUM_GEAR)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -158,10 +101,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -172,16 +115,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -189,14 +132,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(AluminumGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.ALUMINUM_GEAR);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -204,7 +147,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -213,9 +156,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -223,11 +166,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:gems/amethyst")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:gems/amethyst")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -235,10 +178,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -246,10 +189,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -257,10 +200,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -268,10 +211,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -279,12 +222,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == AmethystGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.AMETHYST_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -295,10 +238,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -309,16 +252,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -326,14 +269,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(AmethystGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.AMETHYST_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -341,7 +284,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -350,9 +293,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -360,11 +303,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/chromium")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/chromium")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -372,10 +315,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -383,10 +326,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -394,10 +337,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -405,10 +348,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -416,12 +359,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == ChromiumGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.CHROMIUM_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -432,10 +375,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -446,16 +389,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -463,14 +406,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(ChromiumGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.CHROMIUM_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -478,7 +421,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -487,9 +430,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -497,11 +440,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/copper")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/copper")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -509,10 +452,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -520,10 +463,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -531,10 +474,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -542,10 +485,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -553,12 +496,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == CopperGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.COPPER_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -569,10 +512,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -583,16 +526,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -600,14 +543,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(CopperGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.COPPER_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -615,7 +558,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -624,9 +567,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -634,11 +577,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:gems/diamond")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:gems/diamond")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -646,10 +589,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -657,10 +600,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -668,10 +611,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -679,10 +622,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -690,12 +633,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == DiamondGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.DIAMOND_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -706,10 +649,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -720,16 +663,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -737,14 +680,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(DiamondGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.DIAMOND_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -752,7 +695,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -761,9 +704,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -771,11 +714,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:gems/emerald")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:gems/emerald")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -783,10 +726,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -794,10 +737,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -805,10 +748,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -816,10 +759,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -827,12 +770,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == EmeraldGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.EMERALD_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -843,10 +786,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -857,16 +800,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -874,14 +817,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(EmeraldGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.EMERALD_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -889,7 +832,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -898,9 +841,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -908,11 +851,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/gobber/end")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/gobber/end")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -920,10 +863,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -931,10 +874,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -942,10 +885,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -953,10 +896,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -964,12 +907,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == GobberEndGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.GOBBER_END_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -980,10 +923,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -994,16 +937,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -1011,14 +954,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(GobberEndGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.GOBBER_END_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1026,7 +969,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -1035,9 +978,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1045,11 +988,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/gobber")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/gobber")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1057,10 +1000,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1068,10 +1011,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1079,10 +1022,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1090,10 +1033,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1101,12 +1044,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == GobberGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.GOBBER_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1117,10 +1060,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1131,16 +1074,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -1148,14 +1091,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(GobberGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.GOBBER_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1163,7 +1106,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -1172,9 +1115,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1182,11 +1125,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/gobber/nether")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/gobber/nether")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1194,10 +1137,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1205,10 +1148,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1216,10 +1159,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1227,10 +1170,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1238,12 +1181,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == GobberNetherGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.GOBBER_NETHER_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1254,10 +1197,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1268,16 +1211,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -1285,14 +1228,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(GobberNetherGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.GOBBER_NETHER_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1300,7 +1243,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -1309,9 +1252,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1319,11 +1262,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/gold")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/gold")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1331,10 +1274,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1342,10 +1285,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1353,10 +1296,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1364,10 +1307,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1375,12 +1318,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == GoldGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.GOLD_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1391,10 +1334,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1405,16 +1348,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -1422,14 +1365,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(GoldGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.GOLD_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1437,7 +1380,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -1446,9 +1389,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1456,11 +1399,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/iridium")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/iridium")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1468,10 +1411,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1479,10 +1422,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1490,10 +1433,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1501,10 +1444,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1512,12 +1455,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == IridiumGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.IRIDIUM_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1528,10 +1471,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1542,16 +1485,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -1559,14 +1502,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(IridiumGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.IRIDIUM_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1574,7 +1517,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -1583,9 +1526,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1593,11 +1536,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/iron")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/iron")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1605,10 +1548,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1616,10 +1559,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1627,10 +1570,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1638,10 +1581,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1649,12 +1592,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == IronGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.IRON_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1665,10 +1608,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1679,16 +1622,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -1696,14 +1639,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(IronGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.IRON_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1711,7 +1654,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -1720,9 +1663,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1730,11 +1673,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:gems/jade")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:gems/jade")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1742,10 +1685,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1753,10 +1696,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1764,10 +1707,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1775,10 +1718,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1786,12 +1729,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == JadeGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.JADE_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1802,10 +1745,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1816,16 +1759,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -1833,14 +1776,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(JadeGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.JADE_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1848,7 +1791,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -1857,9 +1800,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1867,11 +1810,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:gems/lapis")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:gems/lapis")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1879,10 +1822,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1890,10 +1833,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1901,10 +1844,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1912,10 +1855,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -1923,12 +1866,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == LapisGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.LAPIS_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1939,10 +1882,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -1953,16 +1896,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -1970,14 +1913,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(LapisGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.LAPIS_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -1985,7 +1928,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -1994,9 +1937,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2004,11 +1947,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/lead")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/lead")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2016,10 +1959,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2027,10 +1970,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2038,10 +1981,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2049,10 +1992,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2060,12 +2003,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == LeadGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.LEAD_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2076,10 +2019,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2090,16 +2033,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -2107,14 +2050,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(LeadGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.LEAD_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2122,7 +2065,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -2131,9 +2074,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2141,11 +2084,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/mithril")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/mithril")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2153,10 +2096,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2164,10 +2107,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2175,10 +2118,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2186,10 +2129,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2197,12 +2140,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == MithrilGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.MITHRIL_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2213,10 +2156,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2227,16 +2170,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -2244,14 +2187,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(MithrilGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.MITHRIL_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2259,7 +2202,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -2268,9 +2211,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2278,11 +2221,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/nickel")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/nickel")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2290,10 +2233,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2301,10 +2244,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2312,10 +2255,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2323,10 +2266,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2334,12 +2277,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == NickelGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.NICKEL_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2350,10 +2293,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2364,16 +2307,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -2381,14 +2324,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(NickelGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.NICKEL_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2396,7 +2339,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -2405,9 +2348,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2415,11 +2358,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:obsidian")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:obsidian")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2427,10 +2370,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2438,10 +2381,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2449,10 +2392,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2460,10 +2403,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2471,12 +2414,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == ObsidianGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.OBSIDIAN_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2487,10 +2430,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2501,16 +2444,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -2518,14 +2461,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(ObsidianGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.OBSIDIAN_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2533,7 +2476,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -2542,9 +2485,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2552,11 +2495,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/osmium")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/osmium")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2564,10 +2507,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2575,10 +2518,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2586,10 +2529,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2597,10 +2540,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2608,12 +2551,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == OsmiumGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.OSMIUM_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2624,10 +2567,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2638,16 +2581,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -2655,14 +2598,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(OsmiumGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.OSMIUM_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2670,7 +2613,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -2679,9 +2622,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2689,11 +2632,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/platinum")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/platinum")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2701,10 +2644,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2712,10 +2655,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2723,10 +2666,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2734,10 +2677,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2745,12 +2688,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == PlatinumGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.PLATINUM_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2761,10 +2704,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2775,16 +2718,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -2792,14 +2735,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(PlatinumGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.PLATINUM_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2807,7 +2750,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -2816,9 +2759,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2826,11 +2769,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:gems/quartz")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:gems/quartz")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2838,10 +2781,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2849,10 +2792,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2860,10 +2803,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2871,10 +2814,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2882,12 +2825,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == QuartzGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.QUARTZ_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2898,10 +2841,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -2912,16 +2855,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -2929,14 +2872,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(QuartzGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.QUARTZ_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2944,7 +2887,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -2953,9 +2896,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -2963,11 +2906,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:dusts/redstone")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:dusts/redstone")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2975,10 +2918,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2986,10 +2929,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -2997,10 +2940,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3008,10 +2951,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3019,12 +2962,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == RedstoneGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.REDSTONE_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -3035,10 +2978,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -3049,16 +2992,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -3066,14 +3009,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(RedstoneGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.REDSTONE_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3081,7 +3024,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -3090,9 +3033,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3100,11 +3043,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:gems/ruby")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:gems/ruby")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3112,10 +3055,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3123,10 +3066,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3134,10 +3077,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3145,10 +3088,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3156,12 +3099,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == RubyGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.RUBY_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -3172,10 +3115,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -3186,16 +3129,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -3203,14 +3146,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(RubyGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.RUBY_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3218,7 +3161,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -3227,9 +3170,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3237,11 +3180,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/silver")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/silver")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3249,10 +3192,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3260,10 +3203,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3271,10 +3214,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3282,10 +3225,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3293,12 +3236,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == SilverGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.SILVER_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -3309,10 +3252,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -3323,16 +3266,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -3340,14 +3283,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(SilverGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.SILVER_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3355,7 +3298,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -3364,9 +3307,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3374,11 +3317,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/steel")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/steel")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3386,10 +3329,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3397,10 +3340,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3408,10 +3351,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3419,10 +3362,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3430,12 +3373,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == SteelGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.STEEL_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -3446,10 +3389,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -3460,16 +3403,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -3477,14 +3420,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(SteelGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.STEEL_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3492,7 +3435,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -3501,9 +3444,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3511,11 +3454,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/tin")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/tin")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3523,10 +3466,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3534,10 +3477,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3545,10 +3488,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3556,10 +3499,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3567,12 +3510,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == TinGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.TIN_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -3583,10 +3526,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -3597,16 +3540,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -3614,14 +3557,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(TinGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.TIN_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3629,7 +3572,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -3638,9 +3581,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3648,11 +3591,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/titanium")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/titanium")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3660,10 +3603,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3671,10 +3614,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3682,10 +3625,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3693,10 +3636,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3704,12 +3647,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == TitaniumGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.TITANIUM_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -3720,10 +3663,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -3734,16 +3677,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -3751,14 +3694,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(TitaniumGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.TITANIUM_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3766,7 +3709,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -3775,9 +3718,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3785,11 +3728,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/uranium")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/uranium")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3797,10 +3740,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3808,10 +3751,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3819,10 +3762,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3830,10 +3773,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3841,12 +3784,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == UraniumGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.URANIUM_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -3857,10 +3800,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -3871,16 +3814,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -3888,14 +3831,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(UraniumGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.URANIUM_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3903,7 +3846,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
@@ -3912,9 +3855,9 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 		} else if (new Object() {
-			public int getAmount(IWorld world, BlockPos pos, int sltid) {
+			public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
-				TileEntity _ent = world.getTileEntity(pos);
+				BlockEntity _ent = world.getBlockEntity(pos);
 				if (_ent != null) {
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3922,11 +3865,11 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (0)) >= 4
-				&& ItemTags.getCollection().getTagByID(new ResourceLocation("forge:ingots/zinc")).contains((new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 0) >= 4
+				&& ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("forge:ingots/zinc")).contains((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3934,10 +3877,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem()) && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 0)).getItem()) && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3945,10 +3888,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getItem() == StoneGearItemItem.block && (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 1)).getItem() == SlothcraftModItems.STONE_GEAR_ITEM && (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3956,10 +3899,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (2))).getItem() == GearMoldItemItem.block && (new Object() {
-					public int getAmount(IWorld world, BlockPos pos, int sltid) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 2)).getItem() == SlothcraftModItems.GEAR_MOLD_ITEM && (new Object() {
+					public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicInteger _retval = new AtomicInteger(0);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -3967,10 +3910,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) == 0 || (new Object() {
-					public ItemStack getItemStack(BlockPos pos, int sltid) {
+				}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) == 0 || (new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int sltid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						TileEntity _ent = world.getTileEntity(pos);
+						BlockEntity _ent = world.getBlockEntity(pos);
 						if (_ent != null) {
 							_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 								_retval.set(capability.getStackInSlot(sltid).copy());
@@ -3978,12 +3921,12 @@ public class GearsMakerBlockUpdateTickProcedure {
 						}
 						return _retval.get();
 					}
-				}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (3))).getItem() == ZincGearItemItem.block)) {
+				}.getItemStack(world, new BlockPos((int) x, (int) y, (int) z), 3)).getItem() == SlothcraftModItems.ZINC_GEAR_ITEM)) {
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (0);
-					final int _amount = (int) 4;
+					final int _sltid = 0;
+					final int _amount = 4;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -3994,10 +3937,10 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (1);
-					final int _amount = (int) 1;
+					final int _sltid = 1;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
@@ -4008,16 +3951,16 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (2);
-					final int _amount = (int) 1;
+					final int _sltid = 2;
+					final int _amount = 1;
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							ItemStack _stk = capability.getStackInSlot(_sltid).copy();
-							if (_stk.attemptDamageItem(_amount, new Random(), null)) {
+							if (_stk.hurt(_amount, new Random(), null)) {
 								_stk.shrink(1);
-								_stk.setDamage(0);
+								_stk.setDamageValue(0);
 							}
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _stk);
 						}
@@ -4025,14 +3968,14 @@ public class GearsMakerBlockUpdateTickProcedure {
 				}
 			}
 			{
-				TileEntity _ent = world.getTileEntity(new BlockPos((int) x, (int) y, (int) z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos((int) x, (int) y, (int) z));
 				if (_ent != null) {
-					final int _sltid = (int) (3);
-					final ItemStack _setstack = new ItemStack(ZincGearItemItem.block);
+					final int _sltid = 3;
+					final ItemStack _setstack = new ItemStack(SlothcraftModItems.ZINC_GEAR_ITEM);
 					_setstack.setCount((int) (new Object() {
-						public int getAmount(IWorld world, BlockPos pos, int sltid) {
+						public int getAmount(LevelAccessor world, BlockPos pos, int sltid) {
 							AtomicInteger _retval = new AtomicInteger(0);
-							TileEntity _ent = world.getTileEntity(pos);
+							BlockEntity _ent = world.getBlockEntity(pos);
 							if (_ent != null) {
 								_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 									_retval.set(capability.getStackInSlot(sltid).getCount());
@@ -4040,7 +3983,7 @@ public class GearsMakerBlockUpdateTickProcedure {
 							}
 							return _retval.get();
 						}
-					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (3)) + 1));
+					}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), 3) + 1));
 					_ent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null).ifPresent(capability -> {
 						if (capability instanceof IItemHandlerModifiable) {
 							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);

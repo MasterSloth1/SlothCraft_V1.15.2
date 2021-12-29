@@ -1,52 +1,40 @@
 
 package net.slothcraft.item;
 
-import net.slothcraft.itemgroup.SlothCraftArmourAndWeaponsCreativeTabItemGroup;
-import net.slothcraft.SlothcraftModElements;
+import net.slothcraft.init.SlothcraftModTabs;
 
-import net.minecraftforge.registries.ObjectHolder;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.HoeItem;
 
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.item.Item;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.HoeItem;
-
-@SlothcraftModElements.ModElement.Tag
-public class AmethystHoeItem extends SlothcraftModElements.ModElement {
-	@ObjectHolder("slothcraft:amethyst_hoe")
-	public static final Item block = null;
-
-	public AmethystHoeItem(SlothcraftModElements instance) {
-		super(instance, 243);
-	}
-
-	@Override
-	public void initElements() {
-		elements.items.add(() -> new HoeItem(new IItemTier() {
-			public int getMaxUses() {
+public class AmethystHoeItem extends HoeItem {
+	public AmethystHoeItem() {
+		super(new Tier() {
+			public int getUses() {
 				return 361;
 			}
 
-			public float getEfficiency() {
+			public float getSpeed() {
 				return 7f;
 			}
 
-			public float getAttackDamage() {
+			public float getAttackDamageBonus() {
 				return 1f;
 			}
 
-			public int getHarvestLevel() {
+			public int getLevel() {
 				return 2;
 			}
 
-			public int getEnchantability() {
+			public int getEnchantmentValue() {
 				return 18;
 			}
 
-			public Ingredient getRepairMaterial() {
+			public Ingredient getRepairIngredient() {
 				return Ingredient.EMPTY;
 			}
-		}, 0, -3f, new Item.Properties().group(SlothCraftArmourAndWeaponsCreativeTabItemGroup.tab)) {
-		}.setRegistryName("amethyst_hoe"));
+		}, 0, -3f, new Item.Properties().tab(SlothcraftModTabs.TAB_SLOTH_CRAFT_ARMOUR_AND_TOOLS_CREATIVE_TAB));
+		setRegistryName("amethyst_hoe");
 	}
 }

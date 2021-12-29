@@ -1,48 +1,24 @@
 
 package net.slothcraft.item;
 
-import net.slothcraft.itemgroup.SlothCraftFoodCreativeTabItemGroup;
-import net.slothcraft.SlothcraftModElements;
+import net.slothcraft.init.SlothcraftModTabs;
 
-import net.minecraftforge.registries.ObjectHolder;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.food.FoodProperties;
 
-import net.minecraft.item.UseAction;
-import net.minecraft.item.Rarity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Item;
-import net.minecraft.item.Food;
+public class OrangeFoodItem extends Item {
+	public OrangeFoodItem() {
+		super(new Item.Properties().tab(SlothcraftModTabs.TAB_SLOTH_CRAFT_FOOD_CREATIVE_TAB).stacksTo(64).rarity(Rarity.COMMON)
+				.food((new FoodProperties.Builder()).nutrition(4).saturationMod(1f)
 
-@SlothcraftModElements.ModElement.Tag
-public class OrangeFoodItem extends SlothcraftModElements.ModElement {
-	@ObjectHolder("slothcraft:orange_food")
-	public static final Item block = null;
-
-	public OrangeFoodItem(SlothcraftModElements instance) {
-		super(instance, 70);
+						.build()));
+		setRegistryName("orange_food");
 	}
 
 	@Override
-	public void initElements() {
-		elements.items.add(() -> new FoodItemCustom());
-	}
-
-	public static class FoodItemCustom extends Item {
-		public FoodItemCustom() {
-			super(new Item.Properties().group(SlothCraftFoodCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON)
-					.food((new Food.Builder()).hunger(4).saturation(1f)
-
-							.build()));
-			setRegistryName("orange_food");
-		}
-
-		@Override
-		public int getUseDuration(ItemStack stack) {
-			return 30;
-		}
-
-		@Override
-		public UseAction getUseAction(ItemStack itemstack) {
-			return UseAction.EAT;
-		}
+	public int getUseDuration(ItemStack stack) {
+		return 30;
 	}
 }

@@ -1,52 +1,40 @@
 
 package net.slothcraft.item;
 
-import net.slothcraft.itemgroup.SlothCraftArmourAndWeaponsCreativeTabItemGroup;
-import net.slothcraft.SlothcraftModElements;
+import net.slothcraft.init.SlothcraftModTabs;
 
-import net.minecraftforge.registries.ObjectHolder;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.HoeItem;
 
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.item.Item;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.HoeItem;
-
-@SlothcraftModElements.ModElement.Tag
-public class TitaniumHoeItem extends SlothcraftModElements.ModElement {
-	@ObjectHolder("slothcraft:titanium_hoe")
-	public static final Item block = null;
-
-	public TitaniumHoeItem(SlothcraftModElements instance) {
-		super(instance, 579);
-	}
-
-	@Override
-	public void initElements() {
-		elements.items.add(() -> new HoeItem(new IItemTier() {
-			public int getMaxUses() {
+public class TitaniumHoeItem extends HoeItem {
+	public TitaniumHoeItem() {
+		super(new Tier() {
+			public int getUses() {
 				return 614;
 			}
 
-			public float getEfficiency() {
+			public float getSpeed() {
 				return 9f;
 			}
 
-			public float getAttackDamage() {
+			public float getAttackDamageBonus() {
 				return 2f;
 			}
 
-			public int getHarvestLevel() {
+			public int getLevel() {
 				return 3;
 			}
 
-			public int getEnchantability() {
+			public int getEnchantmentValue() {
 				return 27;
 			}
 
-			public Ingredient getRepairMaterial() {
+			public Ingredient getRepairIngredient() {
 				return Ingredient.EMPTY;
 			}
-		}, 0, -3f, new Item.Properties().group(SlothCraftArmourAndWeaponsCreativeTabItemGroup.tab)) {
-		}.setRegistryName("titanium_hoe"));
+		}, 0, -3f, new Item.Properties().tab(SlothcraftModTabs.TAB_SLOTH_CRAFT_ARMOUR_AND_TOOLS_CREATIVE_TAB));
+		setRegistryName("titanium_hoe");
 	}
 }

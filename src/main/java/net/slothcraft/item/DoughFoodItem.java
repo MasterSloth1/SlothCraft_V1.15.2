@@ -1,48 +1,24 @@
 
 package net.slothcraft.item;
 
-import net.slothcraft.itemgroup.SlothCraftFoodCreativeTabItemGroup;
-import net.slothcraft.SlothcraftModElements;
+import net.slothcraft.init.SlothcraftModTabs;
 
-import net.minecraftforge.registries.ObjectHolder;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.food.FoodProperties;
 
-import net.minecraft.item.UseAction;
-import net.minecraft.item.Rarity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Item;
-import net.minecraft.item.Food;
+public class DoughFoodItem extends Item {
+	public DoughFoodItem() {
+		super(new Item.Properties().tab(SlothcraftModTabs.TAB_SLOTH_CRAFT_FOOD_CREATIVE_TAB).stacksTo(64).rarity(Rarity.COMMON)
+				.food((new FoodProperties.Builder()).nutrition(1).saturationMod(1f)
 
-@SlothcraftModElements.ModElement.Tag
-public class DoughFoodItem extends SlothcraftModElements.ModElement {
-	@ObjectHolder("slothcraft:dough_food")
-	public static final Item block = null;
-
-	public DoughFoodItem(SlothcraftModElements instance) {
-		super(instance, 73);
+						.build()));
+		setRegistryName("dough_food");
 	}
 
 	@Override
-	public void initElements() {
-		elements.items.add(() -> new FoodItemCustom());
-	}
-
-	public static class FoodItemCustom extends Item {
-		public FoodItemCustom() {
-			super(new Item.Properties().group(SlothCraftFoodCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON)
-					.food((new Food.Builder()).hunger(1).saturation(1f)
-
-							.build()));
-			setRegistryName("dough_food");
-		}
-
-		@Override
-		public int getUseDuration(ItemStack stack) {
-			return 30;
-		}
-
-		@Override
-		public UseAction getUseAction(ItemStack itemstack) {
-			return UseAction.EAT;
-		}
+	public int getUseDuration(ItemStack stack) {
+		return 30;
 	}
 }
