@@ -15,6 +15,7 @@ import net.minecraft.item.AxeItem;
 public class IridiumAxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:iridium_axe")
 	public static final Item block = null;
+
 	public IridiumAxeItem(SlothcraftModElements instance) {
 		super(instance, 313);
 	}

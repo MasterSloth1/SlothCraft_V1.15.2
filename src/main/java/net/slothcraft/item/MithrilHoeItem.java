@@ -15,6 +15,7 @@ import net.minecraft.item.HoeItem;
 public class MithrilHoeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:mithril_hoe")
 	public static final Item block = null;
+
 	public MithrilHoeItem(SlothcraftModElements instance) {
 		super(instance, 388);
 	}

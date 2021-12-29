@@ -15,6 +15,7 @@ import net.minecraft.item.AxeItem;
 public class TinAxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:tin_axe")
 	public static final Item block = null;
+
 	public TinAxeItem(SlothcraftModElements instance) {
 		super(instance, 552);
 	}

@@ -15,6 +15,7 @@ import net.minecraft.item.HoeItem;
 public class UraniumHoeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:uranium_hoe")
 	public static final Item block = null;
+
 	public UraniumHoeItem(SlothcraftModElements instance) {
 		super(instance, 603);
 	}

@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class CopperSwordItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:copper_sword")
 	public static final Item block = null;
+
 	public CopperSwordItem(SlothcraftModElements instance) {
 		super(instance, 290);
 	}

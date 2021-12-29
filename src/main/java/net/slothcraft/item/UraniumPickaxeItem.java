@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class UraniumPickaxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:uranium_pickaxe")
 	public static final Item block = null;
+
 	public UraniumPickaxeItem(SlothcraftModElements instance) {
 		super(instance, 599);
 	}

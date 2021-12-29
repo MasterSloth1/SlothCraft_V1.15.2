@@ -17,6 +17,7 @@ import net.minecraft.block.BlockState;
 public class VioletHazeGrinderItemItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:violet_haze_grinder_item")
 	public static final Item block = null;
+
 	public VioletHazeGrinderItemItem(SlothcraftModElements instance) {
 		super(instance, 185);
 	}
@@ -25,6 +26,7 @@ public class VioletHazeGrinderItemItem extends SlothcraftModElements.ModElement 
 	public void initElements() {
 		elements.items.add(() -> new ItemCustom());
 	}
+
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
 			super(new Item.Properties().group(SlothCraftOtherCreativeTabItemGroup.tab).maxStackSize(1).rarity(Rarity.COMMON));

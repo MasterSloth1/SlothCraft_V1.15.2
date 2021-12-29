@@ -17,6 +17,7 @@ import net.minecraft.block.BlockState;
 public class VioletHazeKiefItemItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:violet_haze_kief_item")
 	public static final Item block = null;
+
 	public VioletHazeKiefItemItem(SlothcraftModElements instance) {
 		super(instance, 180);
 	}
@@ -25,6 +26,7 @@ public class VioletHazeKiefItemItem extends SlothcraftModElements.ModElement {
 	public void initElements() {
 		elements.items.add(() -> new ItemCustom());
 	}
+
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
 			super(new Item.Properties().group(SlothCraftOtherCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON));

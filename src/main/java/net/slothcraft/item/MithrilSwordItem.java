@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class MithrilSwordItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:mithril_sword")
 	public static final Item block = null;
+
 	public MithrilSwordItem(SlothcraftModElements instance) {
 		super(instance, 386);
 	}

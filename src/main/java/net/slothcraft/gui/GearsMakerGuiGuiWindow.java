@@ -23,6 +23,7 @@ public class GearsMakerGuiGuiWindow extends ContainerScreen<GearsMakerGuiGui.Gui
 	private int x, y, z;
 	private PlayerEntity entity;
 	private final static HashMap guistate = GearsMakerGuiGui.guistate;
+
 	public GearsMakerGuiGuiWindow(GearsMakerGuiGui.GuiContainerMod container, PlayerInventory inventory, ITextComponent text) {
 		super(container, inventory, text);
 		this.world = container.world;
@@ -33,7 +34,9 @@ public class GearsMakerGuiGuiWindow extends ContainerScreen<GearsMakerGuiGui.Gui
 		this.xSize = 176;
 		this.ySize = 166;
 	}
+
 	private static final ResourceLocation texture = new ResourceLocation("slothcraft:textures/gears_maker_gui.png");
+
 	@Override
 	public void render(MatrixStack ms, int mouseX, int mouseY, float partialTicks) {
 		this.renderBackground(ms);
@@ -50,10 +53,13 @@ public class GearsMakerGuiGuiWindow extends ContainerScreen<GearsMakerGuiGui.Gui
 		int k = (this.width - this.xSize) / 2;
 		int l = (this.height - this.ySize) / 2;
 		this.blit(ms, k, l, 0, 0, this.xSize, this.ySize, this.xSize, this.ySize);
+
 		Minecraft.getInstance().getTextureManager().bindTexture(new ResourceLocation("slothcraft:textures/stone_gear.png"));
 		this.blit(ms, this.guiLeft + 26, this.guiTop + 48, 0, 0, 256, 256, 256, 256);
+
 		Minecraft.getInstance().getTextureManager().bindTexture(new ResourceLocation("slothcraft:textures/gear_mold.png"));
 		this.blit(ms, this.guiLeft + 79, this.guiTop + 30, 0, 0, 256, 256, 256, 256);
+
 		RenderSystem.disableBlend();
 	}
 

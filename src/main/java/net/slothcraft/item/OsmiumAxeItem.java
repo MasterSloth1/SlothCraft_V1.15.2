@@ -15,6 +15,7 @@ import net.minecraft.item.AxeItem;
 public class OsmiumAxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:osmium_axe")
 	public static final Item block = null;
+
 	public OsmiumAxeItem(SlothcraftModElements instance) {
 		super(instance, 433);
 	}

@@ -28,6 +28,7 @@ public class LeadArmorItem extends SlothcraftModElements.ModElement {
 	public static final Item legs = null;
 	@ObjectHolder("slothcraft:lead_armor_boots")
 	public static final Item boots = null;
+
 	public LeadArmorItem(SlothcraftModElements instance) {
 		super(instance, 370);
 	}
@@ -105,4 +106,5 @@ public class LeadArmorItem extends SlothcraftModElements.ModElement {
 			}
 		}.setRegistryName("lead_armor_boots"));
 	}
+
 }

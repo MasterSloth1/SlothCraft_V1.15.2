@@ -15,6 +15,7 @@ import net.minecraft.block.BlockState;
 public class OsmiumIngotItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:osmium_ingot")
 	public static final Item block = null;
+
 	public OsmiumIngotItem(SlothcraftModElements instance) {
 		super(instance, 428);
 	}
@@ -23,6 +24,7 @@ public class OsmiumIngotItem extends SlothcraftModElements.ModElement {
 	public void initElements() {
 		elements.items.add(() -> new ItemCustom());
 	}
+
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
 			super(new Item.Properties().group(SlothCraftOresCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON));

@@ -15,6 +15,7 @@ import net.minecraft.block.BlockState;
 public class PlatinumIngotItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:platinum_ingot")
 	public static final Item block = null;
+
 	public PlatinumIngotItem(SlothcraftModElements instance) {
 		super(instance, 452);
 	}
@@ -23,6 +24,7 @@ public class PlatinumIngotItem extends SlothcraftModElements.ModElement {
 	public void initElements() {
 		elements.items.add(() -> new ItemCustom());
 	}
+
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
 			super(new Item.Properties().group(SlothCraftOresCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON));

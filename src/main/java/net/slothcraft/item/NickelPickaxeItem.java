@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class NickelPickaxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:nickel_pickaxe")
 	public static final Item block = null;
+
 	public NickelPickaxeItem(SlothcraftModElements instance) {
 		super(instance, 408);
 	}

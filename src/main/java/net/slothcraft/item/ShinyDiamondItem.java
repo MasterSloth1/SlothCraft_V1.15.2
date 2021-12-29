@@ -23,6 +23,7 @@ import java.util.List;
 public class ShinyDiamondItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:shiny_diamond")
 	public static final Item block = null;
+
 	public ShinyDiamondItem(SlothcraftModElements instance) {
 		super(instance, 176);
 	}
@@ -31,6 +32,7 @@ public class ShinyDiamondItem extends SlothcraftModElements.ModElement {
 	public void initElements() {
 		elements.items.add(() -> new ItemCustom());
 	}
+
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
 			super(new Item.Properties().group(SlothCraftOtherCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON));

@@ -18,6 +18,7 @@ import net.minecraft.item.Food;
 public class BaconFoodItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:bacon_food")
 	public static final Item block = null;
+
 	public BaconFoodItem(SlothcraftModElements instance) {
 		super(instance, 69);
 	}
@@ -26,6 +27,7 @@ public class BaconFoodItem extends SlothcraftModElements.ModElement {
 	public void initElements() {
 		elements.items.add(() -> new FoodItemCustom());
 	}
+
 	public static class FoodItemCustom extends Item {
 		public FoodItemCustom() {
 			super(new Item.Properties().group(SlothCraftFoodCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON)

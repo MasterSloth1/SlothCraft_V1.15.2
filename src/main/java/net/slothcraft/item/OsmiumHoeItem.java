@@ -15,6 +15,7 @@ import net.minecraft.item.HoeItem;
 public class OsmiumHoeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:osmium_hoe")
 	public static final Item block = null;
+
 	public OsmiumHoeItem(SlothcraftModElements instance) {
 		super(instance, 436);
 	}

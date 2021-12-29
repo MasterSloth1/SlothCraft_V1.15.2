@@ -15,6 +15,7 @@ import net.minecraft.block.BlockState;
 public class WhiskItemItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:whisk_item")
 	public static final Item block = null;
+
 	public WhiskItemItem(SlothcraftModElements instance) {
 		super(instance, 170);
 	}
@@ -23,6 +24,7 @@ public class WhiskItemItem extends SlothcraftModElements.ModElement {
 	public void initElements() {
 		elements.items.add(() -> new ItemCustom());
 	}
+
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
 			super(new Item.Properties().group(SlothCraftFoodCreativeTabItemGroup.tab).maxStackSize(1).rarity(Rarity.COMMON));

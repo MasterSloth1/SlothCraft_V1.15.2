@@ -15,6 +15,7 @@ import net.minecraft.block.BlockState;
 public class ZincIngotItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:zinc_ingot")
 	public static final Item block = null;
+
 	public ZincIngotItem(SlothcraftModElements instance) {
 		super(instance, 619);
 	}
@@ -23,6 +24,7 @@ public class ZincIngotItem extends SlothcraftModElements.ModElement {
 	public void initElements() {
 		elements.items.add(() -> new ItemCustom());
 	}
+
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
 			super(new Item.Properties().group(SlothCraftOresCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON));

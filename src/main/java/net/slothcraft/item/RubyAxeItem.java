@@ -15,6 +15,7 @@ import net.minecraft.item.AxeItem;
 public class RubyAxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:ruby_axe")
 	public static final Item block = null;
+
 	public RubyAxeItem(SlothcraftModElements instance) {
 		super(instance, 481);
 	}

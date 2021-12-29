@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class AmethystPickaxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:amethyst_pickaxe")
 	public static final Item block = null;
+
 	public AmethystPickaxeItem(SlothcraftModElements instance) {
 		super(instance, 239);
 	}

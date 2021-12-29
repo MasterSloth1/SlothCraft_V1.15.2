@@ -15,6 +15,7 @@ import net.minecraft.item.HoeItem;
 public class RubyHoeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:ruby_hoe")
 	public static final Item block = null;
+
 	public RubyHoeItem(SlothcraftModElements instance) {
 		super(instance, 484);
 	}

@@ -28,6 +28,7 @@ public class UraniumArmorItem extends SlothcraftModElements.ModElement {
 	public static final Item legs = null;
 	@ObjectHolder("slothcraft:uranium_armor_boots")
 	public static final Item boots = null;
+
 	public UraniumArmorItem(SlothcraftModElements instance) {
 		super(instance, 609);
 	}
@@ -105,4 +106,5 @@ public class UraniumArmorItem extends SlothcraftModElements.ModElement {
 			}
 		}.setRegistryName("uranium_armor_boots"));
 	}
+
 }

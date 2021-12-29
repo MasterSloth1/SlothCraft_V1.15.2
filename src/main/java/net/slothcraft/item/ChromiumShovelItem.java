@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class ChromiumShovelItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:chromium_shovel")
 	public static final Item block = null;
+
 	public ChromiumShovelItem(SlothcraftModElements instance) {
 		super(instance, 267);
 	}

@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class JadePickaxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:jade_pickaxe")
 	public static final Item block = null;
+
 	public JadePickaxeItem(SlothcraftModElements instance) {
 		super(instance, 336);
 	}

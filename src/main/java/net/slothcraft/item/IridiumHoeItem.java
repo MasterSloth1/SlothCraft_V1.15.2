@@ -15,6 +15,7 @@ import net.minecraft.item.HoeItem;
 public class IridiumHoeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:iridium_hoe")
 	public static final Item block = null;
+
 	public IridiumHoeItem(SlothcraftModElements instance) {
 		super(instance, 316);
 	}

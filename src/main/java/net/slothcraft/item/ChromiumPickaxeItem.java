@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class ChromiumPickaxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:chromium_pickaxe")
 	public static final Item block = null;
+
 	public ChromiumPickaxeItem(SlothcraftModElements instance) {
 		super(instance, 264);
 	}

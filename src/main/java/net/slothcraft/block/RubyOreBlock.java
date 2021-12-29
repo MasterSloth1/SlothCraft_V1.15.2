@@ -59,6 +59,7 @@ import java.util.Collections;
 public class RubyOreBlock extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:ruby_ore")
 	public static final Block block = null;
+
 	public RubyOreBlock(SlothcraftModElements instance) {
 		super(instance, 474);
 		MinecraftForge.EVENT_BUS.register(this);
@@ -77,8 +78,10 @@ public class RubyOreBlock extends SlothcraftModElements.ModElement {
 	public void clientLoad(FMLClientSetupEvent event) {
 		RenderTypeLookup.setRenderLayer(block, RenderType.getCutoutMipped());
 	}
+
 	public static class CustomBlock extends Block {
 		public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
+
 		public CustomBlock() {
 			super(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(4.800000000000001f, 7.282256812104322f)
 					.setLightLevel(s -> 0).harvestLevel(2).harvestTool(ToolType.PICKAXE).setRequiresTool());
@@ -118,12 +121,15 @@ public class RubyOreBlock extends SlothcraftModElements.ModElement {
 			return Collections.singletonList(new ItemStack(RubyGemItem.block));
 		}
 	}
+
 	private static Feature<OreFeatureConfig> feature = null;
 	private static ConfiguredFeature<?, ?> configuredFeature = null;
 	private static IRuleTestType<CustomRuleTest> CUSTOM_MATCH = null;
+
 	private static class CustomRuleTest extends RuleTest {
 		static final CustomRuleTest INSTANCE = new CustomRuleTest();
 		static final com.mojang.serialization.Codec<CustomRuleTest> codec = com.mojang.serialization.Codec.unit(() -> INSTANCE);
+
 		public boolean test(BlockState blockAt, Random random) {
 			boolean blockCriteria = false;
 			if (blockAt.getBlock() == Blocks.STONE)
@@ -158,6 +164,7 @@ public class RubyOreBlock extends SlothcraftModElements.ModElement {
 			Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, new ResourceLocation("slothcraft:ruby_ore"), configuredFeature);
 		}
 	}
+
 	@SubscribeEvent
 	public void addFeatureToBiomes(BiomeLoadingEvent event) {
 		event.getGeneration().getFeatures(GenerationStage.Decoration.UNDERGROUND_ORES).add(() -> configuredFeature);

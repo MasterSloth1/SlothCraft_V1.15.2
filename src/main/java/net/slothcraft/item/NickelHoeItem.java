@@ -15,6 +15,7 @@ import net.minecraft.item.HoeItem;
 public class NickelHoeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:nickel_hoe")
 	public static final Item block = null;
+
 	public NickelHoeItem(SlothcraftModElements instance) {
 		super(instance, 412);
 	}

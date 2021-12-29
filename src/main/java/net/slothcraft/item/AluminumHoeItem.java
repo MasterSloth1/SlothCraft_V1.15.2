@@ -15,6 +15,7 @@ import net.minecraft.item.HoeItem;
 public class AluminumHoeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:aluminum_hoe")
 	public static final Item block = null;
+
 	public AluminumHoeItem(SlothcraftModElements instance) {
 		super(instance, 219);
 	}

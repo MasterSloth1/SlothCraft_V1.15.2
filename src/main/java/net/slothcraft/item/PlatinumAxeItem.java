@@ -15,6 +15,7 @@ import net.minecraft.item.AxeItem;
 public class PlatinumAxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:platinum_axe")
 	public static final Item block = null;
+
 	public PlatinumAxeItem(SlothcraftModElements instance) {
 		super(instance, 457);
 	}

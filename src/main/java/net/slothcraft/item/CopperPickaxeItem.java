@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class CopperPickaxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:copper_pickaxe")
 	public static final Item block = null;
+
 	public CopperPickaxeItem(SlothcraftModElements instance) {
 		super(instance, 288);
 	}

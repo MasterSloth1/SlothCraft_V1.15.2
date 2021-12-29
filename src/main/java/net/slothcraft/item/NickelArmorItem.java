@@ -28,6 +28,7 @@ public class NickelArmorItem extends SlothcraftModElements.ModElement {
 	public static final Item legs = null;
 	@ObjectHolder("slothcraft:nickel_armor_boots")
 	public static final Item boots = null;
+
 	public NickelArmorItem(SlothcraftModElements instance) {
 		super(instance, 418);
 	}
@@ -105,4 +106,5 @@ public class NickelArmorItem extends SlothcraftModElements.ModElement {
 			}
 		}.setRegistryName("nickel_armor_boots"));
 	}
+
 }

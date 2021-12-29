@@ -15,6 +15,7 @@ import net.minecraft.item.HoeItem;
 public class ChromiumHoeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:chromium_hoe")
 	public static final Item block = null;
+
 	public ChromiumHoeItem(SlothcraftModElements instance) {
 		super(instance, 268);
 	}

@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class RubyPickaxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:ruby_pickaxe")
 	public static final Item block = null;
+
 	public RubyPickaxeItem(SlothcraftModElements instance) {
 		super(instance, 480);
 	}

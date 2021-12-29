@@ -15,6 +15,7 @@ import net.minecraft.item.AxeItem;
 public class TitaniumAxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:titanium_axe")
 	public static final Item block = null;
+
 	public TitaniumAxeItem(SlothcraftModElements instance) {
 		super(instance, 576);
 	}

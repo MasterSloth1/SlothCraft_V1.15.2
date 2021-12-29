@@ -1,6 +1,6 @@
 modLoader="javafml"
 loaderVersion="[36,)"
-license="Not specified"
+license="MIT License"
 
 [[mods]]
 modId="slothcraft"

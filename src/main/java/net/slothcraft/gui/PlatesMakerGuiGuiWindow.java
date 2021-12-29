@@ -23,6 +23,7 @@ public class PlatesMakerGuiGuiWindow extends ContainerScreen<PlatesMakerGuiGui.G
 	private int x, y, z;
 	private PlayerEntity entity;
 	private final static HashMap guistate = PlatesMakerGuiGui.guistate;
+
 	public PlatesMakerGuiGuiWindow(PlatesMakerGuiGui.GuiContainerMod container, PlayerInventory inventory, ITextComponent text) {
 		super(container, inventory, text);
 		this.world = container.world;
@@ -33,7 +34,9 @@ public class PlatesMakerGuiGuiWindow extends ContainerScreen<PlatesMakerGuiGui.G
 		this.xSize = 176;
 		this.ySize = 166;
 	}
+
 	private static final ResourceLocation texture = new ResourceLocation("slothcraft:textures/plates_maker_gui.png");
+
 	@Override
 	public void render(MatrixStack ms, int mouseX, int mouseY, float partialTicks) {
 		this.renderBackground(ms);
@@ -50,8 +53,10 @@ public class PlatesMakerGuiGuiWindow extends ContainerScreen<PlatesMakerGuiGui.G
 		int k = (this.width - this.xSize) / 2;
 		int l = (this.height - this.ySize) / 2;
 		this.blit(ms, k, l, 0, 0, this.xSize, this.ySize, this.xSize, this.ySize);
+
 		Minecraft.getInstance().getTextureManager().bindTexture(new ResourceLocation("slothcraft:textures/plateshammer.png"));
 		this.blit(ms, this.guiLeft + 80, this.guiTop + 30, 0, 0, 256, 256, 256, 256);
+
 		RenderSystem.disableBlend();
 	}
 

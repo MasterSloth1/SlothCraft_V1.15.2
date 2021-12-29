@@ -28,6 +28,7 @@ public class IridiumArmorItem extends SlothcraftModElements.ModElement {
 	public static final Item legs = null;
 	@ObjectHolder("slothcraft:iridium_armor_boots")
 	public static final Item boots = null;
+
 	public IridiumArmorItem(SlothcraftModElements instance) {
 		super(instance, 322);
 	}
@@ -105,4 +106,5 @@ public class IridiumArmorItem extends SlothcraftModElements.ModElement {
 			}
 		}.setRegistryName("iridium_armor_boots"));
 	}
+
 }

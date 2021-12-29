@@ -15,6 +15,7 @@ import net.minecraft.item.AxeItem;
 public class CopperAxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:copper_axe")
 	public static final Item block = null;
+
 	public CopperAxeItem(SlothcraftModElements instance) {
 		super(instance, 289);
 	}

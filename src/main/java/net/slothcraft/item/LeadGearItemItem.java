@@ -21,6 +21,7 @@ import java.util.List;
 public class LeadGearItemItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:lead_gear_item")
 	public static final Item block = null;
+
 	public LeadGearItemItem(SlothcraftModElements instance) {
 		super(instance, 16);
 	}
@@ -29,6 +30,7 @@ public class LeadGearItemItem extends SlothcraftModElements.ModElement {
 	public void initElements() {
 		elements.items.add(() -> new ItemCustom());
 	}
+
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
 			super(new Item.Properties().group(SlothCraftGearsCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON));

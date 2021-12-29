@@ -39,9 +39,11 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.Entity;
 
+import java.util.stream.Stream;
 import java.util.Random;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.AbstractMap;
 
 import com.google.common.collect.Multimap;
 import com.google.common.collect.ImmutableMultimap;
@@ -53,6 +55,7 @@ public class PoisonStaffRangedWeaponItem extends SlothcraftModElements.ModElemen
 	public static final EntityType arrow = (EntityType.Builder.<ArrowCustomEntity>create(ArrowCustomEntity::new, EntityClassification.MISC)
 			.setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).setCustomClientFactory(ArrowCustomEntity::new)
 			.size(0.5f, 0.5f)).build("entitybulletpoison_staff_ranged_weapon").setRegistryName("entitybulletpoison_staff_ranged_weapon");
+
 	public PoisonStaffRangedWeaponItem(SlothcraftModElements instance) {
 		super(instance, 194);
 		FMLJavaModLoadingContext.get().getModEventBus().register(new PoisonStaffRangedWeaponRenderer.ModelRegisterHandler());
@@ -63,6 +66,7 @@ public class PoisonStaffRangedWeaponItem extends SlothcraftModElements.ModElemen
 		elements.items.add(() -> new ItemRanged());
 		elements.entities.add(() -> arrow);
 	}
+
 	public static class ItemRanged extends Item {
 		public ItemRanged() {
 			super(new Item.Properties().group(SlothCraftArmourAndWeaponsCreativeTabItemGroup.tab).maxDamage(128));
@@ -165,11 +169,9 @@ public class PoisonStaffRangedWeaponItem extends SlothcraftModElements.ModElemen
 			double z = this.getPosZ();
 			World world = this.world;
 			Entity imediatesourceentity = this;
-			{
-				Map<String, Object> $_dependencies = new HashMap<>();
-				$_dependencies.put("entity", entity);
-				PoisonStaffRangedWeaponBulletHitsLivingEntityProcedure.executeProcedure($_dependencies);
-			}
+
+			PoisonStaffRangedWeaponBulletHitsLivingEntityProcedure.executeProcedure(Stream.of(new AbstractMap.SimpleEntry<>("entity", entity))
+					.collect(HashMap::new, (_m, _e) -> _m.put(_e.getKey(), _e.getValue()), Map::putAll));
 		}
 
 		@Override
@@ -186,6 +188,7 @@ public class PoisonStaffRangedWeaponItem extends SlothcraftModElements.ModElemen
 			}
 		}
 	}
+
 	public static ArrowCustomEntity shoot(World world, LivingEntity entity, Random random, float power, double damage, int knockback) {
 		ArrowCustomEntity entityarrow = new ArrowCustomEntity(arrow, entity, world);
 		entityarrow.shoot(entity.getLookVec().x, entity.getLookVec().y, entity.getLookVec().z, power * 2, 0);

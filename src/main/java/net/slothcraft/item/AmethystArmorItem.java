@@ -28,6 +28,7 @@ public class AmethystArmorItem extends SlothcraftModElements.ModElement {
 	public static final Item legs = null;
 	@ObjectHolder("slothcraft:amethyst_armor_boots")
 	public static final Item boots = null;
+
 	public AmethystArmorItem(SlothcraftModElements instance) {
 		super(instance, 249);
 	}
@@ -105,4 +106,5 @@ public class AmethystArmorItem extends SlothcraftModElements.ModElement {
 			}
 		}.setRegistryName("amethyst_armor_boots"));
 	}
+
 }

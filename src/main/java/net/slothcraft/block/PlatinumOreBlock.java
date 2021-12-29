@@ -58,6 +58,7 @@ import java.util.Collections;
 public class PlatinumOreBlock extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:platinum_ore")
 	public static final Block block = null;
+
 	public PlatinumOreBlock(SlothcraftModElements instance) {
 		super(instance, 450);
 		MinecraftForge.EVENT_BUS.register(this);
@@ -76,8 +77,10 @@ public class PlatinumOreBlock extends SlothcraftModElements.ModElement {
 	public void clientLoad(FMLClientSetupEvent event) {
 		RenderTypeLookup.setRenderLayer(block, RenderType.getCutoutMipped());
 	}
+
 	public static class CustomBlock extends Block {
 		public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
+
 		public CustomBlock() {
 			super(Block.Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(7.199999999999999f, 10.07253992982465f)
 					.setLightLevel(s -> 0).harvestLevel(4).harvestTool(ToolType.PICKAXE).setRequiresTool());
@@ -117,12 +120,15 @@ public class PlatinumOreBlock extends SlothcraftModElements.ModElement {
 			return Collections.singletonList(new ItemStack(this, 1));
 		}
 	}
+
 	private static Feature<OreFeatureConfig> feature = null;
 	private static ConfiguredFeature<?, ?> configuredFeature = null;
 	private static IRuleTestType<CustomRuleTest> CUSTOM_MATCH = null;
+
 	private static class CustomRuleTest extends RuleTest {
 		static final CustomRuleTest INSTANCE = new CustomRuleTest();
 		static final com.mojang.serialization.Codec<CustomRuleTest> codec = com.mojang.serialization.Codec.unit(() -> INSTANCE);
+
 		public boolean test(BlockState blockAt, Random random) {
 			boolean blockCriteria = false;
 			if (blockAt.getBlock() == Blocks.STONE)
@@ -157,6 +163,7 @@ public class PlatinumOreBlock extends SlothcraftModElements.ModElement {
 			Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, new ResourceLocation("slothcraft:platinum_ore"), configuredFeature);
 		}
 	}
+
 	@SubscribeEvent
 	public void addFeatureToBiomes(BiomeLoadingEvent event) {
 		event.getGeneration().getFeatures(GenerationStage.Decoration.UNDERGROUND_ORES).add(() -> configuredFeature);

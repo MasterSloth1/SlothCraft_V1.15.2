@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class RubyShovelItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:ruby_shovel")
 	public static final Item block = null;
+
 	public RubyShovelItem(SlothcraftModElements instance) {
 		super(instance, 483);
 	}

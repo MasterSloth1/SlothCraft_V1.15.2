@@ -31,5 +31,6 @@ public class SlothCraftArmourAndWeaponsCreativeTabItemGroup extends SlothcraftMo
 			}
 		}.setBackgroundImageName("item_search.png");
 	}
+
 	public static ItemGroup tab;
 }

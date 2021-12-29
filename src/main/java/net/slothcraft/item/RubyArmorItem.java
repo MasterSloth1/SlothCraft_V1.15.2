@@ -28,6 +28,7 @@ public class RubyArmorItem extends SlothcraftModElements.ModElement {
 	public static final Item legs = null;
 	@ObjectHolder("slothcraft:ruby_armor_boots")
 	public static final Item boots = null;
+
 	public RubyArmorItem(SlothcraftModElements instance) {
 		super(instance, 490);
 	}
@@ -105,4 +106,5 @@ public class RubyArmorItem extends SlothcraftModElements.ModElement {
 			}
 		}.setRegistryName("ruby_armor_boots"));
 	}
+
 }

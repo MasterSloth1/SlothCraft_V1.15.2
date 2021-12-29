@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class ZincSwordItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:zinc_sword")
 	public static final Item block = null;
+
 	public ZincSwordItem(SlothcraftModElements instance) {
 		super(instance, 625);
 	}

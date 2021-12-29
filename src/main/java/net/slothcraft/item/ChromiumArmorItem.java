@@ -28,6 +28,7 @@ public class ChromiumArmorItem extends SlothcraftModElements.ModElement {
 	public static final Item legs = null;
 	@ObjectHolder("slothcraft:chromium_armor_boots")
 	public static final Item boots = null;
+
 	public ChromiumArmorItem(SlothcraftModElements instance) {
 		super(instance, 274);
 	}
@@ -105,4 +106,5 @@ public class ChromiumArmorItem extends SlothcraftModElements.ModElement {
 			}
 		}.setRegistryName("chromium_armor_boots"));
 	}
+
 }

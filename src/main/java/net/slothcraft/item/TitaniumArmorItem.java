@@ -28,6 +28,7 @@ public class TitaniumArmorItem extends SlothcraftModElements.ModElement {
 	public static final Item legs = null;
 	@ObjectHolder("slothcraft:titanium_armor_boots")
 	public static final Item boots = null;
+
 	public TitaniumArmorItem(SlothcraftModElements instance) {
 		super(instance, 585);
 	}
@@ -105,4 +106,5 @@ public class TitaniumArmorItem extends SlothcraftModElements.ModElement {
 			}
 		}.setRegistryName("titanium_armor_boots"));
 	}
+
 }

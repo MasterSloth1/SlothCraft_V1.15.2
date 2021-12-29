@@ -15,6 +15,7 @@ import net.minecraft.item.HoeItem;
 public class PlatinumHoeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:platinum_hoe")
 	public static final Item block = null;
+
 	public PlatinumHoeItem(SlothcraftModElements instance) {
 		super(instance, 460);
 	}

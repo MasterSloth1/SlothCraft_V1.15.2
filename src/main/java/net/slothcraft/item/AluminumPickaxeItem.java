@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class AluminumPickaxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:aluminum_pickaxe")
 	public static final Item block = null;
+
 	public AluminumPickaxeItem(SlothcraftModElements instance) {
 		super(instance, 215);
 	}

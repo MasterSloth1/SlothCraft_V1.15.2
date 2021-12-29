@@ -16,6 +16,7 @@ import net.minecraft.item.Food;
 public class FlourFoodItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:flour_food")
 	public static final Item block = null;
+
 	public FlourFoodItem(SlothcraftModElements instance) {
 		super(instance, 74);
 	}
@@ -24,10 +25,13 @@ public class FlourFoodItem extends SlothcraftModElements.ModElement {
 	public void initElements() {
 		elements.items.add(() -> new FoodItemCustom());
 	}
+
 	public static class FoodItemCustom extends Item {
 		public FoodItemCustom() {
 			super(new Item.Properties().group(SlothCraftFoodCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON)
-					.food((new Food.Builder()).hunger(1).saturation(1f).build()));
+					.food((new Food.Builder()).hunger(1).saturation(1f)
+
+							.build()));
 			setRegistryName("flour_food");
 		}
 

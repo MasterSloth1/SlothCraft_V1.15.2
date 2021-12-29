@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class ChromiumSwordItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:chromium_sword")
 	public static final Item block = null;
+
 	public ChromiumSwordItem(SlothcraftModElements instance) {
 		super(instance, 266);
 	}

@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class IridiumSwordItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:iridium_sword")
 	public static final Item block = null;
+
 	public IridiumSwordItem(SlothcraftModElements instance) {
 		super(instance, 314);
 	}

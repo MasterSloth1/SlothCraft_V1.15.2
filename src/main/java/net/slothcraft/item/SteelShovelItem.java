@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class SteelShovelItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:steel_shovel")
 	public static final Item block = null;
+
 	public SteelShovelItem(SlothcraftModElements instance) {
 		super(instance, 531);
 	}

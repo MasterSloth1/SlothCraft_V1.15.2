@@ -28,6 +28,7 @@ public class ZincArmorItem extends SlothcraftModElements.ModElement {
 	public static final Item legs = null;
 	@ObjectHolder("slothcraft:zinc_armor_boots")
 	public static final Item boots = null;
+
 	public ZincArmorItem(SlothcraftModElements instance) {
 		super(instance, 633);
 	}
@@ -105,4 +106,5 @@ public class ZincArmorItem extends SlothcraftModElements.ModElement {
 			}
 		}.setRegistryName("zinc_armor_boots"));
 	}
+
 }

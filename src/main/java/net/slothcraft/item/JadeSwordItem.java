@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class JadeSwordItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:jade_sword")
 	public static final Item block = null;
+
 	public JadeSwordItem(SlothcraftModElements instance) {
 		super(instance, 338);
 	}

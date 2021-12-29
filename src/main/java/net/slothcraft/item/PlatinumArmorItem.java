@@ -28,6 +28,7 @@ public class PlatinumArmorItem extends SlothcraftModElements.ModElement {
 	public static final Item legs = null;
 	@ObjectHolder("slothcraft:platinum_armor_boots")
 	public static final Item boots = null;
+
 	public PlatinumArmorItem(SlothcraftModElements instance) {
 		super(instance, 466);
 	}
@@ -105,4 +106,5 @@ public class PlatinumArmorItem extends SlothcraftModElements.ModElement {
 			}
 		}.setRegistryName("platinum_armor_boots"));
 	}
+
 }

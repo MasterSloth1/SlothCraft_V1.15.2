@@ -15,6 +15,7 @@ import net.minecraft.item.HoeItem;
 public class JadeHoeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:jade_hoe")
 	public static final Item block = null;
+
 	public JadeHoeItem(SlothcraftModElements instance) {
 		super(instance, 340);
 	}

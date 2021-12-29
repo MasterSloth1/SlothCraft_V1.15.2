@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class OsmiumSwordItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:osmium_sword")
 	public static final Item block = null;
+
 	public OsmiumSwordItem(SlothcraftModElements instance) {
 		super(instance, 434);
 	}

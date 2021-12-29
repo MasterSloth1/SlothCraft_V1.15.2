@@ -17,13 +17,16 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Food;
 import net.minecraft.entity.LivingEntity;
 
+import java.util.stream.Stream;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.AbstractMap;
 
 @SlothcraftModElements.ModElement.Tag
 public class PackedGlassReceptacleFoodItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:packed_glass_receptacle_food")
 	public static final Item block = null;
+
 	public PackedGlassReceptacleFoodItem(SlothcraftModElements instance) {
 		super(instance, 183);
 	}
@@ -32,10 +35,13 @@ public class PackedGlassReceptacleFoodItem extends SlothcraftModElements.ModElem
 	public void initElements() {
 		elements.items.add(() -> new FoodItemCustom());
 	}
+
 	public static class FoodItemCustom extends Item {
 		public FoodItemCustom() {
 			super(new Item.Properties().group(SlothCraftOtherCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON)
-					.food((new Food.Builder()).hunger(2).saturation(210f).setAlwaysEdible().build()));
+					.food((new Food.Builder()).hunger(2).saturation(210f).setAlwaysEdible()
+
+							.build()));
 			setRegistryName("packed_glass_receptacle_food");
 		}
 
@@ -66,11 +72,9 @@ public class PackedGlassReceptacleFoodItem extends SlothcraftModElements.ModElem
 			double x = entity.getPosX();
 			double y = entity.getPosY();
 			double z = entity.getPosZ();
-			{
-				Map<String, Object> $_dependencies = new HashMap<>();
-				$_dependencies.put("entity", entity);
-				PackedGlassReceptacleFoodFoodEatenProcedure.executeProcedure($_dependencies);
-			}
+
+			PackedGlassReceptacleFoodFoodEatenProcedure.executeProcedure(Stream.of(new AbstractMap.SimpleEntry<>("entity", entity))
+					.collect(HashMap::new, (_m, _e) -> _m.put(_e.getKey(), _e.getValue()), Map::putAll));
 			return retval;
 		}
 	}

@@ -15,6 +15,7 @@ import net.minecraft.item.AxeItem;
 public class AmethystAxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:amethyst_axe")
 	public static final Item block = null;
+
 	public AmethystAxeItem(SlothcraftModElements instance) {
 		super(instance, 240);
 	}

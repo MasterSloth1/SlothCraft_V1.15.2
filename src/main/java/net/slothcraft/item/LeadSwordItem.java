@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class LeadSwordItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:lead_sword")
 	public static final Item block = null;
+
 	public LeadSwordItem(SlothcraftModElements instance) {
 		super(instance, 362);
 	}

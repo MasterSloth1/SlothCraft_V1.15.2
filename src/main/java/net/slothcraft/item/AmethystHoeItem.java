@@ -15,6 +15,7 @@ import net.minecraft.item.HoeItem;
 public class AmethystHoeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:amethyst_hoe")
 	public static final Item block = null;
+
 	public AmethystHoeItem(SlothcraftModElements instance) {
 		super(instance, 243);
 	}

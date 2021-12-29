@@ -15,6 +15,7 @@ import net.minecraft.item.HoeItem;
 public class LeadHoeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:lead_hoe")
 	public static final Item block = null;
+
 	public LeadHoeItem(SlothcraftModElements instance) {
 		super(instance, 364);
 	}

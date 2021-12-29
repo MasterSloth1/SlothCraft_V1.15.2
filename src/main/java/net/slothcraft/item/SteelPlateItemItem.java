@@ -21,6 +21,7 @@ import java.util.List;
 public class SteelPlateItemItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:steel_plate_item")
 	public static final Item block = null;
+
 	public SteelPlateItemItem(SlothcraftModElements instance) {
 		super(instance, 60);
 	}
@@ -29,6 +30,7 @@ public class SteelPlateItemItem extends SlothcraftModElements.ModElement {
 	public void initElements() {
 		elements.items.add(() -> new ItemCustom());
 	}
+
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
 			super(new Item.Properties().group(SlothCraftPlatesCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON));

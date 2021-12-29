@@ -15,6 +15,7 @@ import net.minecraft.block.BlockState;
 public class StaffStickItemItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:staff_stick_item")
 	public static final Item block = null;
+
 	public StaffStickItemItem(SlothcraftModElements instance) {
 		super(instance, 191);
 	}
@@ -23,6 +24,7 @@ public class StaffStickItemItem extends SlothcraftModElements.ModElement {
 	public void initElements() {
 		elements.items.add(() -> new ItemCustom());
 	}
+
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
 			super(new Item.Properties().group(SlothCraftArmourAndWeaponsCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON));

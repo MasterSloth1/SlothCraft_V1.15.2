@@ -21,6 +21,7 @@ import java.util.List;
 public class TitaniumGearItemItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:titanium_gear_item")
 	public static final Item block = null;
+
 	public TitaniumGearItemItem(SlothcraftModElements instance) {
 		super(instance, 29);
 	}
@@ -29,6 +30,7 @@ public class TitaniumGearItemItem extends SlothcraftModElements.ModElement {
 	public void initElements() {
 		elements.items.add(() -> new ItemCustom());
 	}
+
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
 			super(new Item.Properties().group(SlothCraftGearsCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON));

@@ -15,6 +15,7 @@ import net.minecraft.item.HoeItem;
 public class TitaniumHoeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:titanium_hoe")
 	public static final Item block = null;
+
 	public TitaniumHoeItem(SlothcraftModElements instance) {
 		super(instance, 579);
 	}

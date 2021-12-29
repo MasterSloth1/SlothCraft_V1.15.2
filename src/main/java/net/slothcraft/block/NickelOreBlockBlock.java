@@ -25,6 +25,7 @@ import java.util.Collections;
 public class NickelOreBlockBlock extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:nickel_ore_block")
 	public static final Block block = null;
+
 	public NickelOreBlockBlock(SlothcraftModElements instance) {
 		super(instance, 403);
 	}
@@ -35,6 +36,7 @@ public class NickelOreBlockBlock extends SlothcraftModElements.ModElement {
 		elements.items.add(() -> new BlockItem(block, new Item.Properties().group(SlothCraftOresCreativeTabItemGroup.tab))
 				.setRegistryName(block.getRegistryName()));
 	}
+
 	public static class CustomBlock extends Block {
 		public CustomBlock() {
 			super(Block.Properties.create(Material.IRON).sound(SoundType.METAL).hardnessAndResistance(5f, 10f).setLightLevel(s -> 0).harvestLevel(2)

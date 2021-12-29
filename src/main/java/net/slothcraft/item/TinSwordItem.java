@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class TinSwordItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:tin_sword")
 	public static final Item block = null;
+
 	public TinSwordItem(SlothcraftModElements instance) {
 		super(instance, 553);
 	}

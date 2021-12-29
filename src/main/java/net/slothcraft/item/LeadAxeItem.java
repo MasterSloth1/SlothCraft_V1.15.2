@@ -15,6 +15,7 @@ import net.minecraft.item.AxeItem;
 public class LeadAxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:lead_axe")
 	public static final Item block = null;
+
 	public LeadAxeItem(SlothcraftModElements instance) {
 		super(instance, 361);
 	}

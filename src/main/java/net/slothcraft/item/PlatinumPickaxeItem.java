@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class PlatinumPickaxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:platinum_pickaxe")
 	public static final Item block = null;
+
 	public PlatinumPickaxeItem(SlothcraftModElements instance) {
 		super(instance, 456);
 	}

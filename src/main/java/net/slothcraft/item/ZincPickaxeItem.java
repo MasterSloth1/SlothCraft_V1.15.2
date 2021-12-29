@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class ZincPickaxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:zinc_pickaxe")
 	public static final Item block = null;
+
 	public ZincPickaxeItem(SlothcraftModElements instance) {
 		super(instance, 623);
 	}

@@ -21,6 +21,7 @@ import java.util.List;
 public class OsmiumPlateItemItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:osmium_plate_item")
 	public static final Item block = null;
+
 	public OsmiumPlateItemItem(SlothcraftModElements instance) {
 		super(instance, 54);
 	}
@@ -29,6 +30,7 @@ public class OsmiumPlateItemItem extends SlothcraftModElements.ModElement {
 	public void initElements() {
 		elements.items.add(() -> new ItemCustom());
 	}
+
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
 			super(new Item.Properties().group(SlothCraftPlatesCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON));

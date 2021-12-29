@@ -28,6 +28,7 @@ public class TinArmorItem extends SlothcraftModElements.ModElement {
 	public static final Item legs = null;
 	@ObjectHolder("slothcraft:tin_armor_boots")
 	public static final Item boots = null;
+
 	public TinArmorItem(SlothcraftModElements instance) {
 		super(instance, 561);
 	}
@@ -105,4 +106,5 @@ public class TinArmorItem extends SlothcraftModElements.ModElement {
 			}
 		}.setRegistryName("tin_armor_boots"));
 	}
+
 }

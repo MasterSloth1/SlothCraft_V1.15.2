@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class MithrilPickaxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:mithril_pickaxe")
 	public static final Item block = null;
+
 	public MithrilPickaxeItem(SlothcraftModElements instance) {
 		super(instance, 384);
 	}

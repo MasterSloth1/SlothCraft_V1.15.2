@@ -46,6 +46,7 @@ public class SlothcraftMod {
 	public static final SimpleChannel PACKET_HANDLER = NetworkRegistry.newSimpleChannel(new ResourceLocation("slothcraft", "slothcraft"),
 			() -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
 	public SlothcraftModElements elements;
+
 	public SlothcraftMod() {
 		elements = new SlothcraftModElements();
 		FMLJavaModLoadingContext.get().getModEventBus().register(this);
@@ -86,8 +87,10 @@ public class SlothcraftMod {
 	public void registerSounds(RegistryEvent.Register<net.minecraft.util.SoundEvent> event) {
 		elements.registerSounds(event);
 	}
+
 	private static class SlothcraftModFMLBusEvents {
 		private final SlothcraftMod parent;
+
 		SlothcraftModFMLBusEvents(SlothcraftMod parent) {
 			this.parent = parent;
 		}

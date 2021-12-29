@@ -21,6 +21,7 @@ import java.util.List;
 public class GoldGearItemItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:gold_gear_item")
 	public static final Item block = null;
+
 	public GoldGearItemItem(SlothcraftModElements instance) {
 		super(instance, 11);
 	}
@@ -29,6 +30,7 @@ public class GoldGearItemItem extends SlothcraftModElements.ModElement {
 	public void initElements() {
 		elements.items.add(() -> new ItemCustom());
 	}
+
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
 			super(new Item.Properties().group(SlothCraftGearsCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON));

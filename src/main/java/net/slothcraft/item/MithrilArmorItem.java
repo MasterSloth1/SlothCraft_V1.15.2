@@ -28,6 +28,7 @@ public class MithrilArmorItem extends SlothcraftModElements.ModElement {
 	public static final Item legs = null;
 	@ObjectHolder("slothcraft:mithril_armor_boots")
 	public static final Item boots = null;
+
 	public MithrilArmorItem(SlothcraftModElements instance) {
 		super(instance, 394);
 	}
@@ -105,4 +106,5 @@ public class MithrilArmorItem extends SlothcraftModElements.ModElement {
 			}
 		}.setRegistryName("mithril_armor_boots"));
 	}
+
 }

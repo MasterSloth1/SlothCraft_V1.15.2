@@ -28,6 +28,7 @@ public class CopperArmorItem extends SlothcraftModElements.ModElement {
 	public static final Item legs = null;
 	@ObjectHolder("slothcraft:copper_armor_boots")
 	public static final Item boots = null;
+
 	public CopperArmorItem(SlothcraftModElements instance) {
 		super(instance, 298);
 	}
@@ -105,4 +106,5 @@ public class CopperArmorItem extends SlothcraftModElements.ModElement {
 			}
 		}.setRegistryName("copper_armor_boots"));
 	}
+
 }

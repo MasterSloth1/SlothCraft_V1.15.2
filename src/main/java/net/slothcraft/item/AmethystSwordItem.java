@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class AmethystSwordItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:amethyst_sword")
 	public static final Item block = null;
+
 	public AmethystSwordItem(SlothcraftModElements instance) {
 		super(instance, 241);
 	}

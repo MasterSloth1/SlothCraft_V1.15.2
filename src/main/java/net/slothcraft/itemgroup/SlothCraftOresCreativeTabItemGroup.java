@@ -31,5 +31,6 @@ public class SlothCraftOresCreativeTabItemGroup extends SlothcraftModElements.Mo
 			}
 		}.setBackgroundImageName("item_search.png");
 	}
+
 	public static ItemGroup tab;
 }

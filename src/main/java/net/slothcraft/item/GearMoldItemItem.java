@@ -15,6 +15,7 @@ import net.minecraft.block.BlockState;
 public class GearMoldItemItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:gear_mold_item")
 	public static final Item block = null;
+
 	public GearMoldItemItem(SlothcraftModElements instance) {
 		super(instance, 33);
 	}
@@ -23,6 +24,7 @@ public class GearMoldItemItem extends SlothcraftModElements.ModElement {
 	public void initElements() {
 		elements.items.add(() -> new ItemCustom());
 	}
+
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
 			super(new Item.Properties().group(SlothCraftGearsCreativeTabItemGroup.tab).maxDamage(64).rarity(Rarity.COMMON));

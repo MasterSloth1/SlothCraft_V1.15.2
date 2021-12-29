@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class OsmiumPickaxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:osmium_pickaxe")
 	public static final Item block = null;
+
 	public OsmiumPickaxeItem(SlothcraftModElements instance) {
 		super(instance, 432);
 	}

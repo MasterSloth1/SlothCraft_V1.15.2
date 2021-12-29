@@ -28,6 +28,7 @@ public class JadeArmorItem extends SlothcraftModElements.ModElement {
 	public static final Item legs = null;
 	@ObjectHolder("slothcraft:jade_armor_boots")
 	public static final Item boots = null;
+
 	public JadeArmorItem(SlothcraftModElements instance) {
 		super(instance, 346);
 	}
@@ -105,4 +106,5 @@ public class JadeArmorItem extends SlothcraftModElements.ModElement {
 			}
 		}.setRegistryName("jade_armor_boots"));
 	}
+
 }

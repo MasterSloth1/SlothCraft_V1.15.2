@@ -21,6 +21,7 @@ import java.util.List;
 public class DiamondGearItemItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:diamond_gear_item")
 	public static final Item block = null;
+
 	public DiamondGearItemItem(SlothcraftModElements instance) {
 		super(instance, 5);
 	}
@@ -29,6 +30,7 @@ public class DiamondGearItemItem extends SlothcraftModElements.ModElement {
 	public void initElements() {
 		elements.items.add(() -> new ItemCustom());
 	}
+
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
 			super(new Item.Properties().group(SlothCraftGearsCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON));

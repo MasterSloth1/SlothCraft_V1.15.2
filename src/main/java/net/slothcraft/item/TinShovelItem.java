@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class TinShovelItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:tin_shovel")
 	public static final Item block = null;
+
 	public TinShovelItem(SlothcraftModElements instance) {
 		super(instance, 554);
 	}

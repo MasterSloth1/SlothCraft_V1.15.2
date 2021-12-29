@@ -58,6 +58,7 @@ import java.util.Collections;
 public class VioletHazePlantBlock extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:violet_haze_plant")
 	public static final Block block = null;
+
 	public VioletHazePlantBlock(SlothcraftModElements instance) {
 		super(instance, 177);
 		MinecraftForge.EVENT_BUS.register(this);
@@ -75,8 +76,10 @@ public class VioletHazePlantBlock extends SlothcraftModElements.ModElement {
 	public void clientLoad(FMLClientSetupEvent event) {
 		RenderTypeLookup.setRenderLayer(block, RenderType.getCutout());
 	}
+
 	private static Feature<BlockClusterFeatureConfig> feature = null;
 	private static ConfiguredFeature<?, ?> configuredFeature = null;
+
 	private static class FeatureRegisterHandler {
 		@SubscribeEvent
 		public void registerFeature(RegistryEvent.Register<Feature<?>> event) {
@@ -106,10 +109,12 @@ public class VioletHazePlantBlock extends SlothcraftModElements.ModElement {
 			Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, new ResourceLocation("slothcraft:violet_haze_plant"), configuredFeature);
 		}
 	}
+
 	@SubscribeEvent
 	public void addFeatureToBiomes(BiomeLoadingEvent event) {
 		event.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION).add(() -> configuredFeature);
 	}
+
 	public static class BlockCustomFlower extends FlowerBlock {
 		public BlockCustomFlower() {
 			super(Effects.SATURATION, 0, Block.Properties.create(Material.PLANTS, MaterialColor.MAGENTA).doesNotBlockMovement().sound(SoundType.PLANT)

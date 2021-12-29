@@ -21,6 +21,7 @@ import java.util.List;
 public class GobberGearItemItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:gobber_gear_item")
 	public static final Item block = null;
+
 	public GobberGearItemItem(SlothcraftModElements instance) {
 		super(instance, 9);
 	}
@@ -29,6 +30,7 @@ public class GobberGearItemItem extends SlothcraftModElements.ModElement {
 	public void initElements() {
 		elements.items.add(() -> new ItemCustom());
 	}
+
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
 			super(new Item.Properties().group(SlothCraftGearsCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON));

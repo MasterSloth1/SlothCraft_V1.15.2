@@ -15,6 +15,7 @@ import net.minecraft.item.AxeItem;
 public class JadeAxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:jade_axe")
 	public static final Item block = null;
+
 	public JadeAxeItem(SlothcraftModElements instance) {
 		super(instance, 337);
 	}

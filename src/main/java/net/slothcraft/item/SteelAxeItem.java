@@ -15,6 +15,7 @@ import net.minecraft.item.AxeItem;
 public class SteelAxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:steel_axe")
 	public static final Item block = null;
+
 	public SteelAxeItem(SlothcraftModElements instance) {
 		super(instance, 529);
 	}

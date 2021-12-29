@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class LeadPickaxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:lead_pickaxe")
 	public static final Item block = null;
+
 	public LeadPickaxeItem(SlothcraftModElements instance) {
 		super(instance, 360);
 	}

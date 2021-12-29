@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class RubySwordItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:ruby_sword")
 	public static final Item block = null;
+
 	public RubySwordItem(SlothcraftModElements instance) {
 		super(instance, 482);
 	}

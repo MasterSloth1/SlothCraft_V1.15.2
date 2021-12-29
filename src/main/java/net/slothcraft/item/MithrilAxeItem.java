@@ -15,6 +15,7 @@ import net.minecraft.item.AxeItem;
 public class MithrilAxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:mithril_axe")
 	public static final Item block = null;
+
 	public MithrilAxeItem(SlothcraftModElements instance) {
 		super(instance, 385);
 	}

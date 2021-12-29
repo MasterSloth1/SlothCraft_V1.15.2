@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class IridiumShovelItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:iridium_shovel")
 	public static final Item block = null;
+
 	public IridiumShovelItem(SlothcraftModElements instance) {
 		super(instance, 315);
 	}

@@ -21,6 +21,7 @@ import java.util.List;
 public class RubyGearItemItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:ruby_gear_item")
 	public static final Item block = null;
+
 	public RubyGearItemItem(SlothcraftModElements instance) {
 		super(instance, 24);
 	}
@@ -29,6 +30,7 @@ public class RubyGearItemItem extends SlothcraftModElements.ModElement {
 	public void initElements() {
 		elements.items.add(() -> new ItemCustom());
 	}
+
 	public static class ItemCustom extends Item {
 		public ItemCustom() {
 			super(new Item.Properties().group(SlothCraftGearsCreativeTabItemGroup.tab).maxStackSize(64).rarity(Rarity.COMMON));

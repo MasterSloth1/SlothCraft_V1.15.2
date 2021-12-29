@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class LeadShovelItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:lead_shovel")
 	public static final Item block = null;
+
 	public LeadShovelItem(SlothcraftModElements instance) {
 		super(instance, 363);
 	}

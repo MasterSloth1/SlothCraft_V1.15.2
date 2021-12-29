@@ -15,6 +15,7 @@ import net.minecraft.item.AxeItem;
 public class ChromiumAxeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:chromium_axe")
 	public static final Item block = null;
+
 	public ChromiumAxeItem(SlothcraftModElements instance) {
 		super(instance, 265);
 	}

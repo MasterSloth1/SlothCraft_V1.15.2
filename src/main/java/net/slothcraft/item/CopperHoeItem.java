@@ -15,6 +15,7 @@ import net.minecraft.item.HoeItem;
 public class CopperHoeItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:copper_hoe")
 	public static final Item block = null;
+
 	public CopperHoeItem(SlothcraftModElements instance) {
 		super(instance, 292);
 	}

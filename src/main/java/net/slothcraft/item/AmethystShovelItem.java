@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class AmethystShovelItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:amethyst_shovel")
 	public static final Item block = null;
+
 	public AmethystShovelItem(SlothcraftModElements instance) {
 		super(instance, 242);
 	}

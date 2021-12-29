@@ -16,7 +16,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.Map;
 
 public class ItemMoverPlatesMakerProcedureProcedure {
+
 	public static void executeProcedure(Map<String, Object> dependencies) {
+		if (dependencies.get("world") == null) {
+			if (!dependencies.containsKey("world"))
+				SlothcraftMod.LOGGER.warn("Failed to load dependency world for procedure ItemMoverPlatesMakerProcedure!");
+			return;
+		}
 		if (dependencies.get("x") == null) {
 			if (!dependencies.containsKey("x"))
 				SlothcraftMod.LOGGER.warn("Failed to load dependency x for procedure ItemMoverPlatesMakerProcedure!");
@@ -32,17 +38,12 @@ public class ItemMoverPlatesMakerProcedureProcedure {
 				SlothcraftMod.LOGGER.warn("Failed to load dependency z for procedure ItemMoverPlatesMakerProcedure!");
 			return;
 		}
-		if (dependencies.get("world") == null) {
-			if (!dependencies.containsKey("world"))
-				SlothcraftMod.LOGGER.warn("Failed to load dependency world for procedure ItemMoverPlatesMakerProcedure!");
-			return;
-		}
+		IWorld world = (IWorld) dependencies.get("world");
 		double x = dependencies.get("x") instanceof Integer ? (int) dependencies.get("x") : (double) dependencies.get("x");
 		double y = dependencies.get("y") instanceof Integer ? (int) dependencies.get("y") : (double) dependencies.get("y");
 		double z = dependencies.get("z") instanceof Integer ? (int) dependencies.get("z") : (double) dependencies.get("z");
-		IWorld world = (IWorld) dependencies.get("world");
 		double itemDamageCount = 0;
-		if ((((new Object() {
+		if ((new Object() {
 			public ItemStack getItemStack(BlockPos pos, int sltid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				TileEntity _ent = world.getTileEntity(pos);
@@ -53,7 +54,7 @@ public class ItemMoverPlatesMakerProcedureProcedure {
 				}
 				return _retval.get();
 			}
-		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem() == PlateHammerItemItem.block) && ((new Object() {
+		}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (0))).getItem() == PlateHammerItemItem.block && new Object() {
 			public int getAmount(IWorld world, BlockPos pos, int sltid) {
 				AtomicInteger _retval = new AtomicInteger(0);
 				TileEntity _ent = world.getTileEntity(pos);
@@ -64,8 +65,8 @@ public class ItemMoverPlatesMakerProcedureProcedure {
 				}
 				return _retval.get();
 			}
-		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (1))) == 0))) {
-			itemDamageCount = (double) ((new Object() {
+		}.getAmount(world, new BlockPos((int) x, (int) y, (int) z), (int) (1)) == 0) {
+			itemDamageCount = ((new Object() {
 				public ItemStack getItemStack(BlockPos pos, int sltid) {
 					AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 					TileEntity _ent = world.getTileEntity(pos);
@@ -116,7 +117,7 @@ public class ItemMoverPlatesMakerProcedureProcedure {
 					return _retval.get();
 				}
 			}.getItemStack(new BlockPos((int) x, (int) y, (int) z), (int) (1))).getOrCreateTag().putDouble("Damage", (0 + itemDamageCount));
-			itemDamageCount = (double) 0;
+			itemDamageCount = 0;
 		}
 	}
 }

@@ -31,5 +31,6 @@ public class SlothCraftPlatesCreativeTabItemGroup extends SlothcraftModElements.
 			}
 		}.setBackgroundImageName("item_search.png");
 	}
+
 	public static ItemGroup tab;
 }

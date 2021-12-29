@@ -28,6 +28,7 @@ public class SilverArmorItem extends SlothcraftModElements.ModElement {
 	public static final Item legs = null;
 	@ObjectHolder("slothcraft:silver_armor_boots")
 	public static final Item boots = null;
+
 	public SilverArmorItem(SlothcraftModElements instance) {
 		super(instance, 514);
 	}
@@ -105,4 +106,5 @@ public class SilverArmorItem extends SlothcraftModElements.ModElement {
 			}
 		}.setRegistryName("silver_armor_boots"));
 	}
+
 }

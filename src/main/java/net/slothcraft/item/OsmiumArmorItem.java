@@ -28,6 +28,7 @@ public class OsmiumArmorItem extends SlothcraftModElements.ModElement {
 	public static final Item legs = null;
 	@ObjectHolder("slothcraft:osmium_armor_boots")
 	public static final Item boots = null;
+
 	public OsmiumArmorItem(SlothcraftModElements instance) {
 		super(instance, 442);
 	}
@@ -105,4 +106,5 @@ public class OsmiumArmorItem extends SlothcraftModElements.ModElement {
 			}
 		}.setRegistryName("osmium_armor_boots"));
 	}
+
 }

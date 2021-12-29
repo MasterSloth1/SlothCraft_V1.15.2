@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class AluminumSwordItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:aluminum_sword")
 	public static final Item block = null;
+
 	public AluminumSwordItem(SlothcraftModElements instance) {
 		super(instance, 217);
 	}

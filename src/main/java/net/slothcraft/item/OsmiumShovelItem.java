@@ -15,6 +15,7 @@ import net.minecraft.item.IItemTier;
 public class OsmiumShovelItem extends SlothcraftModElements.ModElement {
 	@ObjectHolder("slothcraft:osmium_shovel")
 	public static final Item block = null;
+
 	public OsmiumShovelItem(SlothcraftModElements instance) {
 		super(instance, 435);
 	}
