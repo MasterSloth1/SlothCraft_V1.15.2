@@ -186,7 +186,6 @@ import net.slothcraft.item.CopperSwordItem;
 import net.slothcraft.item.CopperShovelItem;
 import net.slothcraft.item.CopperPlateItemItem;
 import net.slothcraft.item.CopperPickaxeItem;
-import net.slothcraft.item.CopperIngotItem;
 import net.slothcraft.item.CopperHoeItem;
 import net.slothcraft.item.CopperGearItemItem;
 import net.slothcraft.item.CopperAxeItem;
@@ -374,9 +373,6 @@ public class SlothcraftModItems {
 	public static final Item CHROMIUM_ARMOR_CHESTPLATE = register(new ChromiumArmorItem.Chestplate());
 	public static final Item CHROMIUM_ARMOR_LEGGINGS = register(new ChromiumArmorItem.Leggings());
 	public static final Item CHROMIUM_ARMOR_BOOTS = register(new ChromiumArmorItem.Boots());
-	public static final Item COPPER_ORE = register(SlothcraftModBlocks.COPPER_ORE, SlothcraftModTabs.TAB_SLOTH_CRAFT_ORES_CREATIVE_TAB);
-	public static final Item COPPER_ORE_BLOCK = register(SlothcraftModBlocks.COPPER_ORE_BLOCK, SlothcraftModTabs.TAB_SLOTH_CRAFT_ORES_CREATIVE_TAB);
-	public static final Item COPPER_INGOT = register(new CopperIngotItem());
 	public static final Item COPPER_PICKAXE = register(new CopperPickaxeItem());
 	public static final Item COPPER_AXE = register(new CopperAxeItem());
 	public static final Item COPPER_SWORD = register(new CopperSwordItem());

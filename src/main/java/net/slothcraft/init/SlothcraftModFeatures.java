@@ -18,7 +18,6 @@ import net.slothcraft.world.features.ores.MithrilOreFeature;
 import net.slothcraft.world.features.ores.LeadOreFeature;
 import net.slothcraft.world.features.ores.JadeOreFeature;
 import net.slothcraft.world.features.ores.IridiumOreFeature;
-import net.slothcraft.world.features.ores.CopperOreFeature;
 import net.slothcraft.world.features.ores.ChromiumOreFeature;
 import net.slothcraft.world.features.ores.AmethystOreFeature;
 import net.slothcraft.world.features.ores.AluminumOreFeature;
@@ -51,8 +50,6 @@ public class SlothcraftModFeatures {
 				AmethystOreFeature.GENERATE_BIOMES, AmethystOreFeature.CONFIGURED_FEATURE));
 		REGISTRY.put(ChromiumOreFeature.FEATURE, new FeatureRegistration(GenerationStep.Decoration.UNDERGROUND_ORES,
 				ChromiumOreFeature.GENERATE_BIOMES, ChromiumOreFeature.CONFIGURED_FEATURE));
-		REGISTRY.put(CopperOreFeature.FEATURE, new FeatureRegistration(GenerationStep.Decoration.UNDERGROUND_ORES, CopperOreFeature.GENERATE_BIOMES,
-				CopperOreFeature.CONFIGURED_FEATURE));
 		REGISTRY.put(IridiumOreFeature.FEATURE, new FeatureRegistration(GenerationStep.Decoration.UNDERGROUND_ORES, IridiumOreFeature.GENERATE_BIOMES,
 				IridiumOreFeature.CONFIGURED_FEATURE));
 		REGISTRY.put(JadeOreFeature.FEATURE, new FeatureRegistration(GenerationStep.Decoration.UNDERGROUND_ORES, JadeOreFeature.GENERATE_BIOMES,

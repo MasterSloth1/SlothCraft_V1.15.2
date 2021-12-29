@@ -5,7 +5,8 @@
       "type": "tab",
       "sortid": 80,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/creative tabs"
     },
     {
       "name": "AluminumGearItem",
@@ -13,245 +14,280 @@
       "sortid": 1,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_gear"
+      "registry_name": "aluminum_gear",
+      "path": "~/items/gears"
     },
     {
       "name": "AmethystGearItem",
       "type": "item",
       "sortid": 2,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "ChromiumGearItem",
       "type": "item",
       "sortid": 3,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "CopperGearItem",
       "type": "item",
       "sortid": 4,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "DiamondGearItem",
       "type": "item",
       "sortid": 5,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "EmeraldGearItem",
       "type": "item",
       "sortid": 6,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "FlintGearItem",
       "type": "item",
       "sortid": 7,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "GobberEndGearItem",
       "type": "item",
       "sortid": 8,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "GobberGearItem",
       "type": "item",
       "sortid": 9,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "GobberNetherGearItem",
       "type": "item",
       "sortid": 10,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "GoldGearItem",
       "type": "item",
       "sortid": 11,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "IridiumGearItem",
       "type": "item",
       "sortid": 12,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "IronGearItem",
       "type": "item",
       "sortid": 13,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "JadeGearItem",
       "type": "item",
       "sortid": 14,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "LapisGearItem",
       "type": "item",
       "sortid": 15,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "LeadGearItem",
       "type": "item",
       "sortid": 16,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "MithrilGearItem",
       "type": "item",
       "sortid": 17,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "NickelGearItem",
       "type": "item",
       "sortid": 18,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "ObsidianGearItem",
       "type": "item",
       "sortid": 19,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "OsmiumGearItem",
       "type": "item",
       "sortid": 20,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "PlatinumGearItem",
       "type": "item",
       "sortid": 21,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "QuartzGearItem",
       "type": "item",
       "sortid": 22,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "RedstoneGearItem",
       "type": "item",
       "sortid": 23,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "RubyGearItem",
       "type": "item",
       "sortid": 24,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "SilverGearItem",
       "type": "item",
       "sortid": 25,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "SteelGearItem",
       "type": "item",
       "sortid": 26,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "StoneGearItem",
       "type": "item",
       "sortid": 27,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "TinGearItem",
       "type": "item",
       "sortid": 28,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "TitaniumGearItem",
       "type": "item",
       "sortid": 29,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "UraniumGearItem",
       "type": "item",
       "sortid": 30,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "WoodenGearItem",
       "type": "item",
       "sortid": 31,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "ZincGearItem",
       "type": "item",
       "sortid": 32,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/gears"
     },
     {
       "name": "GearMoldItem",
       "type": "item",
       "sortid": 33,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items"
     },
     {
       "name": "GearsMakerGui",
       "type": "gui",
       "sortid": 81,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/guis"
     },
     {
       "name": "GearsMakerBlock",
       "type": "block",
       "sortid": 34,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/blocks"
     },
     {
       "name": "GearsMakerBlockUpdateTick",
@@ -278,707 +314,808 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/procedures"
     },
     {
       "name": "WoodenGearRecipe",
       "type": "recipe",
       "sortid": 83,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/recipes"
     },
     {
       "name": "FlintGearRecipe",
       "type": "recipe",
       "sortid": 84,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/recipes"
     },
     {
       "name": "StoneGearRecipe",
       "type": "recipe",
       "sortid": 85,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/recipes"
     },
     {
       "name": "GearsMakerRecipe",
       "type": "recipe",
       "sortid": 86,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/recipes"
     },
     {
       "name": "GearsTag",
       "type": "tag",
       "sortid": 87,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsAluminumTag",
       "type": "tag",
       "sortid": 88,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsAmethystTag",
       "type": "tag",
       "sortid": 89,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsChromiumTag",
       "type": "tag",
       "sortid": 90,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsCopperTag",
       "type": "tag",
       "sortid": 91,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsDiamondTag",
       "type": "tag",
       "sortid": 92,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsEmeraldTag",
       "type": "tag",
       "sortid": 93,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsFlintTag",
       "type": "tag",
       "sortid": 94,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsGobberTag",
       "type": "tag",
       "sortid": 96,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsGoldTag",
       "type": "tag",
       "sortid": 98,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsIridiumTag",
       "type": "tag",
       "sortid": 99,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsIronTag",
       "type": "tag",
       "sortid": 100,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsJadeTag",
       "type": "tag",
       "sortid": 101,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsLapisTag",
       "type": "tag",
       "sortid": 102,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsLeadTag",
       "type": "tag",
       "sortid": 103,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsMithrilTag",
       "type": "tag",
       "sortid": 104,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsNickelTag",
       "type": "tag",
       "sortid": 105,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsObsidianTag",
       "type": "tag",
       "sortid": 106,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsOsmiumTag",
       "type": "tag",
       "sortid": 107,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsPlatinumTag",
       "type": "tag",
       "sortid": 108,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsQuartzTag",
       "type": "tag",
       "sortid": 109,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsRedstoneTag",
       "type": "tag",
       "sortid": 110,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsRubyTag",
       "type": "tag",
       "sortid": 111,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsSilverTag",
       "type": "tag",
       "sortid": 112,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsSteelTag",
       "type": "tag",
       "sortid": 113,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsStoneTag",
       "type": "tag",
       "sortid": 114,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsTinTag",
       "type": "tag",
       "sortid": 115,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsTitaniumTag",
       "type": "tag",
       "sortid": 116,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsUraniumTag",
       "type": "tag",
       "sortid": 117,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsWoodTag",
       "type": "tag",
       "sortid": 118,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearsZincTag",
       "type": "tag",
       "sortid": 119,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "GearMoldRecipe",
       "type": "recipe",
       "sortid": 120,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/recipes"
     },
     {
       "name": "SlothCraftPlatesCreativeTab",
       "type": "tab",
       "sortid": 121,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/creative tabs"
     },
     {
       "name": "AluminumPlateItem",
       "type": "item",
       "sortid": 35,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "AmethystPlateItem",
       "type": "item",
       "sortid": 36,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "ChromiumPlateItem",
       "type": "item",
       "sortid": 37,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "CopperPlateItem",
       "type": "item",
       "sortid": 38,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "DiamondPlateItem",
       "type": "item",
       "sortid": 39,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "EmeraldPlateItem",
       "type": "item",
       "sortid": 40,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "FlintPlateItem",
       "type": "item",
       "sortid": 41,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "GobberEndPlateItem",
       "type": "item",
       "sortid": 42,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "GobberNetherPlateItem",
       "type": "item",
       "sortid": 43,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "GobberPlateItem",
       "type": "item",
       "sortid": 44,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "GoldPlateItem",
       "type": "item",
       "sortid": 45,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "IridiumPlateItem",
       "type": "item",
       "sortid": 46,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "IronPlateItem",
       "type": "item",
       "sortid": 47,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "JadePlateItem",
       "type": "item",
       "sortid": 48,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "LapisPlateItem",
       "type": "item",
       "sortid": 49,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "LeadPlateItem",
       "type": "item",
       "sortid": 50,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "MithrilPlateItem",
       "type": "item",
       "sortid": 51,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "NickelPlateItem",
       "type": "item",
       "sortid": 52,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "ObsidianPlateItem",
       "type": "item",
       "sortid": 53,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "OsmiumPlateItem",
       "type": "item",
       "sortid": 54,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "PlatinumPlateItem",
       "type": "item",
       "sortid": 55,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "QuartzPlateItem",
       "type": "item",
       "sortid": 56,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "RedstonePlateItem",
       "type": "item",
       "sortid": 57,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "RubyPlateItem",
       "type": "item",
       "sortid": 58,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "SilverPlateItem",
       "type": "item",
       "sortid": 59,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "SteelPlateItem",
       "type": "item",
       "sortid": 60,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "TinPlateItem",
       "type": "item",
       "sortid": 62,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "TitaniumPlateItem",
       "type": "item",
       "sortid": 63,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "UraniumPlateItem",
       "type": "item",
       "sortid": 64,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "WoodPlateItem",
       "type": "item",
       "sortid": 65,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "ZincPlateItem",
       "type": "item",
       "sortid": 66,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items/plates"
     },
     {
       "name": "PlatesTag",
       "type": "tag",
       "sortid": 122,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesAluminumTag",
       "type": "tag",
       "sortid": 123,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesAmethystTag",
       "type": "tag",
       "sortid": 124,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesChromiumTag",
       "type": "tag",
       "sortid": 125,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesCopperTag",
       "type": "tag",
       "sortid": 126,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesDiamondTag",
       "type": "tag",
       "sortid": 127,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesEmeraldTag",
       "type": "tag",
       "sortid": 128,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesFlintTag",
       "type": "tag",
       "sortid": 129,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesGobberTag",
       "type": "tag",
       "sortid": 132,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesGoldTag",
       "type": "tag",
       "sortid": 133,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesIridiumTag",
       "type": "tag",
       "sortid": 134,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesIronTag",
       "type": "tag",
       "sortid": 135,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesJadeTag",
       "type": "tag",
       "sortid": 136,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesLapisTag",
       "type": "tag",
       "sortid": 137,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesLeadTag",
       "type": "tag",
       "sortid": 138,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesMithrilTag",
       "type": "tag",
       "sortid": 139,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesNickelTag",
       "type": "tag",
       "sortid": 140,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesObsidianTag",
       "type": "tag",
       "sortid": 141,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesOsmiumTag",
       "type": "tag",
       "sortid": 142,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesPlatinumTag",
       "type": "tag",
       "sortid": 143,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesQuartzTag",
       "type": "tag",
       "sortid": 144,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesRedstoneTag",
       "type": "tag",
       "sortid": 145,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesRubyTag",
       "type": "tag",
       "sortid": 146,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesSilverTag",
       "type": "tag",
       "sortid": 147,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesSteelTag",
       "type": "tag",
       "sortid": 148,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesTinTag",
       "type": "tag",
       "sortid": 149,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesTitaniumTag",
       "type": "tag",
       "sortid": 150,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesUraniumTag",
       "type": "tag",
       "sortid": 151,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesWoodTag",
       "type": "tag",
       "sortid": 152,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlatesZincTag",
       "type": "tag",
       "sortid": 153,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/tags"
     },
     {
       "name": "PlateHammerItem",
       "type": "item",
       "sortid": 67,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/items"
     },
     {
       "name": "PlatesMakerGui",
       "type": "gui",
       "sortid": 154,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/guis"
     },
     {
       "name": "PlatesMakerBlockUpdateTick",
@@ -1005,14 +1142,16 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/procedures"
     },
     {
       "name": "PlatesMakerBlock",
       "type": "block",
       "sortid": 68,
       "compiles": true,
-      "locked_code": false
+      "locked_code": false,
+      "path": "~/blocks"
     },
     {
       "name": "ItemMoverPlatesMakerProcedure",
@@ -1039,7 +1178,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/procedures"
     },
     {
       "name": "ItemMoverGearsMakerProcedure",
@@ -1066,7 +1206,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/procedures"
     },
     {
       "name": "SlothCraftFoodCreativeTab",
@@ -1074,7 +1215,8 @@
       "sortid": 158,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "sloth_craft_food_creative_tab"
+      "registry_name": "sloth_craft_food_creative_tab",
+      "path": "~/food"
     },
     {
       "name": "BaconFood",
@@ -1082,7 +1224,8 @@
       "sortid": 69,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "bacon_food"
+      "registry_name": "bacon_food",
+      "path": "~/food"
     },
     {
       "name": "OrangeFood",
@@ -1090,7 +1233,8 @@
       "sortid": 70,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "orange_food"
+      "registry_name": "orange_food",
+      "path": "~/food"
     },
     {
       "name": "BananaFood",
@@ -1098,7 +1242,8 @@
       "sortid": 71,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "banana_food"
+      "registry_name": "banana_food",
+      "path": "~/food"
     },
     {
       "name": "CheeseFood",
@@ -1106,7 +1251,8 @@
       "sortid": 72,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "cheese_food"
+      "registry_name": "cheese_food",
+      "path": "~/food"
     },
     {
       "name": "DoughFood",
@@ -1114,7 +1260,8 @@
       "sortid": 73,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "dough_food"
+      "registry_name": "dough_food",
+      "path": "~/food"
     },
     {
       "name": "FlourFood",
@@ -1122,7 +1269,8 @@
       "sortid": 74,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "flour_food"
+      "registry_name": "flour_food",
+      "path": "~/food"
     },
     {
       "name": "ButterFood",
@@ -1130,7 +1278,8 @@
       "sortid": 75,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "butter_food"
+      "registry_name": "butter_food",
+      "path": "~/food"
     },
     {
       "name": "CreamFood",
@@ -1138,7 +1287,8 @@
       "sortid": 76,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "cream_food"
+      "registry_name": "cream_food",
+      "path": "~/food"
     },
     {
       "name": "SaltFood",
@@ -1146,7 +1296,8 @@
       "sortid": 77,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "salt_food"
+      "registry_name": "salt_food",
+      "path": "~/food"
     },
     {
       "name": "MinceFood",
@@ -1154,7 +1305,8 @@
       "sortid": 78,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mince_food"
+      "registry_name": "mince_food",
+      "path": "~/food"
     },
     {
       "name": "PieFood",
@@ -1162,7 +1314,8 @@
       "sortid": 79,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "pie_food"
+      "registry_name": "pie_food",
+      "path": "~/food"
     },
     {
       "name": "StonePlateItem",
@@ -1170,7 +1323,8 @@
       "sortid": 61,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "stone_plate_item"
+      "registry_name": "stone_plate_item",
+      "path": "~/items/plates"
     },
     {
       "name": "BaconRecipe",
@@ -1178,7 +1332,8 @@
       "sortid": 159,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "bacon_recipe"
+      "registry_name": "bacon_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "CheeseRecipe",
@@ -1186,7 +1341,8 @@
       "sortid": 160,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "cheese_recipe"
+      "registry_name": "cheese_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "DoughRecipe",
@@ -1194,7 +1350,8 @@
       "sortid": 161,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "dough_recipe"
+      "registry_name": "dough_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "FlourRecipe",
@@ -1202,7 +1359,8 @@
       "sortid": 162,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "flour_recipe"
+      "registry_name": "flour_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ButterRecipe",
@@ -1210,7 +1368,8 @@
       "sortid": 164,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "butter_recipe"
+      "registry_name": "butter_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "KnifeRecipe",
@@ -1218,7 +1377,8 @@
       "sortid": 165,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "knife_recipe"
+      "registry_name": "knife_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "PieRecipe",
@@ -1226,7 +1386,8 @@
       "sortid": 166,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "pie_recipe"
+      "registry_name": "pie_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "MinceRecipe",
@@ -1234,7 +1395,8 @@
       "sortid": 167,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mince_recipe"
+      "registry_name": "mince_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "KnifeItem",
@@ -1242,7 +1404,8 @@
       "sortid": 169,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "knife_item"
+      "registry_name": "knife_item",
+      "path": "~/items"
     },
     {
       "name": "WhiskItem",
@@ -1250,7 +1413,8 @@
       "sortid": 170,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "whisk_item"
+      "registry_name": "whisk_item",
+      "path": "~/items"
     },
     {
       "name": "WhiskRecipe",
@@ -1258,7 +1422,8 @@
       "sortid": 171,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "whisk_recipe"
+      "registry_name": "whisk_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "PlateHammerRecipe",
@@ -1266,7 +1431,8 @@
       "sortid": 172,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "plate_hammer_recipe"
+      "registry_name": "plate_hammer_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "PlateMakerRecipe",
@@ -1274,7 +1440,8 @@
       "sortid": 173,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "plate_maker_recipe"
+      "registry_name": "plate_maker_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "CreamRecipe",
@@ -1282,7 +1449,8 @@
       "sortid": 174,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "cream_recipe"
+      "registry_name": "cream_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SaltRecipe",
@@ -1290,7 +1458,8 @@
       "sortid": 175,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "salt_recipe"
+      "registry_name": "salt_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SlothCraftOtherCreativeTab",
@@ -1298,7 +1467,8 @@
       "sortid": 176,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "sloth_craft_other_creative_tab"
+      "registry_name": "sloth_craft_other_creative_tab",
+      "path": "~/creative tabs"
     },
     {
       "name": "ShinyDiamond",
@@ -1306,7 +1476,8 @@
       "sortid": 176,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "shiny_diamond"
+      "registry_name": "shiny_diamond",
+      "path": "~/items"
     },
     {
       "name": "VioletHazePlant",
@@ -1314,7 +1485,8 @@
       "sortid": 177,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "violet_haze_plant"
+      "registry_name": "violet_haze_plant",
+      "path": "~/plant"
     },
     {
       "name": "VioletHazeSeedItem",
@@ -1322,7 +1494,8 @@
       "sortid": 178,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "violet_haze_seed_item"
+      "registry_name": "violet_haze_seed_item",
+      "path": "~/items"
     },
     {
       "name": "VioletHazeNugItem",
@@ -1330,7 +1503,8 @@
       "sortid": 179,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "violet_haze_nug_item"
+      "registry_name": "violet_haze_nug_item",
+      "path": "~/items"
     },
     {
       "name": "VioletHazeKiefItem",
@@ -1338,7 +1512,8 @@
       "sortid": 180,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "violet_haze_kief_item"
+      "registry_name": "violet_haze_kief_item",
+      "path": "~/items"
     },
     {
       "name": "GlassReceptacleItem",
@@ -1346,7 +1521,8 @@
       "sortid": 181,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "glass_receptacle_item"
+      "registry_name": "glass_receptacle_item",
+      "path": "~/items"
     },
     {
       "name": "VioletHazeLeafItem",
@@ -1354,7 +1530,8 @@
       "sortid": 182,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "violet_haze_leaf_item"
+      "registry_name": "violet_haze_leaf_item",
+      "path": "~/items"
     },
     {
       "name": "PackedGlassReceptacleFoodFoodEaten",
@@ -1370,7 +1547,8 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/procedures"
     },
     {
       "name": "PackedGlassReceptacleFood",
@@ -1378,7 +1556,8 @@
       "sortid": 183,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "packed_glass_receptacle_food"
+      "registry_name": "packed_glass_receptacle_food",
+      "path": "~/food"
     },
     {
       "name": "VioletHazeSeedRecipe",
@@ -1386,7 +1565,8 @@
       "sortid": 184,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "violet_haze_seed_recipe"
+      "registry_name": "violet_haze_seed_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "VioletHazeGrinderItem",
@@ -1394,7 +1574,8 @@
       "sortid": 185,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "violet_haze_grinder_item"
+      "registry_name": "violet_haze_grinder_item",
+      "path": "~/items"
     },
     {
       "name": "VioletHazeNugRecipe",
@@ -1402,7 +1583,8 @@
       "sortid": 186,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "violet_haze_nug_recipe"
+      "registry_name": "violet_haze_nug_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "VioletHazeKiefRecipe",
@@ -1410,7 +1592,8 @@
       "sortid": 187,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "violet_haze_kief_recipe"
+      "registry_name": "violet_haze_kief_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "GlassReceptacleRecipe",
@@ -1418,7 +1601,8 @@
       "sortid": 188,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "glass_receptacle_recipe"
+      "registry_name": "glass_receptacle_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "PackedGlassReceptacleRecipe",
@@ -1426,7 +1610,8 @@
       "sortid": 189,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "packed_glass_receptacle_recipe"
+      "registry_name": "packed_glass_receptacle_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "VioletHazeGrinderRecipe",
@@ -1434,7 +1619,8 @@
       "sortid": 190,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "violet_haze_grinder_recipe"
+      "registry_name": "violet_haze_grinder_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SlothCraftArmourAndWeaponsCreativeTab",
@@ -1442,7 +1628,8 @@
       "sortid": 191,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "sloth_craft_armour_and_tools_creative_tab"
+      "registry_name": "sloth_craft_armour_and_tools_creative_tab",
+      "path": "~/creative tabs"
     },
     {
       "name": "StaffStickItem",
@@ -1450,7 +1637,8 @@
       "sortid": 191,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "staff_stick_item"
+      "registry_name": "staff_stick_item",
+      "path": "~/items"
     },
     {
       "name": "StaffStickRecipe",
@@ -1458,7 +1646,8 @@
       "sortid": 192,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "staff_stick_recipe"
+      "registry_name": "staff_stick_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "FireStaffRangedWeaponBulletHitsLivingEntity",
@@ -1474,7 +1663,8 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/procedures"
     },
     {
       "name": "FireStaffRangedWeapon",
@@ -1482,7 +1672,8 @@
       "sortid": 193,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "fire_staff_ranged_weapon"
+      "registry_name": "fire_staff_ranged_weapon",
+      "path": "~/items/tools/staffs"
     },
     {
       "name": "PoisonStaffRangedWeapon",
@@ -1490,7 +1681,8 @@
       "sortid": 194,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "poison_staff_ranged_weapon"
+      "registry_name": "poison_staff_ranged_weapon",
+      "path": "~/items/tools/staffs"
     },
     {
       "name": "IceStaffRangedWeapon",
@@ -1498,7 +1690,8 @@
       "sortid": 195,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ice_staff_ranged_weapon"
+      "registry_name": "ice_staff_ranged_weapon",
+      "path": "~/items/tools/staffs"
     },
     {
       "name": "WitherStaffRangedWeapon",
@@ -1506,7 +1699,8 @@
       "sortid": 196,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "wither_staff_ranged_weapon"
+      "registry_name": "wither_staff_ranged_weapon",
+      "path": "~/items/tools/staffs"
     },
     {
       "name": "PoisonStaffRangedWeaponBulletHitsLivingEntity",
@@ -1522,7 +1716,8 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/procedures"
     },
     {
       "name": "IceStaffRangedWeaponBulletHitsLivingEntity",
@@ -1538,7 +1733,8 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/procedures"
     },
     {
       "name": "WitherStaffRangedWeaponBulletHitsLivingEntity",
@@ -1554,7 +1750,8 @@
             "type": "entity"
           }
         ]
-      }
+      },
+      "path": "~/procedures"
     },
     {
       "name": "FireStaffRecipe",
@@ -1562,7 +1759,8 @@
       "sortid": 200,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "fire_staff_recipe"
+      "registry_name": "fire_staff_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "PoisonStaffRecipe",
@@ -1570,7 +1768,8 @@
       "sortid": 201,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "poison_staff_recipe"
+      "registry_name": "poison_staff_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "IceStaffRecipe",
@@ -1578,7 +1777,8 @@
       "sortid": 202,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ice_staff_recipe"
+      "registry_name": "ice_staff_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "WitherStaffRecipe",
@@ -1586,7 +1786,8 @@
       "sortid": 203,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "wither_staff_recipe"
+      "registry_name": "wither_staff_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "EnderDragonLootTable",
@@ -1594,7 +1795,8 @@
       "sortid": 204,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ender_dragon_loot_table"
+      "registry_name": "ender_dragon_loot_table",
+      "path": "~/loot_tables"
     },
     {
       "name": "GearsEndGobberTag",
@@ -1602,7 +1804,8 @@
       "sortid": 205,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "gears_end_gobber_tag"
+      "registry_name": "gears_end_gobber_tag",
+      "path": "~/tags"
     },
     {
       "name": "GearsNetherGobberTag",
@@ -1610,7 +1813,8 @@
       "sortid": 206,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "gears_nether_gobber_tag"
+      "registry_name": "gears_nether_gobber_tag",
+      "path": "~/tags"
     },
     {
       "name": "PlatesEndGobberTag",
@@ -1618,7 +1822,8 @@
       "sortid": 207,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "plates_end_gobber_tag"
+      "registry_name": "plates_end_gobber_tag",
+      "path": "~/tags"
     },
     {
       "name": "PlatesNetherGobberTag",
@@ -1626,7 +1831,8 @@
       "sortid": 208,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "plates_nether_gobber_tag"
+      "registry_name": "plates_nether_gobber_tag",
+      "path": "~/tags"
     },
     {
       "name": "AluminumOre",
@@ -1634,7 +1840,8 @@
       "sortid": 209,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_ore"
+      "registry_name": "aluminum_ore",
+      "path": "~/blocks/ores"
     },
     {
       "name": "AluminumOreBlock",
@@ -1642,7 +1849,8 @@
       "sortid": 210,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_ore_block"
+      "registry_name": "aluminum_ore_block",
+      "path": "~/blocks/storage_blocks"
     },
     {
       "name": "AluminumIngot",
@@ -1650,7 +1858,8 @@
       "sortid": 211,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_ingot"
+      "registry_name": "aluminum_ingot",
+      "path": "~/items/ingots"
     },
     {
       "name": "AluminumOreBlockRecipe",
@@ -1658,7 +1867,8 @@
       "sortid": 212,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_ore_block_recipe"
+      "registry_name": "aluminum_ore_block_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "AluminumBlockOreRecipe",
@@ -1666,7 +1876,8 @@
       "sortid": 213,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_block_ore_recipe"
+      "registry_name": "aluminum_block_ore_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "AluminumOreSmelting",
@@ -1674,7 +1885,8 @@
       "sortid": 214,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_ore_smelting"
+      "registry_name": "aluminum_ore_smelting",
+      "path": "~/recipes"
     },
     {
       "name": "AluminumPickaxe",
@@ -1682,7 +1894,8 @@
       "sortid": 215,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_pickaxe"
+      "registry_name": "aluminum_pickaxe",
+      "path": "~/items/tools/pickaxes"
     },
     {
       "name": "AluminumAxe",
@@ -1690,7 +1903,8 @@
       "sortid": 216,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_axe"
+      "registry_name": "aluminum_axe",
+      "path": "~/items/tools/axes"
     },
     {
       "name": "AluminumSword",
@@ -1698,7 +1912,8 @@
       "sortid": 217,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_sword"
+      "registry_name": "aluminum_sword",
+      "path": "~/items/tools/swords"
     },
     {
       "name": "AluminumShovel",
@@ -1706,7 +1921,8 @@
       "sortid": 218,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_shovel"
+      "registry_name": "aluminum_shovel",
+      "path": "~/items/tools/shovels"
     },
     {
       "name": "AluminumHoe",
@@ -1714,7 +1930,8 @@
       "sortid": 219,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_hoe"
+      "registry_name": "aluminum_hoe",
+      "path": "~/items/tools/hoes"
     },
     {
       "name": "AluminumPickaxeRecipe",
@@ -1722,7 +1939,8 @@
       "sortid": 220,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_pickaxe_recipe"
+      "registry_name": "aluminum_pickaxe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "AluminumAxeRecipe",
@@ -1730,7 +1948,8 @@
       "sortid": 221,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_axe_recipe"
+      "registry_name": "aluminum_axe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "AluminumSwordRecipe",
@@ -1738,7 +1957,8 @@
       "sortid": 222,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_sword_recipe"
+      "registry_name": "aluminum_sword_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "AluminumShovelRecipe",
@@ -1746,7 +1966,8 @@
       "sortid": 223,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_shovel_recipe"
+      "registry_name": "aluminum_shovel_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "AluminumHoeRecipe",
@@ -1754,7 +1975,8 @@
       "sortid": 224,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_hoe_recipe"
+      "registry_name": "aluminum_hoe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "AluminumArmor",
@@ -1768,7 +1990,8 @@
         "el": true,
         "eb": true,
         "ec": true
-      }
+      },
+      "path": "~/items/armour"
     },
     {
       "name": "AluminumArmorHelmetRecipe",
@@ -1776,7 +1999,8 @@
       "sortid": 226,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_armor_helmet_recipe"
+      "registry_name": "aluminum_armor_helmet_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "AluminumArmorBodyRecipe",
@@ -1784,7 +2008,8 @@
       "sortid": 227,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_armor_body_recipe"
+      "registry_name": "aluminum_armor_body_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "AluminumArmorLeggingsRecipe",
@@ -1792,7 +2017,8 @@
       "sortid": 228,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_armor_leggings_recipe"
+      "registry_name": "aluminum_armor_leggings_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "AluminumArmorBootsRecipe",
@@ -1800,7 +2026,8 @@
       "sortid": 229,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_armor_boots_recipe"
+      "registry_name": "aluminum_armor_boots_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "AluminumIngotTag",
@@ -1808,7 +2035,8 @@
       "sortid": 230,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_ingot_tag"
+      "registry_name": "aluminum_ingot_tag",
+      "path": "~/tags"
     },
     {
       "name": "AluminumOreTag",
@@ -1816,7 +2044,8 @@
       "sortid": 231,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_ore_tag"
+      "registry_name": "aluminum_ore_tag",
+      "path": "~/tags"
     },
     {
       "name": "AluminumBlockTag",
@@ -1824,7 +2053,8 @@
       "sortid": 232,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "aluminum_block_tag"
+      "registry_name": "aluminum_block_tag",
+      "path": "~/tags"
     },
     {
       "name": "AmethystOre",
@@ -1832,7 +2062,8 @@
       "sortid": 233,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_ore"
+      "registry_name": "amethyst_ore",
+      "path": "~/blocks/ores"
     },
     {
       "name": "AmethystOreBlock",
@@ -1840,7 +2071,8 @@
       "sortid": 234,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_ore_block"
+      "registry_name": "amethyst_ore_block",
+      "path": "~/blocks/storage_blocks"
     },
     {
       "name": "AmethystGem",
@@ -1848,7 +2080,8 @@
       "sortid": 235,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_gem"
+      "registry_name": "amethyst_gem",
+      "path": "~/items/gems"
     },
     {
       "name": "AmethystOreBlockRecipe",
@@ -1856,7 +2089,8 @@
       "sortid": 236,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_ore_block_recipe"
+      "registry_name": "amethyst_ore_block_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "AmethystBlockOreRecipe",
@@ -1864,7 +2098,8 @@
       "sortid": 237,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_block_ore_recipe"
+      "registry_name": "amethyst_block_ore_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "AmethystOreSmelting",
@@ -1872,7 +2107,8 @@
       "sortid": 238,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_ore_smelting"
+      "registry_name": "amethyst_ore_smelting",
+      "path": "~/recipes"
     },
     {
       "name": "AmethystPickaxe",
@@ -1880,7 +2116,8 @@
       "sortid": 239,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_pickaxe"
+      "registry_name": "amethyst_pickaxe",
+      "path": "~/items/tools/pickaxes"
     },
     {
       "name": "AmethystAxe",
@@ -1888,7 +2125,8 @@
       "sortid": 240,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_axe"
+      "registry_name": "amethyst_axe",
+      "path": "~/items/tools/axes"
     },
     {
       "name": "AmethystSword",
@@ -1896,7 +2134,8 @@
       "sortid": 241,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_sword"
+      "registry_name": "amethyst_sword",
+      "path": "~/items/tools/swords"
     },
     {
       "name": "AmethystShovel",
@@ -1904,7 +2143,8 @@
       "sortid": 242,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_shovel"
+      "registry_name": "amethyst_shovel",
+      "path": "~/items/tools/shovels"
     },
     {
       "name": "AmethystHoe",
@@ -1912,7 +2152,8 @@
       "sortid": 243,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_hoe"
+      "registry_name": "amethyst_hoe",
+      "path": "~/items/tools/hoes"
     },
     {
       "name": "AmethystPickaxeRecipe",
@@ -1920,7 +2161,8 @@
       "sortid": 244,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_pickaxe_recipe"
+      "registry_name": "amethyst_pickaxe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "AmethystAxeRecipe",
@@ -1928,7 +2170,8 @@
       "sortid": 245,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_axe_recipe"
+      "registry_name": "amethyst_axe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "AmethystSwordRecipe",
@@ -1936,7 +2179,8 @@
       "sortid": 246,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_sword_recipe"
+      "registry_name": "amethyst_sword_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "AmethystShovelRecipe",
@@ -1944,7 +2188,8 @@
       "sortid": 247,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_shovel_recipe"
+      "registry_name": "amethyst_shovel_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "AmethystHoeRecipe",
@@ -1952,7 +2197,8 @@
       "sortid": 248,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_hoe_recipe"
+      "registry_name": "amethyst_hoe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "AmethystArmor",
@@ -1966,7 +2212,8 @@
         "el": true,
         "eb": true,
         "ec": true
-      }
+      },
+      "path": "~/items/armour"
     },
     {
       "name": "AmethystArmorHelmetRecipe",
@@ -1974,7 +2221,8 @@
       "sortid": 250,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_armor_helmet_recipe"
+      "registry_name": "amethyst_armor_helmet_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "AmethystArmorBodyRecipe",
@@ -1982,7 +2230,8 @@
       "sortid": 251,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_armor_body_recipe"
+      "registry_name": "amethyst_armor_body_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "AmethystArmorLeggingsRecipe",
@@ -1990,7 +2239,8 @@
       "sortid": 252,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_armor_leggings_recipe"
+      "registry_name": "amethyst_armor_leggings_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "AmethystArmorBootsRecipe",
@@ -1998,7 +2248,8 @@
       "sortid": 253,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_armor_boots_recipe"
+      "registry_name": "amethyst_armor_boots_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SlothCraftOresCreativeTab",
@@ -2006,7 +2257,8 @@
       "sortid": 254,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "sloth_craft_ores_creative_tab"
+      "registry_name": "sloth_craft_ores_creative_tab",
+      "path": "~/creative tabs"
     },
     {
       "name": "AmethystOreTag",
@@ -2014,7 +2266,8 @@
       "sortid": 255,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_ore_tag"
+      "registry_name": "amethyst_ore_tag",
+      "path": "~/tags"
     },
     {
       "name": "AmethystBlockTag",
@@ -2022,7 +2275,8 @@
       "sortid": 256,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_block_tag"
+      "registry_name": "amethyst_block_tag",
+      "path": "~/tags"
     },
     {
       "name": "AmethystGemTag",
@@ -2030,7 +2284,8 @@
       "sortid": 257,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "amethyst_gem_tag"
+      "registry_name": "amethyst_gem_tag",
+      "path": "~/tags"
     },
     {
       "name": "ChromiumOre",
@@ -2038,7 +2293,8 @@
       "sortid": 258,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_ore"
+      "registry_name": "chromium_ore",
+      "path": "~/blocks/ores"
     },
     {
       "name": "ChromiumOreBlock",
@@ -2046,7 +2302,8 @@
       "sortid": 259,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_ore_block"
+      "registry_name": "chromium_ore_block",
+      "path": "~/blocks/ores"
     },
     {
       "name": "ChromiumIngot",
@@ -2054,7 +2311,8 @@
       "sortid": 260,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_ingot"
+      "registry_name": "chromium_ingot",
+      "path": "~/items/ingots"
     },
     {
       "name": "ChromiumOreBlockRecipe",
@@ -2062,7 +2320,8 @@
       "sortid": 261,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_ore_block_recipe"
+      "registry_name": "chromium_ore_block_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ChromiumBlockOreRecipe",
@@ -2070,7 +2329,8 @@
       "sortid": 262,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_block_ore_recipe"
+      "registry_name": "chromium_block_ore_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ChromiumOreSmelting",
@@ -2078,7 +2338,8 @@
       "sortid": 263,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_ore_smelting"
+      "registry_name": "chromium_ore_smelting",
+      "path": "~/recipes"
     },
     {
       "name": "ChromiumPickaxe",
@@ -2086,7 +2347,8 @@
       "sortid": 264,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_pickaxe"
+      "registry_name": "chromium_pickaxe",
+      "path": "~/items/tools/pickaxes"
     },
     {
       "name": "ChromiumAxe",
@@ -2094,7 +2356,8 @@
       "sortid": 265,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_axe"
+      "registry_name": "chromium_axe",
+      "path": "~/items/tools/axes"
     },
     {
       "name": "ChromiumSword",
@@ -2102,7 +2365,8 @@
       "sortid": 266,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_sword"
+      "registry_name": "chromium_sword",
+      "path": "~/items/tools/swords"
     },
     {
       "name": "ChromiumShovel",
@@ -2110,7 +2374,8 @@
       "sortid": 267,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_shovel"
+      "registry_name": "chromium_shovel",
+      "path": "~/items/tools/shovels"
     },
     {
       "name": "ChromiumHoe",
@@ -2118,7 +2383,8 @@
       "sortid": 268,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_hoe"
+      "registry_name": "chromium_hoe",
+      "path": "~/items/tools/hoes"
     },
     {
       "name": "ChromiumPickaxeRecipe",
@@ -2126,7 +2392,8 @@
       "sortid": 269,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_pickaxe_recipe"
+      "registry_name": "chromium_pickaxe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ChromiumAxeRecipe",
@@ -2134,7 +2401,8 @@
       "sortid": 270,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_axe_recipe"
+      "registry_name": "chromium_axe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ChromiumSwordRecipe",
@@ -2142,7 +2410,8 @@
       "sortid": 271,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_sword_recipe"
+      "registry_name": "chromium_sword_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ChromiumShovelRecipe",
@@ -2150,7 +2419,8 @@
       "sortid": 272,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_shovel_recipe"
+      "registry_name": "chromium_shovel_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ChromiumHoeRecipe",
@@ -2158,7 +2428,8 @@
       "sortid": 273,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_hoe_recipe"
+      "registry_name": "chromium_hoe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ChromiumArmor",
@@ -2172,7 +2443,8 @@
         "el": true,
         "eb": true,
         "ec": true
-      }
+      },
+      "path": "~/items/armour"
     },
     {
       "name": "ChromiumArmorHelmetRecipe",
@@ -2180,7 +2452,8 @@
       "sortid": 275,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_armor_helmet_recipe"
+      "registry_name": "chromium_armor_helmet_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ChromiumArmorBodyRecipe",
@@ -2188,7 +2461,8 @@
       "sortid": 276,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_armor_body_recipe"
+      "registry_name": "chromium_armor_body_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ChromiumArmorLeggingsRecipe",
@@ -2196,7 +2470,8 @@
       "sortid": 277,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_armor_leggings_recipe"
+      "registry_name": "chromium_armor_leggings_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ChromiumArmorBootsRecipe",
@@ -2204,7 +2479,8 @@
       "sortid": 278,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_armor_boots_recipe"
+      "registry_name": "chromium_armor_boots_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ChromiumOreTag",
@@ -2212,7 +2488,8 @@
       "sortid": 279,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_ore_tag"
+      "registry_name": "chromium_ore_tag",
+      "path": "~/tags"
     },
     {
       "name": "ChromiumBlockTag",
@@ -2220,7 +2497,8 @@
       "sortid": 280,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_block_tag"
+      "registry_name": "chromium_block_tag",
+      "path": "~/tags"
     },
     {
       "name": "ChromiumIngotTag",
@@ -2228,55 +2506,8 @@
       "sortid": 281,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "chromium_ingot_tag"
-    },
-    {
-      "name": "CopperOre",
-      "type": "block",
-      "sortid": 282,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "copper_ore"
-    },
-    {
-      "name": "CopperOreBlock",
-      "type": "block",
-      "sortid": 283,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "copper_ore_block"
-    },
-    {
-      "name": "CopperIngot",
-      "type": "item",
-      "sortid": 284,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "copper_ingot"
-    },
-    {
-      "name": "CopperOreBlockRecipe",
-      "type": "recipe",
-      "sortid": 285,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "copper_ore_block_recipe"
-    },
-    {
-      "name": "CopperBlockOreRecipe",
-      "type": "recipe",
-      "sortid": 286,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "copper_block_ore_recipe"
-    },
-    {
-      "name": "CopperOreSmelting",
-      "type": "recipe",
-      "sortid": 287,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "copper_ore_smelting"
+      "registry_name": "chromium_ingot_tag",
+      "path": "~/tags"
     },
     {
       "name": "CopperPickaxe",
@@ -2284,7 +2515,8 @@
       "sortid": 288,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "copper_pickaxe"
+      "registry_name": "copper_pickaxe",
+      "path": "~/items/tools/pickaxes"
     },
     {
       "name": "CopperAxe",
@@ -2292,7 +2524,8 @@
       "sortid": 289,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "copper_axe"
+      "registry_name": "copper_axe",
+      "path": "~/items/tools/axes"
     },
     {
       "name": "CopperSword",
@@ -2300,7 +2533,8 @@
       "sortid": 290,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "copper_sword"
+      "registry_name": "copper_sword",
+      "path": "~/items/tools/swords"
     },
     {
       "name": "CopperShovel",
@@ -2308,7 +2542,8 @@
       "sortid": 291,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "copper_shovel"
+      "registry_name": "copper_shovel",
+      "path": "~/items/tools/shovels"
     },
     {
       "name": "CopperHoe",
@@ -2316,7 +2551,8 @@
       "sortid": 292,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "copper_hoe"
+      "registry_name": "copper_hoe",
+      "path": "~/items/tools/hoes"
     },
     {
       "name": "CopperPickaxeRecipe",
@@ -2324,7 +2560,8 @@
       "sortid": 293,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "copper_pickaxe_recipe"
+      "registry_name": "copper_pickaxe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "CopperAxeRecipe",
@@ -2332,7 +2569,8 @@
       "sortid": 294,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "copper_axe_recipe"
+      "registry_name": "copper_axe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "CopperSwordRecipe",
@@ -2340,7 +2578,8 @@
       "sortid": 295,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "copper_sword_recipe"
+      "registry_name": "copper_sword_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "CopperShovelRecipe",
@@ -2348,7 +2587,8 @@
       "sortid": 296,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "copper_shovel_recipe"
+      "registry_name": "copper_shovel_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "CopperHoeRecipe",
@@ -2356,7 +2596,8 @@
       "sortid": 297,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "copper_hoe_recipe"
+      "registry_name": "copper_hoe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "CopperArmor",
@@ -2370,7 +2611,8 @@
         "el": true,
         "eb": true,
         "ec": true
-      }
+      },
+      "path": "~/items/armour"
     },
     {
       "name": "CopperArmorHelmetRecipe",
@@ -2378,7 +2620,8 @@
       "sortid": 299,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "copper_armor_helmet_recipe"
+      "registry_name": "copper_armor_helmet_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "CopperArmorBodyRecipe",
@@ -2386,7 +2629,8 @@
       "sortid": 300,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "copper_armor_body_recipe"
+      "registry_name": "copper_armor_body_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "CopperArmorLeggingsRecipe",
@@ -2394,7 +2638,8 @@
       "sortid": 301,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "copper_armor_leggings_recipe"
+      "registry_name": "copper_armor_leggings_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "CopperArmorBootsRecipe",
@@ -2402,31 +2647,8 @@
       "sortid": 302,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "copper_armor_boots_recipe"
-    },
-    {
-      "name": "CopperOreTag",
-      "type": "tag",
-      "sortid": 303,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "copper_ore_tag"
-    },
-    {
-      "name": "CopperBlockTag",
-      "type": "tag",
-      "sortid": 304,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "copper_block_tag"
-    },
-    {
-      "name": "CopperIngotTag",
-      "type": "tag",
-      "sortid": 305,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "copper_ingot_tag"
+      "registry_name": "copper_armor_boots_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "IridiumOre",
@@ -2434,7 +2656,8 @@
       "sortid": 306,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_ore"
+      "registry_name": "iridium_ore",
+      "path": "~/blocks/ores"
     },
     {
       "name": "IridiumOreBlock",
@@ -2442,7 +2665,8 @@
       "sortid": 307,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_ore_block"
+      "registry_name": "iridium_ore_block",
+      "path": "~/blocks/storage_blocks"
     },
     {
       "name": "IridiumIngot",
@@ -2450,7 +2674,8 @@
       "sortid": 308,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_ingot"
+      "registry_name": "iridium_ingot",
+      "path": "~/items/ingots"
     },
     {
       "name": "IridiumOreBlockRecipe",
@@ -2458,7 +2683,8 @@
       "sortid": 309,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_ore_block_recipe"
+      "registry_name": "iridium_ore_block_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "IridiumBlockOreRecipe",
@@ -2466,7 +2692,8 @@
       "sortid": 310,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_block_ore_recipe"
+      "registry_name": "iridium_block_ore_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "IridiumOreSmelting",
@@ -2474,7 +2701,8 @@
       "sortid": 311,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_ore_smelting"
+      "registry_name": "iridium_ore_smelting",
+      "path": "~/recipes"
     },
     {
       "name": "IridiumPickaxe",
@@ -2482,7 +2710,8 @@
       "sortid": 312,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_pickaxe"
+      "registry_name": "iridium_pickaxe",
+      "path": "~/items/tools/pickaxes"
     },
     {
       "name": "IridiumAxe",
@@ -2490,7 +2719,8 @@
       "sortid": 313,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_axe"
+      "registry_name": "iridium_axe",
+      "path": "~/items/tools/axes"
     },
     {
       "name": "IridiumSword",
@@ -2498,7 +2728,8 @@
       "sortid": 314,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_sword"
+      "registry_name": "iridium_sword",
+      "path": "~/items/tools/swords"
     },
     {
       "name": "IridiumShovel",
@@ -2506,7 +2737,8 @@
       "sortid": 315,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_shovel"
+      "registry_name": "iridium_shovel",
+      "path": "~/items/tools/shovels"
     },
     {
       "name": "IridiumHoe",
@@ -2514,7 +2746,8 @@
       "sortid": 316,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_hoe"
+      "registry_name": "iridium_hoe",
+      "path": "~/items/tools/hoes"
     },
     {
       "name": "IridiumPickaxeRecipe",
@@ -2522,7 +2755,8 @@
       "sortid": 317,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_pickaxe_recipe"
+      "registry_name": "iridium_pickaxe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "IridiumAxeRecipe",
@@ -2530,7 +2764,8 @@
       "sortid": 318,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_axe_recipe"
+      "registry_name": "iridium_axe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "IridiumSwordRecipe",
@@ -2538,7 +2773,8 @@
       "sortid": 319,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_sword_recipe"
+      "registry_name": "iridium_sword_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "IridiumShovelRecipe",
@@ -2546,7 +2782,8 @@
       "sortid": 320,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_shovel_recipe"
+      "registry_name": "iridium_shovel_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "IridiumHoeRecipe",
@@ -2554,7 +2791,8 @@
       "sortid": 321,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_hoe_recipe"
+      "registry_name": "iridium_hoe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "IridiumArmor",
@@ -2568,7 +2806,8 @@
         "el": true,
         "eb": true,
         "ec": true
-      }
+      },
+      "path": "~/items/armour"
     },
     {
       "name": "IridiumArmorHelmetRecipe",
@@ -2576,7 +2815,8 @@
       "sortid": 323,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_armor_helmet_recipe"
+      "registry_name": "iridium_armor_helmet_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "IridiumArmorBodyRecipe",
@@ -2584,7 +2824,8 @@
       "sortid": 324,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_armor_body_recipe"
+      "registry_name": "iridium_armor_body_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "IridiumArmorLeggingsRecipe",
@@ -2592,7 +2833,8 @@
       "sortid": 325,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_armor_leggings_recipe"
+      "registry_name": "iridium_armor_leggings_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "IridiumArmorBootsRecipe",
@@ -2600,7 +2842,8 @@
       "sortid": 326,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_armor_boots_recipe"
+      "registry_name": "iridium_armor_boots_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "IridiumOreTag",
@@ -2608,7 +2851,8 @@
       "sortid": 327,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_ore_tag"
+      "registry_name": "iridium_ore_tag",
+      "path": "~/tags"
     },
     {
       "name": "IridiumBlockTag",
@@ -2616,7 +2860,8 @@
       "sortid": 328,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_block_tag"
+      "registry_name": "iridium_block_tag",
+      "path": "~/tags"
     },
     {
       "name": "IridiumIngotTag",
@@ -2624,7 +2869,8 @@
       "sortid": 329,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "iridium_ingot_tag"
+      "registry_name": "iridium_ingot_tag",
+      "path": "~/tags"
     },
     {
       "name": "JadeOre",
@@ -2632,7 +2878,8 @@
       "sortid": 330,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_ore"
+      "registry_name": "jade_ore",
+      "path": "~/blocks/ores"
     },
     {
       "name": "JadeOreBlock",
@@ -2640,7 +2887,8 @@
       "sortid": 331,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_ore_block"
+      "registry_name": "jade_ore_block",
+      "path": "~/blocks/storage_blocks"
     },
     {
       "name": "JadeGem",
@@ -2648,7 +2896,8 @@
       "sortid": 332,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_gem"
+      "registry_name": "jade_gem",
+      "path": "~/items/gems"
     },
     {
       "name": "JadeOreBlockRecipe",
@@ -2656,7 +2905,8 @@
       "sortid": 333,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_ore_block_recipe"
+      "registry_name": "jade_ore_block_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "JadeBlockOreRecipe",
@@ -2664,7 +2914,8 @@
       "sortid": 334,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_block_ore_recipe"
+      "registry_name": "jade_block_ore_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "JadeOreSmelting",
@@ -2672,7 +2923,8 @@
       "sortid": 335,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_ore_smelting"
+      "registry_name": "jade_ore_smelting",
+      "path": "~/recipes"
     },
     {
       "name": "JadePickaxe",
@@ -2680,7 +2932,8 @@
       "sortid": 336,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_pickaxe"
+      "registry_name": "jade_pickaxe",
+      "path": "~/items/tools/pickaxes"
     },
     {
       "name": "JadeAxe",
@@ -2688,7 +2941,8 @@
       "sortid": 337,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_axe"
+      "registry_name": "jade_axe",
+      "path": "~/items/tools/axes"
     },
     {
       "name": "JadeSword",
@@ -2696,7 +2950,8 @@
       "sortid": 338,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_sword"
+      "registry_name": "jade_sword",
+      "path": "~/items/tools/swords"
     },
     {
       "name": "JadeShovel",
@@ -2704,7 +2959,8 @@
       "sortid": 339,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_shovel"
+      "registry_name": "jade_shovel",
+      "path": "~/items/tools/shovels"
     },
     {
       "name": "JadeHoe",
@@ -2712,7 +2968,8 @@
       "sortid": 340,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_hoe"
+      "registry_name": "jade_hoe",
+      "path": "~/items/tools/hoes"
     },
     {
       "name": "JadePickaxeRecipe",
@@ -2720,7 +2977,8 @@
       "sortid": 341,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_pickaxe_recipe"
+      "registry_name": "jade_pickaxe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "JadeAxeRecipe",
@@ -2728,7 +2986,8 @@
       "sortid": 342,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_axe_recipe"
+      "registry_name": "jade_axe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "JadeSwordRecipe",
@@ -2736,7 +2995,8 @@
       "sortid": 343,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_sword_recipe"
+      "registry_name": "jade_sword_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "JadeShovelRecipe",
@@ -2744,7 +3004,8 @@
       "sortid": 344,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_shovel_recipe"
+      "registry_name": "jade_shovel_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "JadeHoeRecipe",
@@ -2752,7 +3013,8 @@
       "sortid": 345,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_hoe_recipe"
+      "registry_name": "jade_hoe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "JadeArmor",
@@ -2766,7 +3028,8 @@
         "el": true,
         "eb": true,
         "ec": true
-      }
+      },
+      "path": "~/items/armour"
     },
     {
       "name": "JadeArmorHelmetRecipe",
@@ -2774,7 +3037,8 @@
       "sortid": 347,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_armor_helmet_recipe"
+      "registry_name": "jade_armor_helmet_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "JadeArmorBodyRecipe",
@@ -2782,7 +3046,8 @@
       "sortid": 348,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_armor_body_recipe"
+      "registry_name": "jade_armor_body_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "JadeArmorLeggingsRecipe",
@@ -2790,7 +3055,8 @@
       "sortid": 349,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_armor_leggings_recipe"
+      "registry_name": "jade_armor_leggings_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "JadeArmorBootsRecipe",
@@ -2798,7 +3064,8 @@
       "sortid": 350,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_armor_boots_recipe"
+      "registry_name": "jade_armor_boots_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "JadeOreTag",
@@ -2806,7 +3073,8 @@
       "sortid": 351,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_ore_tag"
+      "registry_name": "jade_ore_tag",
+      "path": "~/tags"
     },
     {
       "name": "JadeBlockTag",
@@ -2814,7 +3082,8 @@
       "sortid": 352,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_block_tag"
+      "registry_name": "jade_block_tag",
+      "path": "~/tags"
     },
     {
       "name": "JadeGemTag",
@@ -2822,7 +3091,8 @@
       "sortid": 353,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "jade_gem_tag"
+      "registry_name": "jade_gem_tag",
+      "path": "~/tags"
     },
     {
       "name": "LeadOre",
@@ -2830,7 +3100,8 @@
       "sortid": 354,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_ore"
+      "registry_name": "lead_ore",
+      "path": "~/blocks/ores"
     },
     {
       "name": "LeadOreBlock",
@@ -2838,7 +3109,8 @@
       "sortid": 355,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_ore_block"
+      "registry_name": "lead_ore_block",
+      "path": "~/blocks/storage_blocks"
     },
     {
       "name": "LeadIngot",
@@ -2846,7 +3118,8 @@
       "sortid": 356,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_ingot"
+      "registry_name": "lead_ingot",
+      "path": "~/items/ingots"
     },
     {
       "name": "LeadOreBlockRecipe",
@@ -2854,7 +3127,8 @@
       "sortid": 357,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_ore_block_recipe"
+      "registry_name": "lead_ore_block_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "LeadBlockOreRecipe",
@@ -2862,7 +3136,8 @@
       "sortid": 358,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_block_ore_recipe"
+      "registry_name": "lead_block_ore_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "LeadOreSmelting",
@@ -2870,7 +3145,8 @@
       "sortid": 359,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_ore_smelting"
+      "registry_name": "lead_ore_smelting",
+      "path": "~/recipes"
     },
     {
       "name": "LeadPickaxe",
@@ -2878,7 +3154,8 @@
       "sortid": 360,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_pickaxe"
+      "registry_name": "lead_pickaxe",
+      "path": "~/items/tools/pickaxes"
     },
     {
       "name": "LeadAxe",
@@ -2886,7 +3163,8 @@
       "sortid": 361,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_axe"
+      "registry_name": "lead_axe",
+      "path": "~/items/tools/axes"
     },
     {
       "name": "LeadSword",
@@ -2894,7 +3172,8 @@
       "sortid": 362,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_sword"
+      "registry_name": "lead_sword",
+      "path": "~/items/tools/swords"
     },
     {
       "name": "LeadShovel",
@@ -2902,7 +3181,8 @@
       "sortid": 363,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_shovel"
+      "registry_name": "lead_shovel",
+      "path": "~/items/tools/shovels"
     },
     {
       "name": "LeadHoe",
@@ -2910,7 +3190,8 @@
       "sortid": 364,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_hoe"
+      "registry_name": "lead_hoe",
+      "path": "~/items/tools/hoes"
     },
     {
       "name": "LeadPickaxeRecipe",
@@ -2918,7 +3199,8 @@
       "sortid": 365,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_pickaxe_recipe"
+      "registry_name": "lead_pickaxe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "LeadAxeRecipe",
@@ -2926,7 +3208,8 @@
       "sortid": 366,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_axe_recipe"
+      "registry_name": "lead_axe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "LeadSwordRecipe",
@@ -2934,7 +3217,8 @@
       "sortid": 367,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_sword_recipe"
+      "registry_name": "lead_sword_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "LeadShovelRecipe",
@@ -2942,7 +3226,8 @@
       "sortid": 368,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_shovel_recipe"
+      "registry_name": "lead_shovel_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "LeadHoeRecipe",
@@ -2950,7 +3235,8 @@
       "sortid": 369,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_hoe_recipe"
+      "registry_name": "lead_hoe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "LeadArmor",
@@ -2964,7 +3250,8 @@
         "el": true,
         "eb": true,
         "ec": true
-      }
+      },
+      "path": "~/items/armour"
     },
     {
       "name": "LeadArmorHelmetRecipe",
@@ -2972,7 +3259,8 @@
       "sortid": 371,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_armor_helmet_recipe"
+      "registry_name": "lead_armor_helmet_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "LeadArmorBodyRecipe",
@@ -2980,7 +3268,8 @@
       "sortid": 372,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_armor_body_recipe"
+      "registry_name": "lead_armor_body_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "LeadArmorLeggingsRecipe",
@@ -2988,7 +3277,8 @@
       "sortid": 373,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_armor_leggings_recipe"
+      "registry_name": "lead_armor_leggings_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "LeadArmorBootsRecipe",
@@ -2996,7 +3286,8 @@
       "sortid": 374,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_armor_boots_recipe"
+      "registry_name": "lead_armor_boots_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "LeadOreTag",
@@ -3004,7 +3295,8 @@
       "sortid": 375,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_ore_tag"
+      "registry_name": "lead_ore_tag",
+      "path": "~/tags"
     },
     {
       "name": "LeadBlockTag",
@@ -3012,7 +3304,8 @@
       "sortid": 376,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_block_tag"
+      "registry_name": "lead_block_tag",
+      "path": "~/tags"
     },
     {
       "name": "LeadIngotTag",
@@ -3020,7 +3313,8 @@
       "sortid": 377,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "lead_ingot_tag"
+      "registry_name": "lead_ingot_tag",
+      "path": "~/tags"
     },
     {
       "name": "MithrilOre",
@@ -3028,7 +3322,8 @@
       "sortid": 378,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_ore"
+      "registry_name": "mithril_ore",
+      "path": "~/blocks/ores"
     },
     {
       "name": "MithrilOreBlock",
@@ -3036,7 +3331,8 @@
       "sortid": 379,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_ore_block"
+      "registry_name": "mithril_ore_block",
+      "path": "~/blocks/storage_blocks"
     },
     {
       "name": "MithrilIngot",
@@ -3044,7 +3340,8 @@
       "sortid": 380,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_ingot"
+      "registry_name": "mithril_ingot",
+      "path": "~/items/ingots"
     },
     {
       "name": "MithrilOreBlockRecipe",
@@ -3052,7 +3349,8 @@
       "sortid": 381,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_ore_block_recipe"
+      "registry_name": "mithril_ore_block_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "MithrilBlockOreRecipe",
@@ -3060,7 +3358,8 @@
       "sortid": 382,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_block_ore_recipe"
+      "registry_name": "mithril_block_ore_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "MithrilOreSmelting",
@@ -3068,7 +3367,8 @@
       "sortid": 383,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_ore_smelting"
+      "registry_name": "mithril_ore_smelting",
+      "path": "~/recipes"
     },
     {
       "name": "MithrilPickaxe",
@@ -3076,7 +3376,8 @@
       "sortid": 384,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_pickaxe"
+      "registry_name": "mithril_pickaxe",
+      "path": "~/items/tools/pickaxes"
     },
     {
       "name": "MithrilAxe",
@@ -3084,7 +3385,8 @@
       "sortid": 385,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_axe"
+      "registry_name": "mithril_axe",
+      "path": "~/items/tools/axes"
     },
     {
       "name": "MithrilSword",
@@ -3092,7 +3394,8 @@
       "sortid": 386,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_sword"
+      "registry_name": "mithril_sword",
+      "path": "~/items/tools/swords"
     },
     {
       "name": "MithrilShovel",
@@ -3100,7 +3403,8 @@
       "sortid": 387,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_shovel"
+      "registry_name": "mithril_shovel",
+      "path": "~/items/tools/shovels"
     },
     {
       "name": "MithrilHoe",
@@ -3108,7 +3412,8 @@
       "sortid": 388,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_hoe"
+      "registry_name": "mithril_hoe",
+      "path": "~/items/tools/hoes"
     },
     {
       "name": "MithrilPickaxeRecipe",
@@ -3116,7 +3421,8 @@
       "sortid": 389,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_pickaxe_recipe"
+      "registry_name": "mithril_pickaxe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "MithrilAxeRecipe",
@@ -3124,7 +3430,8 @@
       "sortid": 390,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_axe_recipe"
+      "registry_name": "mithril_axe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "MithrilSwordRecipe",
@@ -3132,7 +3439,8 @@
       "sortid": 391,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_sword_recipe"
+      "registry_name": "mithril_sword_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "MithrilShovelRecipe",
@@ -3140,7 +3448,8 @@
       "sortid": 392,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_shovel_recipe"
+      "registry_name": "mithril_shovel_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "MithrilHoeRecipe",
@@ -3148,7 +3457,8 @@
       "sortid": 393,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_hoe_recipe"
+      "registry_name": "mithril_hoe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "MithrilArmor",
@@ -3162,7 +3472,8 @@
         "el": true,
         "eb": true,
         "ec": true
-      }
+      },
+      "path": "~/items/armour"
     },
     {
       "name": "MithrilArmorHelmetRecipe",
@@ -3170,7 +3481,8 @@
       "sortid": 395,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_armor_helmet_recipe"
+      "registry_name": "mithril_armor_helmet_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "MithrilArmorBodyRecipe",
@@ -3178,7 +3490,8 @@
       "sortid": 396,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_armor_body_recipe"
+      "registry_name": "mithril_armor_body_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "MithrilArmorLeggingsRecipe",
@@ -3186,7 +3499,8 @@
       "sortid": 397,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_armor_leggings_recipe"
+      "registry_name": "mithril_armor_leggings_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "MithrilArmorBootsRecipe",
@@ -3194,7 +3508,8 @@
       "sortid": 398,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_armor_boots_recipe"
+      "registry_name": "mithril_armor_boots_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "MithrilOreTag",
@@ -3202,7 +3517,8 @@
       "sortid": 399,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_ore_tag"
+      "registry_name": "mithril_ore_tag",
+      "path": "~/tags"
     },
     {
       "name": "MithrilBlockTag",
@@ -3210,7 +3526,8 @@
       "sortid": 400,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_block_tag"
+      "registry_name": "mithril_block_tag",
+      "path": "~/tags"
     },
     {
       "name": "MithrilIngotTag",
@@ -3218,7 +3535,8 @@
       "sortid": 401,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mithril_ingot_tag"
+      "registry_name": "mithril_ingot_tag",
+      "path": "~/tags"
     },
     {
       "name": "NickelOre",
@@ -3226,7 +3544,8 @@
       "sortid": 402,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_ore"
+      "registry_name": "nickel_ore",
+      "path": "~/blocks/ores"
     },
     {
       "name": "NickelOreBlock",
@@ -3234,7 +3553,8 @@
       "sortid": 403,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_ore_block"
+      "registry_name": "nickel_ore_block",
+      "path": "~/blocks/storage_blocks"
     },
     {
       "name": "NickelIngot",
@@ -3242,7 +3562,8 @@
       "sortid": 404,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_ingot"
+      "registry_name": "nickel_ingot",
+      "path": "~/items/ingots"
     },
     {
       "name": "NickelOreBlockRecipe",
@@ -3250,7 +3571,8 @@
       "sortid": 405,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_ore_block_recipe"
+      "registry_name": "nickel_ore_block_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "NickelBlockOreRecipe",
@@ -3258,7 +3580,8 @@
       "sortid": 406,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_block_ore_recipe"
+      "registry_name": "nickel_block_ore_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "NickelOreSmelting",
@@ -3266,7 +3589,8 @@
       "sortid": 407,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_ore_smelting"
+      "registry_name": "nickel_ore_smelting",
+      "path": "~/recipes"
     },
     {
       "name": "NickelPickaxe",
@@ -3274,7 +3598,8 @@
       "sortid": 408,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_pickaxe"
+      "registry_name": "nickel_pickaxe",
+      "path": "~/items/tools/pickaxes"
     },
     {
       "name": "NickelAxe",
@@ -3282,7 +3607,8 @@
       "sortid": 409,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_axe"
+      "registry_name": "nickel_axe",
+      "path": "~/items/tools/axes"
     },
     {
       "name": "NickelSword",
@@ -3290,7 +3616,8 @@
       "sortid": 410,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_sword"
+      "registry_name": "nickel_sword",
+      "path": "~/items/tools/swords"
     },
     {
       "name": "NickelShovel",
@@ -3298,7 +3625,8 @@
       "sortid": 411,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_shovel"
+      "registry_name": "nickel_shovel",
+      "path": "~/items/tools/shovels"
     },
     {
       "name": "NickelHoe",
@@ -3306,7 +3634,8 @@
       "sortid": 412,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_hoe"
+      "registry_name": "nickel_hoe",
+      "path": "~/items/tools/hoes"
     },
     {
       "name": "NickelPickaxeRecipe",
@@ -3314,7 +3643,8 @@
       "sortid": 413,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_pickaxe_recipe"
+      "registry_name": "nickel_pickaxe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "NickelAxeRecipe",
@@ -3322,7 +3652,8 @@
       "sortid": 414,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_axe_recipe"
+      "registry_name": "nickel_axe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "NickelSwordRecipe",
@@ -3330,7 +3661,8 @@
       "sortid": 415,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_sword_recipe"
+      "registry_name": "nickel_sword_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "NickelShovelRecipe",
@@ -3338,7 +3670,8 @@
       "sortid": 416,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_shovel_recipe"
+      "registry_name": "nickel_shovel_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "NickelHoeRecipe",
@@ -3346,7 +3679,8 @@
       "sortid": 417,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_hoe_recipe"
+      "registry_name": "nickel_hoe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "NickelArmor",
@@ -3360,7 +3694,8 @@
         "el": true,
         "eb": true,
         "ec": true
-      }
+      },
+      "path": "~/items/armour"
     },
     {
       "name": "NickelArmorHelmetRecipe",
@@ -3368,7 +3703,8 @@
       "sortid": 419,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_armor_helmet_recipe"
+      "registry_name": "nickel_armor_helmet_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "NickelArmorBodyRecipe",
@@ -3376,7 +3712,8 @@
       "sortid": 420,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_armor_body_recipe"
+      "registry_name": "nickel_armor_body_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "NickelArmorLeggingsRecipe",
@@ -3384,7 +3721,8 @@
       "sortid": 421,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_armor_leggings_recipe"
+      "registry_name": "nickel_armor_leggings_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "NickelArmorBootsRecipe",
@@ -3392,7 +3730,8 @@
       "sortid": 422,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_armor_boots_recipe"
+      "registry_name": "nickel_armor_boots_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "NickelOreTag",
@@ -3400,7 +3739,8 @@
       "sortid": 423,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_ore_tag"
+      "registry_name": "nickel_ore_tag",
+      "path": "~/tags"
     },
     {
       "name": "NickelBlockTag",
@@ -3408,7 +3748,8 @@
       "sortid": 424,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_block_tag"
+      "registry_name": "nickel_block_tag",
+      "path": "~/tags"
     },
     {
       "name": "NickelIngotTag",
@@ -3416,7 +3757,8 @@
       "sortid": 425,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "nickel_ingot_tag"
+      "registry_name": "nickel_ingot_tag",
+      "path": "~/tags"
     },
     {
       "name": "OsmiumOre",
@@ -3424,7 +3766,8 @@
       "sortid": 426,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_ore"
+      "registry_name": "osmium_ore",
+      "path": "~/blocks/ores"
     },
     {
       "name": "OsmiumOreBlock",
@@ -3432,7 +3775,8 @@
       "sortid": 427,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_ore_block"
+      "registry_name": "osmium_ore_block",
+      "path": "~/blocks/storage_blocks"
     },
     {
       "name": "OsmiumIngot",
@@ -3440,7 +3784,8 @@
       "sortid": 428,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_ingot"
+      "registry_name": "osmium_ingot",
+      "path": "~/items/ingots"
     },
     {
       "name": "OsmiumOreBlockRecipe",
@@ -3448,7 +3793,8 @@
       "sortid": 429,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_ore_block_recipe"
+      "registry_name": "osmium_ore_block_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "OsmiumBlockOreRecipe",
@@ -3456,7 +3802,8 @@
       "sortid": 430,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_block_ore_recipe"
+      "registry_name": "osmium_block_ore_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "OsmiumOreSmelting",
@@ -3464,7 +3811,8 @@
       "sortid": 431,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_ore_smelting"
+      "registry_name": "osmium_ore_smelting",
+      "path": "~/recipes"
     },
     {
       "name": "OsmiumPickaxe",
@@ -3472,7 +3820,8 @@
       "sortid": 432,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_pickaxe"
+      "registry_name": "osmium_pickaxe",
+      "path": "~/items/tools/pickaxes"
     },
     {
       "name": "OsmiumAxe",
@@ -3480,7 +3829,8 @@
       "sortid": 433,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_axe"
+      "registry_name": "osmium_axe",
+      "path": "~/items/tools/axes"
     },
     {
       "name": "OsmiumSword",
@@ -3488,7 +3838,8 @@
       "sortid": 434,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_sword"
+      "registry_name": "osmium_sword",
+      "path": "~/items/tools/swords"
     },
     {
       "name": "OsmiumShovel",
@@ -3496,7 +3847,8 @@
       "sortid": 435,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_shovel"
+      "registry_name": "osmium_shovel",
+      "path": "~/items/tools/shovels"
     },
     {
       "name": "OsmiumHoe",
@@ -3504,7 +3856,8 @@
       "sortid": 436,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_hoe"
+      "registry_name": "osmium_hoe",
+      "path": "~/items/tools/hoes"
     },
     {
       "name": "OsmiumPickaxeRecipe",
@@ -3512,7 +3865,8 @@
       "sortid": 437,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_pickaxe_recipe"
+      "registry_name": "osmium_pickaxe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "OsmiumAxeRecipe",
@@ -3520,7 +3874,8 @@
       "sortid": 438,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_axe_recipe"
+      "registry_name": "osmium_axe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "OsmiumSwordRecipe",
@@ -3528,7 +3883,8 @@
       "sortid": 439,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_sword_recipe"
+      "registry_name": "osmium_sword_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "OsmiumShovelRecipe",
@@ -3536,7 +3892,8 @@
       "sortid": 440,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_shovel_recipe"
+      "registry_name": "osmium_shovel_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "OsmiumHoeRecipe",
@@ -3544,7 +3901,8 @@
       "sortid": 441,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_hoe_recipe"
+      "registry_name": "osmium_hoe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "OsmiumArmor",
@@ -3558,7 +3916,8 @@
         "el": true,
         "eb": true,
         "ec": true
-      }
+      },
+      "path": "~/items/armour"
     },
     {
       "name": "OsmiumArmorHelmetRecipe",
@@ -3566,7 +3925,8 @@
       "sortid": 443,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_armor_helmet_recipe"
+      "registry_name": "osmium_armor_helmet_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "OsmiumArmorBodyRecipe",
@@ -3574,7 +3934,8 @@
       "sortid": 444,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_armor_body_recipe"
+      "registry_name": "osmium_armor_body_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "OsmiumArmorLeggingsRecipe",
@@ -3582,7 +3943,8 @@
       "sortid": 445,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_armor_leggings_recipe"
+      "registry_name": "osmium_armor_leggings_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "OsmiumArmorBootsRecipe",
@@ -3590,7 +3952,8 @@
       "sortid": 446,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_armor_boots_recipe"
+      "registry_name": "osmium_armor_boots_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "OsmiumOreTag",
@@ -3598,7 +3961,8 @@
       "sortid": 447,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_ore_tag"
+      "registry_name": "osmium_ore_tag",
+      "path": "~/tags"
     },
     {
       "name": "OsmiumBlockTag",
@@ -3606,7 +3970,8 @@
       "sortid": 448,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_block_tag"
+      "registry_name": "osmium_block_tag",
+      "path": "~/tags"
     },
     {
       "name": "OsmiumIngotTag",
@@ -3614,7 +3979,8 @@
       "sortid": 449,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "osmium_ingot_tag"
+      "registry_name": "osmium_ingot_tag",
+      "path": "~/tags"
     },
     {
       "name": "PlatinumOre",
@@ -3622,7 +3988,8 @@
       "sortid": 450,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_ore"
+      "registry_name": "platinum_ore",
+      "path": "~/blocks/ores"
     },
     {
       "name": "PlatinumOreBlock",
@@ -3630,7 +3997,8 @@
       "sortid": 451,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_ore_block"
+      "registry_name": "platinum_ore_block",
+      "path": "~/blocks/storage_blocks"
     },
     {
       "name": "PlatinumIngot",
@@ -3638,7 +4006,8 @@
       "sortid": 452,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_ingot"
+      "registry_name": "platinum_ingot",
+      "path": "~/items/ingots"
     },
     {
       "name": "PlatinumOreBlockRecipe",
@@ -3646,7 +4015,8 @@
       "sortid": 453,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_ore_block_recipe"
+      "registry_name": "platinum_ore_block_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "PlatinumBlockOreRecipe",
@@ -3654,7 +4024,8 @@
       "sortid": 454,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_block_ore_recipe"
+      "registry_name": "platinum_block_ore_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "PlatinumOreSmelting",
@@ -3662,7 +4033,8 @@
       "sortid": 455,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_ore_smelting"
+      "registry_name": "platinum_ore_smelting",
+      "path": "~/recipes"
     },
     {
       "name": "PlatinumPickaxe",
@@ -3670,7 +4042,8 @@
       "sortid": 456,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_pickaxe"
+      "registry_name": "platinum_pickaxe",
+      "path": "~/items/tools/pickaxes"
     },
     {
       "name": "PlatinumAxe",
@@ -3678,7 +4051,8 @@
       "sortid": 457,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_axe"
+      "registry_name": "platinum_axe",
+      "path": "~/items/tools/axes"
     },
     {
       "name": "PlatinumSword",
@@ -3686,7 +4060,8 @@
       "sortid": 458,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_sword"
+      "registry_name": "platinum_sword",
+      "path": "~/items/tools/swords"
     },
     {
       "name": "PlatinumShovel",
@@ -3694,7 +4069,8 @@
       "sortid": 459,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_shovel"
+      "registry_name": "platinum_shovel",
+      "path": "~/items/tools/shovels"
     },
     {
       "name": "PlatinumHoe",
@@ -3702,7 +4078,8 @@
       "sortid": 460,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_hoe"
+      "registry_name": "platinum_hoe",
+      "path": "~/items/tools/hoes"
     },
     {
       "name": "PlatinumPickaxeRecipe",
@@ -3710,7 +4087,8 @@
       "sortid": 461,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_pickaxe_recipe"
+      "registry_name": "platinum_pickaxe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "PlatinumAxeRecipe",
@@ -3718,7 +4096,8 @@
       "sortid": 462,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_axe_recipe"
+      "registry_name": "platinum_axe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "PlatinumSwordRecipe",
@@ -3726,7 +4105,8 @@
       "sortid": 463,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_sword_recipe"
+      "registry_name": "platinum_sword_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "PlatinumShovelRecipe",
@@ -3734,7 +4114,8 @@
       "sortid": 464,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_shovel_recipe"
+      "registry_name": "platinum_shovel_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "PlatinumHoeRecipe",
@@ -3742,7 +4123,8 @@
       "sortid": 465,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_hoe_recipe"
+      "registry_name": "platinum_hoe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "PlatinumArmor",
@@ -3756,7 +4138,8 @@
         "el": true,
         "eb": true,
         "ec": true
-      }
+      },
+      "path": "~/items/armour"
     },
     {
       "name": "PlatinumArmorHelmetRecipe",
@@ -3764,7 +4147,8 @@
       "sortid": 467,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_armor_helmet_recipe"
+      "registry_name": "platinum_armor_helmet_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "PlatinumArmorBodyRecipe",
@@ -3772,7 +4156,8 @@
       "sortid": 468,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_armor_body_recipe"
+      "registry_name": "platinum_armor_body_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "PlatinumArmorLeggingsRecipe",
@@ -3780,7 +4165,8 @@
       "sortid": 469,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_armor_leggings_recipe"
+      "registry_name": "platinum_armor_leggings_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "PlatinumArmorBootsRecipe",
@@ -3788,7 +4174,8 @@
       "sortid": 470,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_armor_boots_recipe"
+      "registry_name": "platinum_armor_boots_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "PlatinumOreTag",
@@ -3796,7 +4183,8 @@
       "sortid": 471,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_ore_tag"
+      "registry_name": "platinum_ore_tag",
+      "path": "~/tags"
     },
     {
       "name": "PlatinumIngotTag",
@@ -3804,7 +4192,8 @@
       "sortid": 472,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_ingot_tag"
+      "registry_name": "platinum_ingot_tag",
+      "path": "~/tags"
     },
     {
       "name": "PlatinumBlockTag",
@@ -3812,7 +4201,8 @@
       "sortid": 473,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "platinum_block_tag"
+      "registry_name": "platinum_block_tag",
+      "path": "~/tags"
     },
     {
       "name": "RubyOre",
@@ -3820,7 +4210,8 @@
       "sortid": 474,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_ore"
+      "registry_name": "ruby_ore",
+      "path": "~/blocks/ores"
     },
     {
       "name": "RubyOreBlock",
@@ -3828,7 +4219,8 @@
       "sortid": 475,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_ore_block"
+      "registry_name": "ruby_ore_block",
+      "path": "~/blocks/storage_blocks"
     },
     {
       "name": "RubyGem",
@@ -3836,7 +4228,8 @@
       "sortid": 476,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_gem"
+      "registry_name": "ruby_gem",
+      "path": "~/items/gems"
     },
     {
       "name": "RubyOreBlockRecipe",
@@ -3844,7 +4237,8 @@
       "sortid": 477,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_ore_block_recipe"
+      "registry_name": "ruby_ore_block_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "RubyBlockOreRecipe",
@@ -3852,7 +4246,8 @@
       "sortid": 478,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_block_ore_recipe"
+      "registry_name": "ruby_block_ore_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "RubyOreSmelting",
@@ -3860,7 +4255,8 @@
       "sortid": 479,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_ore_smelting"
+      "registry_name": "ruby_ore_smelting",
+      "path": "~/recipes"
     },
     {
       "name": "RubyPickaxe",
@@ -3868,7 +4264,8 @@
       "sortid": 480,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_pickaxe"
+      "registry_name": "ruby_pickaxe",
+      "path": "~/items/tools/pickaxes"
     },
     {
       "name": "RubyAxe",
@@ -3876,7 +4273,8 @@
       "sortid": 481,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_axe"
+      "registry_name": "ruby_axe",
+      "path": "~/items/tools/axes"
     },
     {
       "name": "RubySword",
@@ -3884,7 +4282,8 @@
       "sortid": 482,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_sword"
+      "registry_name": "ruby_sword",
+      "path": "~/items/tools/swords"
     },
     {
       "name": "RubyShovel",
@@ -3892,7 +4291,8 @@
       "sortid": 483,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_shovel"
+      "registry_name": "ruby_shovel",
+      "path": "~/items/tools/shovels"
     },
     {
       "name": "RubyHoe",
@@ -3900,7 +4300,8 @@
       "sortid": 484,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_hoe"
+      "registry_name": "ruby_hoe",
+      "path": "~/items/tools/hoes"
     },
     {
       "name": "RubyPickaxeRecipe",
@@ -3908,7 +4309,8 @@
       "sortid": 485,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_pickaxe_recipe"
+      "registry_name": "ruby_pickaxe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "RubyAxeRecipe",
@@ -3916,7 +4318,8 @@
       "sortid": 486,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_axe_recipe"
+      "registry_name": "ruby_axe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "RubySwordRecipe",
@@ -3924,7 +4327,8 @@
       "sortid": 487,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_sword_recipe"
+      "registry_name": "ruby_sword_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "RubyShovelRecipe",
@@ -3932,7 +4336,8 @@
       "sortid": 488,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_shovel_recipe"
+      "registry_name": "ruby_shovel_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "RubyHoeRecipe",
@@ -3940,7 +4345,8 @@
       "sortid": 489,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_hoe_recipe"
+      "registry_name": "ruby_hoe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "RubyArmor",
@@ -3954,7 +4360,8 @@
         "el": true,
         "eb": true,
         "ec": true
-      }
+      },
+      "path": "~/items/armour"
     },
     {
       "name": "RubyArmorHelmetRecipe",
@@ -3962,7 +4369,8 @@
       "sortid": 491,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_armor_helmet_recipe"
+      "registry_name": "ruby_armor_helmet_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "RubyArmorBodyRecipe",
@@ -3970,7 +4378,8 @@
       "sortid": 492,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_armor_body_recipe"
+      "registry_name": "ruby_armor_body_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "RubyArmorLeggingsRecipe",
@@ -3978,7 +4387,8 @@
       "sortid": 493,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_armor_leggings_recipe"
+      "registry_name": "ruby_armor_leggings_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "RubyArmorBootsRecipe",
@@ -3986,7 +4396,8 @@
       "sortid": 494,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_armor_boots_recipe"
+      "registry_name": "ruby_armor_boots_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "RubyOreTag",
@@ -3994,7 +4405,8 @@
       "sortid": 495,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_ore_tag"
+      "registry_name": "ruby_ore_tag",
+      "path": "~/tags"
     },
     {
       "name": "RubyBlockTag",
@@ -4002,7 +4414,8 @@
       "sortid": 496,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_block_tag"
+      "registry_name": "ruby_block_tag",
+      "path": "~/tags"
     },
     {
       "name": "RubyGemTag",
@@ -4010,7 +4423,8 @@
       "sortid": 497,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ruby_gem_tag"
+      "registry_name": "ruby_gem_tag",
+      "path": "~/tags"
     },
     {
       "name": "SilverOre",
@@ -4018,7 +4432,8 @@
       "sortid": 498,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_ore"
+      "registry_name": "silver_ore",
+      "path": "~/blocks/ores"
     },
     {
       "name": "SilverOreBlock",
@@ -4026,7 +4441,8 @@
       "sortid": 499,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_ore_block"
+      "registry_name": "silver_ore_block",
+      "path": "~/blocks/storage_blocks"
     },
     {
       "name": "SilverIngot",
@@ -4034,7 +4450,8 @@
       "sortid": 500,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_ingot"
+      "registry_name": "silver_ingot",
+      "path": "~/items/ingots"
     },
     {
       "name": "SilverOreBlockRecipe",
@@ -4042,7 +4459,8 @@
       "sortid": 501,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_ore_block_recipe"
+      "registry_name": "silver_ore_block_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SilverBlockOreRecipe",
@@ -4050,7 +4468,8 @@
       "sortid": 502,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_block_ore_recipe"
+      "registry_name": "silver_block_ore_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SilverOreSmelting",
@@ -4058,7 +4477,8 @@
       "sortid": 503,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_ore_smelting"
+      "registry_name": "silver_ore_smelting",
+      "path": "~/recipes"
     },
     {
       "name": "SilverPickaxe",
@@ -4066,7 +4486,8 @@
       "sortid": 504,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_pickaxe"
+      "registry_name": "silver_pickaxe",
+      "path": "~/items/tools/pickaxes"
     },
     {
       "name": "SilverAxe",
@@ -4074,7 +4495,8 @@
       "sortid": 505,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_axe"
+      "registry_name": "silver_axe",
+      "path": "~/items/tools/axes"
     },
     {
       "name": "SilverSword",
@@ -4082,7 +4504,8 @@
       "sortid": 506,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_sword"
+      "registry_name": "silver_sword",
+      "path": "~/items/tools/swords"
     },
     {
       "name": "SilverShovel",
@@ -4090,7 +4513,8 @@
       "sortid": 507,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_shovel"
+      "registry_name": "silver_shovel",
+      "path": "~/items/tools/shovels"
     },
     {
       "name": "SilverHoe",
@@ -4098,7 +4522,8 @@
       "sortid": 508,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_hoe"
+      "registry_name": "silver_hoe",
+      "path": "~/items/tools/hoes"
     },
     {
       "name": "SilverPickaxeRecipe",
@@ -4106,7 +4531,8 @@
       "sortid": 509,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_pickaxe_recipe"
+      "registry_name": "silver_pickaxe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SilverAxeRecipe",
@@ -4114,7 +4540,8 @@
       "sortid": 510,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_axe_recipe"
+      "registry_name": "silver_axe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SilverSwordRecipe",
@@ -4122,7 +4549,8 @@
       "sortid": 511,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_sword_recipe"
+      "registry_name": "silver_sword_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SilverShovelRecipe",
@@ -4130,7 +4558,8 @@
       "sortid": 512,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_shovel_recipe"
+      "registry_name": "silver_shovel_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SilverHoeRecipe",
@@ -4138,7 +4567,8 @@
       "sortid": 513,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_hoe_recipe"
+      "registry_name": "silver_hoe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SilverArmor",
@@ -4152,7 +4582,8 @@
         "el": true,
         "eb": true,
         "ec": true
-      }
+      },
+      "path": "~/items/armour"
     },
     {
       "name": "SilverArmorHelmetRecipe",
@@ -4160,7 +4591,8 @@
       "sortid": 515,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_armor_helmet_recipe"
+      "registry_name": "silver_armor_helmet_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SilverArmorBodyRecipe",
@@ -4168,7 +4600,8 @@
       "sortid": 516,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_armor_body_recipe"
+      "registry_name": "silver_armor_body_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SilverArmorLeggingsRecipe",
@@ -4176,7 +4609,8 @@
       "sortid": 517,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_armor_leggings_recipe"
+      "registry_name": "silver_armor_leggings_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SilverArmorBootsRecipe",
@@ -4184,7 +4618,8 @@
       "sortid": 518,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_armor_boots_recipe"
+      "registry_name": "silver_armor_boots_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SilverOreTag",
@@ -4192,7 +4627,8 @@
       "sortid": 519,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_ore_tag"
+      "registry_name": "silver_ore_tag",
+      "path": "~/tags"
     },
     {
       "name": "SilverBlockTag",
@@ -4200,7 +4636,8 @@
       "sortid": 520,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_block_tag"
+      "registry_name": "silver_block_tag",
+      "path": "~/tags"
     },
     {
       "name": "SilverIngotTag",
@@ -4208,7 +4645,8 @@
       "sortid": 521,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "silver_ingot_tag"
+      "registry_name": "silver_ingot_tag",
+      "path": "~/tags"
     },
     {
       "name": "SteelOreBlock",
@@ -4216,7 +4654,8 @@
       "sortid": 523,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "steel_ore_block"
+      "registry_name": "steel_ore_block",
+      "path": "~/blocks/storage_blocks"
     },
     {
       "name": "SteelIngot",
@@ -4224,7 +4663,8 @@
       "sortid": 524,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "steel_ingot"
+      "registry_name": "steel_ingot",
+      "path": "~/items/ingots"
     },
     {
       "name": "SteelOreBlockRecipe",
@@ -4232,7 +4672,8 @@
       "sortid": 525,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "steel_ore_block_recipe"
+      "registry_name": "steel_ore_block_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SteelBlockOreRecipe",
@@ -4240,7 +4681,8 @@
       "sortid": 526,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "steel_block_ore_recipe"
+      "registry_name": "steel_block_ore_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SteelPickaxe",
@@ -4248,7 +4690,8 @@
       "sortid": 528,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "steel_pickaxe"
+      "registry_name": "steel_pickaxe",
+      "path": "~/items/tools/pickaxes"
     },
     {
       "name": "SteelAxe",
@@ -4256,7 +4699,8 @@
       "sortid": 529,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "steel_axe"
+      "registry_name": "steel_axe",
+      "path": "~/items/tools/axes"
     },
     {
       "name": "SteelSword",
@@ -4264,7 +4708,8 @@
       "sortid": 530,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "steel_sword"
+      "registry_name": "steel_sword",
+      "path": "~/items/tools/swords"
     },
     {
       "name": "SteelShovel",
@@ -4272,7 +4717,8 @@
       "sortid": 531,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "steel_shovel"
+      "registry_name": "steel_shovel",
+      "path": "~/items/tools/shovels"
     },
     {
       "name": "SteelHoe",
@@ -4280,7 +4726,8 @@
       "sortid": 532,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "steel_hoe"
+      "registry_name": "steel_hoe",
+      "path": "~/items/tools/hoes"
     },
     {
       "name": "SteelPickaxeRecipe",
@@ -4288,7 +4735,8 @@
       "sortid": 533,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "steel_pickaxe_recipe"
+      "registry_name": "steel_pickaxe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SteelAxeRecipe",
@@ -4296,7 +4744,8 @@
       "sortid": 534,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "steel_axe_recipe"
+      "registry_name": "steel_axe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SteelSwordRecipe",
@@ -4304,7 +4753,8 @@
       "sortid": 535,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "steel_sword_recipe"
+      "registry_name": "steel_sword_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SteelShovelRecipe",
@@ -4312,7 +4762,8 @@
       "sortid": 536,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "steel_shovel_recipe"
+      "registry_name": "steel_shovel_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SteelHoeRecipe",
@@ -4320,7 +4771,8 @@
       "sortid": 537,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "steel_hoe_recipe"
+      "registry_name": "steel_hoe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SteelArmor",
@@ -4334,7 +4786,8 @@
         "el": true,
         "eb": true,
         "ec": true
-      }
+      },
+      "path": "~/items/armour"
     },
     {
       "name": "SteelArmorHelmetRecipe",
@@ -4342,7 +4795,8 @@
       "sortid": 539,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "steel_armor_helmet_recipe"
+      "registry_name": "steel_armor_helmet_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SteelArmorBodyRecipe",
@@ -4350,7 +4804,8 @@
       "sortid": 540,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "steel_armor_body_recipe"
+      "registry_name": "steel_armor_body_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SteelArmorLeggingsRecipe",
@@ -4358,7 +4813,8 @@
       "sortid": 541,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "steel_armor_leggings_recipe"
+      "registry_name": "steel_armor_leggings_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SteelArmorBootsRecipe",
@@ -4366,7 +4822,8 @@
       "sortid": 542,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "steel_armor_boots_recipe"
+      "registry_name": "steel_armor_boots_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "SteelBlockTag",
@@ -4374,7 +4831,8 @@
       "sortid": 543,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "steel_block_tag"
+      "registry_name": "steel_block_tag",
+      "path": "~/tags"
     },
     {
       "name": "SteelIngotTag",
@@ -4382,7 +4840,8 @@
       "sortid": 544,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "steel_ingot_tag"
+      "registry_name": "steel_ingot_tag",
+      "path": "~/tags"
     },
     {
       "name": "TinOre",
@@ -4390,7 +4849,8 @@
       "sortid": 545,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_ore"
+      "registry_name": "tin_ore",
+      "path": "~/blocks/ores"
     },
     {
       "name": "TinOreBlock",
@@ -4398,7 +4858,8 @@
       "sortid": 546,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_ore_block"
+      "registry_name": "tin_ore_block",
+      "path": "~/blocks/storage_blocks"
     },
     {
       "name": "TinIngot",
@@ -4406,7 +4867,8 @@
       "sortid": 547,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_ingot"
+      "registry_name": "tin_ingot",
+      "path": "~/items/ingots"
     },
     {
       "name": "TinOreBlockRecipe",
@@ -4414,7 +4876,8 @@
       "sortid": 548,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_ore_block_recipe"
+      "registry_name": "tin_ore_block_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TinBlockOreRecipe",
@@ -4422,7 +4885,8 @@
       "sortid": 549,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_block_ore_recipe"
+      "registry_name": "tin_block_ore_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TinOreSmelting",
@@ -4430,7 +4894,8 @@
       "sortid": 550,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_ore_smelting"
+      "registry_name": "tin_ore_smelting",
+      "path": "~/recipes"
     },
     {
       "name": "TinPickaxe",
@@ -4438,7 +4903,8 @@
       "sortid": 551,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_pickaxe"
+      "registry_name": "tin_pickaxe",
+      "path": "~/items/tools/pickaxes"
     },
     {
       "name": "TinAxe",
@@ -4446,7 +4912,8 @@
       "sortid": 552,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_axe"
+      "registry_name": "tin_axe",
+      "path": "~/items/tools/axes"
     },
     {
       "name": "TinSword",
@@ -4454,7 +4921,8 @@
       "sortid": 553,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_sword"
+      "registry_name": "tin_sword",
+      "path": "~/items/tools/swords"
     },
     {
       "name": "TinShovel",
@@ -4462,7 +4930,8 @@
       "sortid": 554,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_shovel"
+      "registry_name": "tin_shovel",
+      "path": "~/items/tools/shovels"
     },
     {
       "name": "TinHoe",
@@ -4470,7 +4939,8 @@
       "sortid": 555,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_hoe"
+      "registry_name": "tin_hoe",
+      "path": "~/items/tools/hoes"
     },
     {
       "name": "TinPickaxeRecipe",
@@ -4478,7 +4948,8 @@
       "sortid": 556,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_pickaxe_recipe"
+      "registry_name": "tin_pickaxe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TinAxeRecipe",
@@ -4486,7 +4957,8 @@
       "sortid": 557,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_axe_recipe"
+      "registry_name": "tin_axe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TinSwordRecipe",
@@ -4494,7 +4966,8 @@
       "sortid": 558,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_sword_recipe"
+      "registry_name": "tin_sword_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TinShovelRecipe",
@@ -4502,7 +4975,8 @@
       "sortid": 559,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_shovel_recipe"
+      "registry_name": "tin_shovel_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TinHoeRecipe",
@@ -4510,7 +4984,8 @@
       "sortid": 560,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_hoe_recipe"
+      "registry_name": "tin_hoe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TinArmor",
@@ -4524,7 +4999,8 @@
         "el": true,
         "eb": true,
         "ec": true
-      }
+      },
+      "path": "~/items/armour"
     },
     {
       "name": "TinArmorHelmetRecipe",
@@ -4532,7 +5008,8 @@
       "sortid": 562,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_armor_helmet_recipe"
+      "registry_name": "tin_armor_helmet_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TinArmorBodyRecipe",
@@ -4540,7 +5017,8 @@
       "sortid": 563,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_armor_body_recipe"
+      "registry_name": "tin_armor_body_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TinArmorLeggingsRecipe",
@@ -4548,7 +5026,8 @@
       "sortid": 564,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_armor_leggings_recipe"
+      "registry_name": "tin_armor_leggings_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TinArmorBootsRecipe",
@@ -4556,7 +5035,8 @@
       "sortid": 565,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_armor_boots_recipe"
+      "registry_name": "tin_armor_boots_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TinOreTag",
@@ -4564,7 +5044,8 @@
       "sortid": 566,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_ore_tag"
+      "registry_name": "tin_ore_tag",
+      "path": "~/tags"
     },
     {
       "name": "TinBlockTag",
@@ -4572,7 +5053,8 @@
       "sortid": 567,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_block_tag"
+      "registry_name": "tin_block_tag",
+      "path": "~/tags"
     },
     {
       "name": "TinIngotTag",
@@ -4580,7 +5062,8 @@
       "sortid": 568,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tin_ingot_tag"
+      "registry_name": "tin_ingot_tag",
+      "path": "~/tags"
     },
     {
       "name": "TitaniumOre",
@@ -4588,7 +5071,8 @@
       "sortid": 569,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_ore"
+      "registry_name": "titanium_ore",
+      "path": "~/blocks/ores"
     },
     {
       "name": "TitaniumOreBlock",
@@ -4596,7 +5080,8 @@
       "sortid": 570,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_ore_block"
+      "registry_name": "titanium_ore_block",
+      "path": "~/blocks/storage_blocks"
     },
     {
       "name": "TitaniumIngot",
@@ -4604,7 +5089,8 @@
       "sortid": 571,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_ingot"
+      "registry_name": "titanium_ingot",
+      "path": "~/items/ingots"
     },
     {
       "name": "TitaniumOreBlockRecipe",
@@ -4612,7 +5098,8 @@
       "sortid": 572,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_ore_block_recipe"
+      "registry_name": "titanium_ore_block_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TitaniumBlockOreRecipe",
@@ -4620,7 +5107,8 @@
       "sortid": 573,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_block_ore_recipe"
+      "registry_name": "titanium_block_ore_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TitaniumOreSmelting",
@@ -4628,7 +5116,8 @@
       "sortid": 574,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_ore_smelting"
+      "registry_name": "titanium_ore_smelting",
+      "path": "~/recipes"
     },
     {
       "name": "TitaniumPickaxe",
@@ -4636,7 +5125,8 @@
       "sortid": 575,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_pickaxe"
+      "registry_name": "titanium_pickaxe",
+      "path": "~/items/tools/pickaxes"
     },
     {
       "name": "TitaniumAxe",
@@ -4644,7 +5134,8 @@
       "sortid": 576,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_axe"
+      "registry_name": "titanium_axe",
+      "path": "~/items/tools/axes"
     },
     {
       "name": "TitaniumSword",
@@ -4652,7 +5143,8 @@
       "sortid": 577,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_sword"
+      "registry_name": "titanium_sword",
+      "path": "~/items/tools/swords"
     },
     {
       "name": "TitaniumShovel",
@@ -4660,7 +5152,8 @@
       "sortid": 578,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_shovel"
+      "registry_name": "titanium_shovel",
+      "path": "~/items/tools/shovels"
     },
     {
       "name": "TitaniumHoe",
@@ -4668,7 +5161,8 @@
       "sortid": 579,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_hoe"
+      "registry_name": "titanium_hoe",
+      "path": "~/items/tools/hoes"
     },
     {
       "name": "TitaniumPickaxeRecipe",
@@ -4676,7 +5170,8 @@
       "sortid": 580,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_pickaxe_recipe"
+      "registry_name": "titanium_pickaxe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TitaniumAxeRecipe",
@@ -4684,7 +5179,8 @@
       "sortid": 581,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_axe_recipe"
+      "registry_name": "titanium_axe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TitaniumSwordRecipe",
@@ -4692,7 +5188,8 @@
       "sortid": 582,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_sword_recipe"
+      "registry_name": "titanium_sword_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TitaniumShovelRecipe",
@@ -4700,7 +5197,8 @@
       "sortid": 583,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_shovel_recipe"
+      "registry_name": "titanium_shovel_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TitaniumHoeRecipe",
@@ -4708,7 +5206,8 @@
       "sortid": 584,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_hoe_recipe"
+      "registry_name": "titanium_hoe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TitaniumArmor",
@@ -4722,7 +5221,8 @@
         "el": true,
         "eb": true,
         "ec": true
-      }
+      },
+      "path": "~/items/armour"
     },
     {
       "name": "TitaniumArmorHelmetRecipe",
@@ -4730,7 +5230,8 @@
       "sortid": 586,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_armor_helmet_recipe"
+      "registry_name": "titanium_armor_helmet_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TitaniumArmorBodyRecipe",
@@ -4738,7 +5239,8 @@
       "sortid": 587,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_armor_body_recipe"
+      "registry_name": "titanium_armor_body_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TitaniumArmorLeggingsRecipe",
@@ -4746,7 +5248,8 @@
       "sortid": 588,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_armor_leggings_recipe"
+      "registry_name": "titanium_armor_leggings_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TitaniumArmorBootsRecipe",
@@ -4754,7 +5257,8 @@
       "sortid": 589,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_armor_boots_recipe"
+      "registry_name": "titanium_armor_boots_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "TitaniumOreTag",
@@ -4762,7 +5266,8 @@
       "sortid": 590,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_ore_tag"
+      "registry_name": "titanium_ore_tag",
+      "path": "~/tags"
     },
     {
       "name": "TitaniumBlockTag",
@@ -4770,7 +5275,8 @@
       "sortid": 591,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_block_tag"
+      "registry_name": "titanium_block_tag",
+      "path": "~/tags"
     },
     {
       "name": "TitaniumIngotTag",
@@ -4778,7 +5284,8 @@
       "sortid": 592,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "titanium_ingot_tag"
+      "registry_name": "titanium_ingot_tag",
+      "path": "~/tags"
     },
     {
       "name": "UraniumOre",
@@ -4786,7 +5293,8 @@
       "sortid": 593,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_ore"
+      "registry_name": "uranium_ore",
+      "path": "~/blocks/ores"
     },
     {
       "name": "UraniumOreBlock",
@@ -4794,7 +5302,8 @@
       "sortid": 594,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_ore_block"
+      "registry_name": "uranium_ore_block",
+      "path": "~/blocks/storage_blocks"
     },
     {
       "name": "UraniumIngot",
@@ -4802,7 +5311,8 @@
       "sortid": 595,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_ingot"
+      "registry_name": "uranium_ingot",
+      "path": "~/items/ingots"
     },
     {
       "name": "UraniumOreBlockRecipe",
@@ -4810,7 +5320,8 @@
       "sortid": 596,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_ore_block_recipe"
+      "registry_name": "uranium_ore_block_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "UraniumBlockOreRecipe",
@@ -4818,7 +5329,8 @@
       "sortid": 597,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_block_ore_recipe"
+      "registry_name": "uranium_block_ore_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "UraniumOreSmelting",
@@ -4826,7 +5338,8 @@
       "sortid": 598,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_ore_smelting"
+      "registry_name": "uranium_ore_smelting",
+      "path": "~/recipes"
     },
     {
       "name": "UraniumPickaxe",
@@ -4834,7 +5347,8 @@
       "sortid": 599,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_pickaxe"
+      "registry_name": "uranium_pickaxe",
+      "path": "~/items/tools/pickaxes"
     },
     {
       "name": "UraniumAxe",
@@ -4842,7 +5356,8 @@
       "sortid": 600,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_axe"
+      "registry_name": "uranium_axe",
+      "path": "~/items/tools/axes"
     },
     {
       "name": "UraniumSword",
@@ -4850,7 +5365,8 @@
       "sortid": 601,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_sword"
+      "registry_name": "uranium_sword",
+      "path": "~/items/tools/swords"
     },
     {
       "name": "UraniumShovel",
@@ -4858,7 +5374,8 @@
       "sortid": 602,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_shovel"
+      "registry_name": "uranium_shovel",
+      "path": "~/items/tools/shovels"
     },
     {
       "name": "UraniumHoe",
@@ -4866,7 +5383,8 @@
       "sortid": 603,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_hoe"
+      "registry_name": "uranium_hoe",
+      "path": "~/items/tools/hoes"
     },
     {
       "name": "UraniumPickaxeRecipe",
@@ -4874,7 +5392,8 @@
       "sortid": 604,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_pickaxe_recipe"
+      "registry_name": "uranium_pickaxe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "UraniumAxeRecipe",
@@ -4882,7 +5401,8 @@
       "sortid": 605,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_axe_recipe"
+      "registry_name": "uranium_axe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "UraniumSwordRecipe",
@@ -4890,7 +5410,8 @@
       "sortid": 606,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_sword_recipe"
+      "registry_name": "uranium_sword_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "UraniumShovelRecipe",
@@ -4898,7 +5419,8 @@
       "sortid": 607,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_shovel_recipe"
+      "registry_name": "uranium_shovel_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "UraniumHoeRecipe",
@@ -4906,7 +5428,8 @@
       "sortid": 608,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_hoe_recipe"
+      "registry_name": "uranium_hoe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "UraniumArmor",
@@ -4920,7 +5443,8 @@
         "el": true,
         "eb": true,
         "ec": true
-      }
+      },
+      "path": "~/items/armour"
     },
     {
       "name": "UraniumArmorHelmetRecipe",
@@ -4928,7 +5452,8 @@
       "sortid": 610,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_armor_helmet_recipe"
+      "registry_name": "uranium_armor_helmet_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "UraniumArmorBodyRecipe",
@@ -4936,7 +5461,8 @@
       "sortid": 611,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_armor_body_recipe"
+      "registry_name": "uranium_armor_body_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "UraniumArmorLeggingsRecipe",
@@ -4944,7 +5470,8 @@
       "sortid": 612,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_armor_leggings_recipe"
+      "registry_name": "uranium_armor_leggings_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "UraniumArmorBootsRecipe",
@@ -4952,7 +5479,8 @@
       "sortid": 613,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_armor_boots_recipe"
+      "registry_name": "uranium_armor_boots_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "UraniumOreTag",
@@ -4960,7 +5488,8 @@
       "sortid": 614,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_ore_tag"
+      "registry_name": "uranium_ore_tag",
+      "path": "~/tags"
     },
     {
       "name": "UraniumBlockTag",
@@ -4968,7 +5497,8 @@
       "sortid": 615,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_block_tag"
+      "registry_name": "uranium_block_tag",
+      "path": "~/tags"
     },
     {
       "name": "UraniumIngotTag",
@@ -4976,7 +5506,8 @@
       "sortid": 616,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "uranium_ingot_tag"
+      "registry_name": "uranium_ingot_tag",
+      "path": "~/tags"
     },
     {
       "name": "ZincOre",
@@ -4984,7 +5515,8 @@
       "sortid": 617,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_ore"
+      "registry_name": "zinc_ore",
+      "path": "~/blocks/ores"
     },
     {
       "name": "ZincOreBlock",
@@ -4992,7 +5524,8 @@
       "sortid": 618,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_ore_block"
+      "registry_name": "zinc_ore_block",
+      "path": "~/blocks/storage_blocks"
     },
     {
       "name": "ZincIngot",
@@ -5000,7 +5533,8 @@
       "sortid": 619,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_ingot"
+      "registry_name": "zinc_ingot",
+      "path": "~/items/ingots"
     },
     {
       "name": "ZincOreBlockRecipe",
@@ -5008,7 +5542,8 @@
       "sortid": 620,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_ore_block_recipe"
+      "registry_name": "zinc_ore_block_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ZincBlockOreRecipe",
@@ -5016,7 +5551,8 @@
       "sortid": 621,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_block_ore_recipe"
+      "registry_name": "zinc_block_ore_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ZincOreSmelting",
@@ -5024,7 +5560,8 @@
       "sortid": 622,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_ore_smelting"
+      "registry_name": "zinc_ore_smelting",
+      "path": "~/recipes"
     },
     {
       "name": "ZincPickaxe",
@@ -5032,7 +5569,8 @@
       "sortid": 623,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_pickaxe"
+      "registry_name": "zinc_pickaxe",
+      "path": "~/items/tools/pickaxes"
     },
     {
       "name": "ZincAxe",
@@ -5040,7 +5578,8 @@
       "sortid": 624,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_axe"
+      "registry_name": "zinc_axe",
+      "path": "~/items/tools/axes"
     },
     {
       "name": "ZincSword",
@@ -5048,7 +5587,8 @@
       "sortid": 625,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_sword"
+      "registry_name": "zinc_sword",
+      "path": "~/items/tools/swords"
     },
     {
       "name": "ZincShovel",
@@ -5056,7 +5596,8 @@
       "sortid": 626,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_shovel"
+      "registry_name": "zinc_shovel",
+      "path": "~/items/tools/shovels"
     },
     {
       "name": "ZincHoe",
@@ -5064,7 +5605,8 @@
       "sortid": 627,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_hoe"
+      "registry_name": "zinc_hoe",
+      "path": "~/items/tools/hoes"
     },
     {
       "name": "ZincPickaxeRecipe",
@@ -5072,7 +5614,8 @@
       "sortid": 628,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_pickaxe_recipe"
+      "registry_name": "zinc_pickaxe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ZincAxeRecipe",
@@ -5080,7 +5623,8 @@
       "sortid": 629,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_axe_recipe"
+      "registry_name": "zinc_axe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ZincSwordRecipe",
@@ -5088,7 +5632,8 @@
       "sortid": 630,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_sword_recipe"
+      "registry_name": "zinc_sword_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ZincShovelRecipe",
@@ -5096,7 +5641,8 @@
       "sortid": 631,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_shovel_recipe"
+      "registry_name": "zinc_shovel_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ZincHoeRecipe",
@@ -5104,7 +5650,8 @@
       "sortid": 632,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_hoe_recipe"
+      "registry_name": "zinc_hoe_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ZincArmor",
@@ -5118,7 +5665,8 @@
         "el": true,
         "eb": true,
         "ec": true
-      }
+      },
+      "path": "~/items/armour"
     },
     {
       "name": "ZincArmorHelmetRecipe",
@@ -5126,7 +5674,8 @@
       "sortid": 634,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_armor_helmet_recipe"
+      "registry_name": "zinc_armor_helmet_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ZincArmorBodyRecipe",
@@ -5134,7 +5683,8 @@
       "sortid": 635,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_armor_body_recipe"
+      "registry_name": "zinc_armor_body_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ZincArmorLeggingsRecipe",
@@ -5142,7 +5692,8 @@
       "sortid": 636,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_armor_leggings_recipe"
+      "registry_name": "zinc_armor_leggings_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ZincArmorBootsRecipe",
@@ -5150,7 +5701,8 @@
       "sortid": 637,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_armor_boots_recipe"
+      "registry_name": "zinc_armor_boots_recipe",
+      "path": "~/recipes"
     },
     {
       "name": "ZincOreTag",
@@ -5158,7 +5710,8 @@
       "sortid": 638,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_ore_tag"
+      "registry_name": "zinc_ore_tag",
+      "path": "~/tags"
     },
     {
       "name": "ZincBlockTag",
@@ -5166,7 +5719,8 @@
       "sortid": 639,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_block_tag"
+      "registry_name": "zinc_block_tag",
+      "path": "~/tags"
     },
     {
       "name": "ZincIngotTag",
@@ -5174,7 +5728,8 @@
       "sortid": 640,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "zinc_ingot_tag"
+      "registry_name": "zinc_ingot_tag",
+      "path": "~/tags"
     }
   ],
   "variable_elements": [],
@@ -5242,7 +5797,6 @@
       "item.slothcraft.silver_armor_leggings": "Silver Leggings",
       "itemGroup.tabsloth_craft_gears_creative_tab": "SlothCraft Gears",
       "item.slothcraft.copper_armor_helmet": "Copper Helmet",
-      "block.slothcraft.copper_ore_block": "Block of Copper",
       "item.slothcraft.zinc_gear_item": "Zinc Gear",
       "item.slothcraft.chromium_shovel": "Chromium Shovel",
       "item.slothcraft.chromium_plate_item": "Chromium Plate",
@@ -5497,7 +6051,6 @@
       "item.slothcraft.lead_armorboots": "Lead Boots",
       "item.slothcraft.redstone_plate_item": "Redstone Plate",
       "item.slothcraft.osmium_hoe": "Osmium Hoe",
-      "block.slothcraft.copper_ore": "Copper Ore",
       "block.slothcraft.nickel_ore": "Nickel Ore",
       "item.slothcraft.silver_armorlegs": "Silver Leggings",
       "item.slothcraft.violet_haze_leaf_item": "Violet Haze Leaf",
@@ -5607,7 +6160,6 @@
       "item.slothcraft.iron_gear_item": "Iron Gear",
       "item.slothcraft.orange_food": "Orange",
       "item.slothcraft.copper_armorbody": "Copper Chestplate",
-      "item.slothcraft.copper_ingot": "Copper",
       "item.slothcraft.osmium_ingot": "Osmium",
       "item.slothcraft.platinum_armorboots": "Platinum Boots",
       "item.slothcraft.gobber_end_plate_item": "Ender Gobber Plate",
@@ -5644,7 +6196,102 @@
     "name": "~",
     "children": [
       {
-        "name": "gear",
+        "name": "items",
+        "children": [
+          {
+            "name": "gears",
+            "children": []
+          },
+          {
+            "name": "plates",
+            "children": []
+          },
+          {
+            "name": "armour",
+            "children": []
+          },
+          {
+            "name": "ingots",
+            "children": []
+          },
+          {
+            "name": "tools",
+            "children": [
+              {
+                "name": "swords",
+                "children": []
+              },
+              {
+                "name": "axes",
+                "children": []
+              },
+              {
+                "name": "staffs",
+                "children": []
+              },
+              {
+                "name": "pickaxes",
+                "children": []
+              },
+              {
+                "name": "shovels",
+                "children": []
+              },
+              {
+                "name": "hoes",
+                "children": []
+              }
+            ]
+          },
+          {
+            "name": "gems",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "blocks",
+        "children": [
+          {
+            "name": "storage_blocks",
+            "children": []
+          },
+          {
+            "name": "ores",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "guis",
+        "children": []
+      },
+      {
+        "name": "procedures",
+        "children": []
+      },
+      {
+        "name": "creative tabs",
+        "children": []
+      },
+      {
+        "name": "recipes",
+        "children": []
+      },
+      {
+        "name": "tags",
+        "children": []
+      },
+      {
+        "name": "food",
+        "children": []
+      },
+      {
+        "name": "plant",
+        "children": []
+      },
+      {
+        "name": "loot_tables",
         "children": []
       }
     ]

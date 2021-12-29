@@ -53,7 +53,7 @@
     },
     "repairItems": [
       {
-        "value": "CUSTOM:CopperIngot"
+        "value": "CUSTOM:CopperPlateItem"
       }
     ]
   }

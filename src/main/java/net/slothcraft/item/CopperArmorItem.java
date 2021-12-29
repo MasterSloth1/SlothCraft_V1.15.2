@@ -41,7 +41,7 @@ public abstract class CopperArmorItem extends ArmorItem {
 
 			@Override
 			public Ingredient getRepairIngredient() {
-				return Ingredient.of(new ItemStack(SlothcraftModItems.COPPER_INGOT));
+				return Ingredient.of(new ItemStack(SlothcraftModItems.COPPER_PLATE_ITEM));
 			}
 
 			@Override

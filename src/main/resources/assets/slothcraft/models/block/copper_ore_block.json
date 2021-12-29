@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "slothcraft:blocks/copper_ore_block",
-    "particle": "slothcraft:blocks/copper_ore_block"
-  }
-}

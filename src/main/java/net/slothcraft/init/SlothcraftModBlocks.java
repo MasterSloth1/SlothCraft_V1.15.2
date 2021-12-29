@@ -34,8 +34,6 @@ import net.slothcraft.block.JadeOreBlock;
 import net.slothcraft.block.IridiumOreBlockBlock;
 import net.slothcraft.block.IridiumOreBlock;
 import net.slothcraft.block.GearsMakerBlockBlock;
-import net.slothcraft.block.CopperOreBlockBlock;
-import net.slothcraft.block.CopperOreBlock;
 import net.slothcraft.block.ChromiumOreBlockBlock;
 import net.slothcraft.block.ChromiumOreBlock;
 import net.slothcraft.block.AmethystOreBlockBlock;
@@ -66,8 +64,6 @@ public class SlothcraftModBlocks {
 	public static final Block AMETHYST_ORE_BLOCK = register(new AmethystOreBlockBlock());
 	public static final Block CHROMIUM_ORE = register(new ChromiumOreBlock());
 	public static final Block CHROMIUM_ORE_BLOCK = register(new ChromiumOreBlockBlock());
-	public static final Block COPPER_ORE = register(new CopperOreBlock());
-	public static final Block COPPER_ORE_BLOCK = register(new CopperOreBlockBlock());
 	public static final Block IRIDIUM_ORE = register(new IridiumOreBlock());
 	public static final Block IRIDIUM_ORE_BLOCK = register(new IridiumOreBlockBlock());
 	public static final Block JADE_ORE = register(new JadeOreBlock());
@@ -116,7 +112,6 @@ public class SlothcraftModBlocks {
 			AluminumOreBlock.registerRenderLayer();
 			AmethystOreBlock.registerRenderLayer();
 			ChromiumOreBlock.registerRenderLayer();
-			CopperOreBlock.registerRenderLayer();
 			IridiumOreBlock.registerRenderLayer();
 			JadeOreBlock.registerRenderLayer();
 			LeadOreBlock.registerRenderLayer();
